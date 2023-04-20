@@ -57,8 +57,8 @@ function Index() {
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
     let scrollAmount = event.deltaY;
 
-    console.log()
-    console.log(event.deltaY)
+    // console.log()
+    // console.log(event.deltaY)
     
     if (!event.shiftKey) scrollAmount = scrollAmount / 2;
 

@@ -21,6 +21,14 @@ const Register = () => {
       return;
     }
 
+    if (email.length < 6) {
+      setAlerta({
+        msg: "Introduce un email valido",
+        error: true,
+      });
+      return;
+    }
+
     if (password !== repetirPassword) {
       setAlerta({
         msg: "Los password no son iguales",
@@ -59,7 +67,7 @@ const Register = () => {
       setRepetirPassword("");
     } catch (error) {
       setAlerta({
-        msg: error.response.data.msg,
+        msg: error.msg,
         error: true,
       });
     }
@@ -172,7 +180,7 @@ const Register = () => {
 
           <Link
             className="block text-center my-5 text-slate-500 uppercase text-sm"
-            to="/reset-password"
+            to="/users/reset-password"
           >
             He olvidado Mi Contraseña
           </Link>

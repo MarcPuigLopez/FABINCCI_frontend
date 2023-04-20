@@ -21,9 +21,7 @@ const ConfirmAccount = () => {
           error: false,
         });
         setCuentaConfirmada(true);
-        console.log("CUENTA CONFIRMADA");
       } catch (error) {
-        console.log("ERROR DE CONFIRMADO")
         setAlerta({
           msg: error.response.data.msg,
           error: true,

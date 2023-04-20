@@ -12,7 +12,7 @@ const ResetPassword = () => {
 
     if (email === "" || email.length < 6) {
       setAlerta({
-        msg: "El Email es obligatorio",
+        msg: "Introduce un email valido",
         error: true,
       });
       return;
@@ -82,6 +82,13 @@ const ResetPassword = () => {
             to="/login"
           >
             ¿Ya tienes una cuenta? Inicia Sesión
+          </Link>
+
+          <Link
+            className="block text-center my-5 text-slate-500 uppercase text-sm"
+            to="/"
+          >
+            Volver a la pantalla Principal
           </Link>
 
           <Link
