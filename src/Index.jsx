@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Imports dels components del lloc web
-import Footer from "./paginas/Footer.jsx";
-import Header from "./paginas/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import Header from "./components/Header.jsx";
 import Welcome from "./paginas/Welcome.jsx";
 import AboutUs from "./paginas/AboutUs.jsx";
 import Fabincci from "./paginas/Fabincci.jsx";
@@ -10,7 +10,6 @@ import Reservas from "./paginas/Reservas.jsx";
 import Contact from "./paginas/Contact.jsx";
 
 function Index() {
-
   // Configuració dels botons del Header per anar a les seves seccions
   const welcomeRef = useRef(null);
   const aboutUsRef = useRef(null);
@@ -47,10 +46,32 @@ function Index() {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [lastScrollTime, setLastScrollTime] = useState(0);
 
-  // Configuració del scroll horitzontal de la pàgina
+  // Configuració per mantenir el scroll al fer reload de la pàgina
+  //Guarda la posició del scroll al sortir de la pàgina
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.setItem("scrollpos", containerRef.current.scrollLeft);
+    };
 
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  // Restaura la posició del scroll al carregar la página
+  useEffect(() => {
+    const scrollpos = localStorage.getItem("scrollpos");
+    if (scrollpos) {
+      containerRef.current.scrollTo({
+        left: parseInt(scrollpos),
+      });
+    }
+  }, []);
+
+  // Configuració del scroll horitzontal de la pàgina
   const handleScroll = (event) => {
-    
     if (event.ctrlKey) return;
 
     const container = containerRef.current;
@@ -59,7 +80,7 @@ function Index() {
 
     // console.log()
     // console.log(event.deltaY)
-    
+
     if (!event.shiftKey) scrollAmount = scrollAmount / 2;
 
     const newScrollLeft = Math.max(
@@ -102,7 +123,9 @@ function Index() {
         ref={containerRef}
         className="flex flex-nowrap overflow-x-scroll overflow-y-hidden"
         onWheel={handleScroll}
-        onScroll={ () => { setScrollLeft(containerRef.current.scrollLeft) } }
+        onScroll={() => {
+          setScrollLeft(containerRef.current.scrollLeft);
+        }}
       >
         <div className="">
           <Welcome ref={welcomeRef} />

@@ -15,10 +15,10 @@ const Contact = (props, ref) => {
   return (
     <div
       ref={ref}
-      className="bg-[url('assets/FONDO5.png')] bg-cover bg-center bg-no-repeat h-[80vh] w-contact-width"
+      className="bg-[url('assets/images/FONDO5.png')] bg-cover bg-center bg-no-repeat h-[84vh] w-contact-width"
     >
       <div>
-        <h1 className="text-7xl font-bold text-white text-center p-5 text-shadow-lg shadow-gray-700">
+        <h1 className="font-press-start p-5 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
           CONTACTA CON NOSOTROS
         </h1>
       </div>

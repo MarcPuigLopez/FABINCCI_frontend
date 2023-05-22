@@ -7,7 +7,7 @@ const AuthContext = createContext();
 const AuthProvider = ({children}) => {
 
     const [auth, setAuth] = useState({})
-    const [cargando, setCargando] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ const AuthProvider = ({children}) => {
         const autenticarUsuario = async () => {
             const token = localStorage.getItem('token')
             if(!token){
-                setCargando(false)
+                setLoading(false)
                 return
             }
 
@@ -29,13 +29,12 @@ const AuthProvider = ({children}) => {
             try {
                 const { data } = await clienteAxios('/users/profile', config)
                 setAuth(data)
-                navigate('/users/profile')
 
             } catch (error) {
                 setAuth({})
             } 
 
-            setCargando(false)
+            setLoading(false)
 
             
         }
@@ -52,7 +51,7 @@ const AuthProvider = ({children}) => {
             value={{
                 auth,
                 setAuth,
-                cargando,
+                loading,
                 logoutAuth
             }}
         >

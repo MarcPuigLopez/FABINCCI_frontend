@@ -1,25 +1,36 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 //Logo
-import logoBlanco from "../assets/LogoBlanco.png"
-import fabi from "../assets/Fabi.png";
+import logoBlanco from "../assets/images/LogoBlanco.png";
+import fabi from "../assets/images/Fabi.png";
 
 const Welcome = (props, ref) => {
   return (
-    <div className="bg-[url('assets/FONDO1.png')] bg-cover bg-center bg-no-repeat flex w-welcome-width">
-      <div ref={ref} className="w-welcome-width h-[80vh] relative aspect-auto">
-
+    <div className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center flex h-[84vh] w-screen font-press-start">
+      <div ref={ref} className="w-screen h-[84vh] relative aspect-auto">
         <div>
-          <h1 className="text-7xl font-bold text-white text-center p-5 text-shadow-lg shadow-gray-700">
+          <motion.h1
+            className="text-7xl font-bold text-white text-center pt-3 p-5 text-shadow-lg shadow-gray-700"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 2,
+            }}
+          >
             <span className="px-8 ">FABINCCI</span>
-          </h1>
+          </motion.h1>
+        </div>
 
-          <img
+        {/* <img
             src={logoBlanco}
             alt="Fabincci Logo"
             className="xl:h-64 lg:h-52 md:h-32 h-20 items-center mx-auto max-w-xl"
-          />
-        </div>
+          /> */}
 
         <div className="m-4 bg-white w-80 absolute top-96 left-60 z-10">
           <h2 className="border-2 border-black p-4 text-2xl text-center font-bold">

@@ -58,53 +58,56 @@ const NewPassword = () => {
   const { msg } = alerta;
 
   return (
-    <main className="container mx-auto mt-5 md:mt-20 p-5 md:flex md:justify-center">
-      <div className="md:w-2/3 lg:w-2/5 ">
-  
-        <h1 className="text-sky-600 font-black text-6xl p-5 capitalize">
-          FABINCCI {""}
-          <span className="text-slate-700"> Password Reset</span>
-        </h1>
+    <main className="bg-[url('assets/images/FONDO1.png')] bg-cover bg-center bg-no-repeat h-screen">
+      <div className="flex justify-center items-center h-screen">
+        <div className="md:w-2/3 lg:w-2/5 p-16 bg-white rounded-lg mb-48">
+        <h1 className="text-sky-600 font-black text-6xl mb-5">
+            <Link to="/">FABINCCI <br/></Link>
+            <span className="text-slate-700">
+              <Link to="/">Password Recovery</Link>
+            </span>
+          </h1>
 
-        {msg && <Alerta alerta={alerta} />}
+          {msg && <Alerta alerta={alerta} />}
 
-        {tokenValido && (
-          <form
-            className="my-10 bg-white shadow rounded-lg p-10"
-            onSubmit={handleSubmit}
-          >
-            <div className="my-5">
-              <label
-                className="uppercase text-gray-600 block text-xl font-bold"
-                htmlFor="password"
-              >
-                Nuevo Password
-              </label>
+          {tokenValido && (
+            <form
+              className="my-10 bg-white shadow rounded-lg p-10"
+              onSubmit={handleSubmit}
+            >
+              <div className="my-5">
+                <label
+                  className="uppercase text-gray-600 block text-xl font-bold"
+                  htmlFor="password"
+                >
+                  Nuevo Password
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Escribe tu Nuevo Password"
+                  className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
               <input
-                id="password"
-                type="password"
-                placeholder="Escribe tu Nuevo Password"
-                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="submit"
+                value="Guardar Nuevo Password"
+                className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
               />
-            </div>
-            <input
-              type="submit"
-              value="Guardar Nuevo Password"
-              className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
-            />
-          </form>
-        )}
+            </form>
+          )}
 
-        {passwordModificado && (
-          <Link
-            className="block text-center my-5 text-slate-500 uppercase text-sm"
-            to="/login"
-          >
-            Iniciar Sesión
-          </Link>
-        )}
+          {passwordModificado && (
+            <Link
+              className="block text-center my-5 text-slate-500 uppercase text-sm"
+              to="/login"
+            >
+              Iniciar Sesión
+            </Link>
+          )}
+        </div>
       </div>
     </main>
   );

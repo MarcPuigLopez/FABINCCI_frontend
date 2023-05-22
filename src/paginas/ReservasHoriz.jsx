@@ -4,7 +4,7 @@ const Reservas = (props, ref) => {
   return (
     <div
       ref={ref}
-      className="bg-[url('assets/Fondo4.png')] bg-cover bg-center bg-no-repeat flex w-reservas-width"
+      className="bg-[url('assets/images/Fondo4.png')] bg-cover bg-center bg-no-repeat flex w-reservas-width"
     >
       <div className="flex items-center justify-center w-reservas-width h-[80vh] relative ">
 

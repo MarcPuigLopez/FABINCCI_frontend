@@ -39,65 +39,62 @@ const ResetPassword = () => {
   const { msg } = alerta;
 
   return (
-    <main className="container mx-auto mt-5 md:mt-20 p-4 md:flex md:justify-center">
-      <div className="md:w-2/3 lg:w-3/6 ">
-        <h1 className="text-sky-600 font-black text-6xl capitalize">
-          FABINCCI {""}
-          <span className="text-slate-700">Recovery</span>
-        </h1>
+    <main className="bg-[url('assets/images/FONDO1.png')] bg-cover bg-center bg-no-repeat h-screen">
+      <div className="flex justify-center items-center h-screen">
+        <div className="md:w-2/3 lg:w-2/5 p-16 pb-8 bg-white rounded-lg">
+          <h1 className="text-sky-600 font-black text-6xl capitalize text-center">
+            <Link to="/">FABINCCI </Link>
+            <span className="text-slate-700">
+              <Link to="/">Recovery</Link>
+            </span>
+          </h1>
 
-        {msg && <Alerta alerta={alerta} />}
+          {msg && <Alerta alerta={alerta} />}
 
-        <form
-          className="my-10 bg-white shadow rounded-lg p-10"
-          onSubmit={handleSubmit}
-        >
-          <div className="my-5">
-            <label
-              className="uppercase text-gray-600 block text-xl font-bold"
-              htmlFor="email"
-            >
-              Email
-            </label>
+          <form
+            className="my-10 bg-white shadow rounded-lg p-10"
+            onSubmit={handleSubmit}
+          >
+            <div className="my-5">
+              <label
+                className="uppercase text-gray-600 block text-xl font-bold"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="Email de Registro"
+                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
             <input
-              id="email"
-              type="email"
-              placeholder="Email de Registro"
-              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="submit"
+              value="Enviar Instrucciones"
+              className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
             />
-          </div>
+          </form>
 
-          <input
-            type="submit"
-            value="Enviar Instrucciones"
-            className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
-          />
-        </form>
+          <nav className="lg:flex lg:justify-between flex mx-10">
+            <a className="block text-center my-5 text-slate-500 text-sm">
+              Are you a member?
+              <span className="text-blue-500 mx-2">
+                <Link to="/login">Login</Link>
+              </span>
+            </a>
 
-        <nav className="lg:flex lg:justify-between">
-          <Link
-            className="block text-center my-5 text-slate-500 uppercase text-sm"
-            to="/login"
-          >
-            ¿Ya tienes una cuenta? Inicia Sesión
-          </Link>
-
-          <Link
-            className="block text-center my-5 text-slate-500 uppercase text-sm"
-            to="/"
-          >
-            Volver a la pantalla Principal
-          </Link>
-
-          <Link
-            className="block text-center my-5 text-slate-500 uppercase text-sm"
-            to="/register"
-          >
-            ¿No tienes una cuenta? Regístrate
-          </Link>
-        </nav>
+            <a className="block text-center my-5 text-slate-500 text-sm">
+              Not a member?
+              <span className="text-blue-500 mx-2">
+                <Link to="/register">Register</Link>
+              </span>
+            </a>
+          </nav>
+        </div>
       </div>
     </main>
   );
