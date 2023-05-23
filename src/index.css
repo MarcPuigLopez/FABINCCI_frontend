@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merienda&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.google.com/specimen/Merienda?preview.text=FABINCCI%20Sign%20in&preview.text_type=custom');
 
 .hide-scroll-bar {
     -ms-overflow-style: none; /* IE and Edge */

@@ -1,22 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        'press-start': ['"Merienda"', 'cursive'],
+        "Bebas": ["Bebas Neue", "sans-serif"],
+        "Merienda": ["Merienda", "cursive"],
       },
       spacing: {
-        'welcome-width': '1917px',
-        'aboutUs-width': '1917px',
-        'fabincci-width': '1917px',
-        'reservas-width': '1917px',
-        'contact-width': '1917px',
-        '84': '22rem',
-        '128': '32rem',
+        "welcome-width": "1917px",
+        "aboutUs-width": "1917px",
+        "fabincci-width": "1917px",
+        "reservas-width": "1917px",
+        "contact-width": "1917px",
+        84: "22rem",
+        128: "32rem",
       },
       textShadow: {
         sm: "0 1px 2px var(--tw-shadow-color)",

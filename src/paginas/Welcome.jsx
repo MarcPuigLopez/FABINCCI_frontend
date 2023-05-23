@@ -16,7 +16,7 @@ import ItemP1 from "../assets/images/ItemP1.jpg";
 
 const Welcome = (props, ref) => {
   return (
-    <div className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center flex h-[84vh] w-screen font-press-start">
+    <div className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center flex h-[84vh] w-screen">
       <div ref={ref} className="w-screen h-[84vh] grid grid-cols-3">
         <div className="h-[84vh] grid grid-cols-5 grid-rows-6">
           <motion.img
@@ -47,7 +47,7 @@ const Welcome = (props, ref) => {
 
         <div className="h-[84vh] grid grid-rows-6 text-center">
           <motion.h1
-            className="row-start-1 text-8xl font-bold text-white pt-6 p-5 text-shadow-lg shadow-gray-700"
+            className="row-start-1 text-8xl font-bold text-white pt-6 p-5 text-shadow-lg shadow-gray-700 font-Merienda"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
@@ -61,7 +61,7 @@ const Welcome = (props, ref) => {
             FABINCCI
           </motion.h1>
           <motion.h2
-            className="row-start-4 pt-20 text-white text-xl"
+            className="row-start-4 pt-20 text-white text-xl font-Merienda"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
@@ -74,7 +74,7 @@ const Welcome = (props, ref) => {
           >
             WELCOME TO FABINCCI'S UNIVERSE
           </motion.h2>
-          <motion.p className="row-start-5 row-end-6 pt-2 text-white text-xs text-justify px-20">
+          <motion.p className="row-start-5 row-end-6 pt-2 text-white text-xs text-justify px-20 font-Merienda">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu
             velit a nisl sagittis hendrerit. Vivamus quis lectus mollis, gravida
             justo quis, lobortis velit. Interdum et malesuada fames ac ante
