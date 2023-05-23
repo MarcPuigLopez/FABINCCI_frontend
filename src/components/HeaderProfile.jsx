@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
 //Logo
 import logo from "../assets/images/LogoNegro.png";
+
 //Icons
 import { RiMenuFill, RiCloseLine } from "react-icons/ri";
 
 import { Link, useLocation } from "react-router-dom";
 
+// Hooks
 import useAuth from "../hooks/useAuth";
 
-const Header = (props) => {
+const HeaderProfile = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const location = useLocation();
 
   useEffect(() => {
-    // if (location.pathname === "/profile") setisLoggedIn(true);
-    // else setisLoggedIn(false);
 
     const checkLoginStatus = () => {
       const loggedIn = localStorage.getItem("token");
@@ -34,6 +35,19 @@ const Header = (props) => {
     window.location.reload(false);
   };
 
+  const welcomeRef = useRef(null);
+  const aboutUsRef = useRef(null);
+
+  const scrollToWelcome = () => {
+    welcomeRef.current.scrollIntoView({ behavior: "smooth" });
+    setScrollLeft(1);
+  };
+
+  const scrollToAboutUs = () => {
+    aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
+    setScrollLeft(aboutUsRef.current.clientWidth);
+  };
+
   return (
     <header className="flex bg-white border-b-2 items-center pl-40 justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif sticky top-0">
       <img src={logo} alt="Fabincci Logo" className="w-16 h-8 xl:hidden" />
@@ -48,24 +62,24 @@ const Header = (props) => {
         <button onClick={() => setShowMenu(!showMenu)} className="xl:hidden">
           <RiCloseLine />
         </button>
-        <button onClick={props.handleWelcomeClick} className="">
+        <Link to="/" onClick={props.handleWelcomeClick} className="">
           WELCOME
-        </button>
-        <button onClick={props.handleAboutUsClick} className="">
+        </Link>
+        <Link to="/" onClick={props.handleAboutUsClick} className="">
           ABOUT US
-        </button>
-        <button onClick={props.handleFabincciClick} className="xl:block hidden">
+        </Link>
+        <Link to="/" onClick={props.handleFabincciClick} className="xl:block hidden">
           <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
-        </button>
-        <button onClick={props.handleFabincciClick} className="xl:hidden block">
+        </Link>
+        <Link to="/" onClick={props.handleFabincciClick} className="xl:hidden block">
           FABINCCI
-        </button>
-        <button onClick={props.handleReservasClick} className="">
+        </Link>
+        <Link to="/" onClick={props.handleReservasClick} className="">
           RESERVAS
-        </button>
-        <button onClick={props.handleContactClick} className="">
+        </Link>
+        <Link to="/" onClick={props.handleContactClick} className="">
           CONTACT
-        </button>
+        </Link>
       </nav>
 
       <nav
@@ -75,18 +89,12 @@ const Header = (props) => {
       >
         <Link
           className="block text-center m-5 text-black uppercase text-sm "
-          to={`${isLoggedIn ? "/" : "/login"}`}
+          to="/login"
           onClick={handleLogout}
         >
-          {`${isLoggedIn ? "Logout" : "Login"}`}
+          Logout
         </Link>
 
-        <Link
-          className="block text-center m-5 text-black uppercase text-sm"
-          to={`${isLoggedIn ? "/profile" : "/register"}`}
-        >
-          {`${isLoggedIn ? "Profile" : "Register"}`}
-        </Link>
       </nav>
 
       <button
@@ -99,4 +107,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default HeaderProfile;
