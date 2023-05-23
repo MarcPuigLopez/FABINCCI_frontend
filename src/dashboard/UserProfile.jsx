@@ -13,7 +13,7 @@ import { useRef } from "react";
 import UserTab from "./UserTab";
 import ReservationsTab from "./ReservationsTab";
 import BookingTab from "./BookingTab";
-import Header from "../components/Header";
+import HeaderProfile from "../components/HeaderProfile";
 
 const UserProfile = (props) => {
   const profileRef = useRef(null);
@@ -33,8 +33,8 @@ const UserProfile = (props) => {
   };
 
   return (
-    <div className="bg-gray-100 h-full">
-      <Header />
+    <div className="bg-[url('assets/images/FONDO1.jpg')] h-full">
+      <HeaderProfile />
 
       <div className="flex justify-between">
         <div className="bg-gray-300 shadow rounded-lg m-3 ml-8 text-xl h-[85vh] fixed top-[11vh]">
@@ -65,7 +65,7 @@ const UserProfile = (props) => {
           </div>
         </div>
 
-        <div className="bg-white shadow rounded-lg p-10 w-full m-3 ml-84 h-auto">
+        <div className="bg-white shadow rounded-lg m-7 p-10 w-full ml-84 h-auto">
           <div className="h-auto">
             <UserTab ref={profileRef} />
             <ReservationsTab ref={reservationsRef} />

@@ -39,7 +39,7 @@ const Login = () => {
       setAlerta({});
       localStorage.setItem("token", data.token);
       setAuth(data);
-      navigate("/users/profile");
+      navigate("/profile");
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
@@ -56,7 +56,7 @@ const Login = () => {
   const { msg } = alerta;
 
   return (
-    <main className="bg-[url('assets/images/FONDO1.png')] bg-cover bg-center bg-no-repeat h-screen">
+    <main className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center h-screen">
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-16 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black text-6xl mb-5 text-center">
