@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 //Logo
-import logo from "../assets/images/LogoNegro.png";
+import logo from "../../assets/images/LogoNegro.png";
 //Icons
 import { RiMenuFill, RiCloseLine } from "react-icons/ri";
 
 import { Link, useLocation } from "react-router-dom";
 
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 const Header = (props) => {
   const [showMenu, setShowMenu] = useState(false);

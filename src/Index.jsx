@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // Imports dels components del lloc web
-import Footer from "./components/Footer.jsx";
-import Header from "./components/Header.jsx";
-import Welcome from "./paginas/Welcome.jsx";
-import AboutUs from "./paginas/AboutUs.jsx";
-import Fabincci from "./paginas/Fabincci.jsx";
-import Reservas from "./paginas/Reservas.jsx";
-import Contact from "./paginas/Contact.jsx";
+import Footer from "./components/helpers/Footer";
+import Header from "./components/helpers/Header";
+import Welcome from "./components/home/Welcome";
+import AboutUs from "./components/home/AboutUs";
+import Fabincci from "./components/home/Fabincci";
+import Reservas from "./components/home/Reservas";
+import Contact from "./components/home/Contact";
 
 function Index() {
   // Configuració dels botons del Header per anar a les seves seccions

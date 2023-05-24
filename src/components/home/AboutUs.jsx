@@ -2,9 +2,9 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-import Video1 from "../assets/videos/AboutUsVideo1.mp4";
-import Video2 from "../assets/videos/AboutUsVideo2.mp4";
-import Video3 from "../assets/videos/AboutUsVideo3.mp4";
+import Video1 from "../../assets/videos/AboutUsVideo1.mp4";
+import Video2 from "../../assets/videos/AboutUsVideo2.mp4";
+import Video3 from "../../assets/videos/AboutUsVideo3.mp4";
 
 const AboutUs = (props, ref) => {
   return (

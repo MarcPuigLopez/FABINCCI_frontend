@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import clienteAxios from "../config/clienteAxios";
-import Alerta from "../components/Alerta";
+import clienteAxios from "../../config/clienteAxios";
+import Alerta from "../helpers/Alerta";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");

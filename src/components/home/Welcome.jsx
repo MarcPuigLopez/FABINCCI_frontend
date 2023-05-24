@@ -2,17 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Logo
-import logoBlanco from "../assets/images/LogoBlanco.png";
-import fabi from "../assets/images/Fabi.png";
+import logoBlanco from "../../assets/images/LogoBlanco.png";
+import fabi from "../../assets/images/Fabi.png";
 
 // Imagenes
-import Item1 from "../assets/images/Item1.jpg";
-import Item2 from "../assets/images/Item2.jpg";
-import Item3 from "../assets/images/Item3.jpg";
-import Item4 from "../assets/images/Item4.jpg";
-import Item5 from "../assets/images/Item5.jpg";
-import Item6 from "../assets/images/Item6.jpg";
-import ItemP1 from "../assets/images/ItemP1.jpg";
+import Item1 from "../../assets/images/Item1.jpg";
+import Item2 from "../../assets/images/Item2.jpg";
+import Item3 from "../../assets/images/Item3.jpg";
+import Item4 from "../../assets/images/Item4.jpg";
+import Item5 from "../../assets/images/Item5.jpg";
+import Item6 from "../../assets/images/Item6.jpg";
+import ItemP1 from "../../assets/images/ItemP1.jpg";
 
 const Welcome = (props, ref) => {
   return (

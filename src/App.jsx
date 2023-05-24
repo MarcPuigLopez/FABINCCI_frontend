@@ -10,21 +10,16 @@ import ProtectedAdminRoute from "./layouts/ProtectedAdminRoute";
 
 // Autentificación de usuário
 import Index from "./Index";
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-import ResetPassword from "./auth/ResetPassword";
-import NewPassword from "./auth/NewPassword";
-import ConfirmAccount from "./auth/ConfirmAccount";
-import NotFound from "./components/NotFound.jsx";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import ResetPassword from "./components/auth/ResetPassword";
+import NewPassword from "./components/auth/NewPassword";
+import ConfirmAccount from "./components/auth/ConfirmAccount";
+import NotFound from "./components/auxPages/NotFound";
 
 // Páginas de usuário autenticado y administrador
-import UserProfile from "./dashboard/UserProfile";
-import AdminProfile from "./dashboard/AdminProfile.jsx";
-
-// Dashboard de usuário autenticado
-import UserTab from "./dashboard/UserTab.jsx";
-import ReservationsTab from "./dashboard/ReservationsTab";
-import BookingTab from "./dashboard/BookingTab";
+import UserProfile from "./components/profile/Profile";
+import AdminProfile from "./components/profile/AdminProfile";
 
 function App() {
   return (
@@ -50,7 +45,7 @@ function App() {
 
           {/* Ruta Privada Profile */}
           <Route path="profile/" element={<ProtectedUserRoute />}>
-            <Route path="" element={<UserProfile />} />
+            <Route index element={<UserProfile />} />
           </Route>
 
           {/* Ruta Privada Admin*/}

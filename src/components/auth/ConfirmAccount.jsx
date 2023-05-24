@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import clienteAxios from "../config/clienteAxios";
-import Alerta from "../components/Alerta";
+import clienteAxios from "../../config/clienteAxios";
+import Alerta from "../helpers/Alerta";
 
 const ConfirmAccount = () => {
   const [alerta, setAlerta] = useState({});
