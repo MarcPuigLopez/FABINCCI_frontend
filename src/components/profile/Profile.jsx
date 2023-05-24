@@ -18,8 +18,6 @@ const UserProfile = (props) => {
   const reservationsRef = useRef(null);
   const bookingRef = useRef(null);
 
-  const height = 100;
-
   const scrollToProfile = () => {
     profileRef.current.scrollIntoView({ behavior: "smooth" });
   };
