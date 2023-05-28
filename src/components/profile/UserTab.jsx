@@ -7,6 +7,7 @@ const UserTab = (props, ref) => {
 
   const [userData, setUserData] = useState({
     name: auth.nombre,
+    apellidos: auth.apellidos,
     email: auth.email,
     phone: auth.telefono,
     password: "*********",
@@ -25,6 +26,7 @@ const UserTab = (props, ref) => {
     setEditing(false);
     setUserData({
       name: auth.nombre,
+      apellidos: auth.apellidos,
       email: auth.email,
       phone: auth.telefono,
       password: "*********",
@@ -40,7 +42,7 @@ const UserTab = (props, ref) => {
   return (
     <div className="p-4 top-[11vh] scroll-mt-40" ref={ref}>
       <h2 className="ext-lg font-bold mb-4 font-Merienda text-2xl text-center">
-        User information
+        Información de usuario
       </h2>
 
       <div className=" p-10 mx-auto w-3/5 pb-20">
@@ -60,6 +62,24 @@ const UserTab = (props, ref) => {
             />
           </div>
         </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="apellidos">
+            Apellidos
+          </label>
+          <div className="flex justify-between">
+            <input
+              type="text"
+              id="apellidos"
+              name="apellidos"
+              value={userData.apellidos}
+              onChange={handleInputChange}
+              disabled={!editing}
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+            />
+          </div>
+        </div>
+
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
             Email
