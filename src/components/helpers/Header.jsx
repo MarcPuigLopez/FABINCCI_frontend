@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/LogoNegro.png";
 //Icons
 import { RiMenuFill, RiCloseLine } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
 
 import { Link, useLocation } from "react-router-dom";
 
@@ -49,10 +50,10 @@ const Header = (props) => {
           <RiCloseLine />
         </button>
         <button onClick={props.handleWelcomeClick} className="">
-          WELCOME
+          HOME
         </button>
         <button onClick={props.handleAboutUsClick} className="">
-          ABOUT US
+          SOBRE NOSOTROS
         </button>
         <button onClick={props.handleFabincciClick} className="xl:block hidden">
           <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
@@ -64,7 +65,7 @@ const Header = (props) => {
           RESERVAS
         </button>
         <button onClick={props.handleContactClick} className="">
-          CONTACT
+          CONTACTO
         </button>
       </nav>
 
@@ -78,14 +79,14 @@ const Header = (props) => {
           to={`${isLoggedIn ? "/" : "/login"}`}
           onClick={handleLogout}
         >
-          {`${isLoggedIn ? "Logout" : "Login"}`}
+          {`${isLoggedIn ? "Cerrar Sesión" : "Iniciar Sesión"}`}
         </Link>
 
         <Link
           className="block text-center m-5 text-black uppercase text-sm"
           to={`${isLoggedIn ? "/profile" : "/register"}`}
         >
-          {`${isLoggedIn ? "Profile" : "Register"}`}
+          {isLoggedIn ? <ProfileIcon /> : "Registro"}
         </Link>
       </nav>
 
@@ -96,6 +97,14 @@ const Header = (props) => {
         <RiMenuFill />
       </button>
     </header>
+  );
+};
+
+const ProfileIcon = () => {
+  return (
+    <div className="items-center justify-center">
+      <CgProfile className="text-2xl" />
+    </div>
   );
 };
 

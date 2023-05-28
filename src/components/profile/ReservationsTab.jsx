@@ -5,7 +5,7 @@ const ReservationsTab = (props, ref) => {
   return (
     <div className="p-4 scroll-mt-32" ref={ref}>
       <h2 className="font-Merienda text-2xl font-bold mb-4 text-center">
-        Reservations
+        Gestión de Citas
       </h2>
 
       <div className="flex pb-20 justify-center mt-10">

@@ -6,21 +6,22 @@ import logoBlanco from "../../assets/images/LogoBlanco.png";
 import fabi from "../../assets/images/Fabi.png";
 
 // Imagenes
-import Item1 from "../../assets/images/Item1.jpg";
-import Item2 from "../../assets/images/Item2.jpg";
-import Item3 from "../../assets/images/Item3.jpg";
-import Item4 from "../../assets/images/Item4.jpg";
-import Item5 from "../../assets/images/Item5.jpg";
-import Item6 from "../../assets/images/Item6.jpg";
+import Item1 from "../../assets/images/Item1.png";
+import Item2 from "../../assets/images/Item2.png";
+import Item3 from "../../assets/images/Item3.png";
+import Item4 from "../../assets/images/Item4.png";
+import Item5 from "../../assets/images/Item5.png";
+import Item6 from "../../assets/images/Item6.png";
 import ItemP1 from "../../assets/images/ItemP1.jpg";
 
 const Welcome = (props, ref) => {
   return (
-    <div className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center flex h-[84vh] w-screen">
-      <div ref={ref} className="w-screen h-[84vh] grid grid-cols-3">
+    <div ref={ref} className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center flex h-[84vh] w-screen">
+      <div className="w-screen h-[84vh] grid grid-cols-3">
         <div className="h-[84vh] grid grid-cols-5 grid-rows-6">
+          {/* ITEM 1 */}
           <motion.img
-            className="animate-pulse col-start-1 col-span-2 row-start-1 row-end-2 p-10 w-72 h-60"
+            className="animate-pulse object-contain col-start-1 col-span-2 row-start-1 row-end-2 p-10 w-72 h-60"
             src={Item1}
             alt="Item1"
             initial={{ scale: 0 }}
@@ -33,16 +34,38 @@ const Welcome = (props, ref) => {
               duration: 2,
             }}
           ></motion.img>
-          <img
+          {/* ITEM 2 */}
+          <motion.img
+            className="animate-pulse object-contain col-start-3 col-span-2 row-start-3 row-end-4 p-10 w-72 h-60"
             src={Item2}
-            alt="tem2"
-            className="col-start-3 col-span-2 row-start-3 row-end-4 p-10 w-72 h-60"
-          ></img>
-          <img
+            alt="Item2"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 2,
+              delay: 0.2,
+            }}
+          ></motion.img>
+          {/* ITEM 3 */}
+          <motion.img
+            className="animate-pulse object-contain col-start-1 col-span-2 row-start-5 row-end-6 p-10 w-72 h-60"
             src={Item3}
-            alt="tem2"
-            className="col-start-1 col-span-2 row-start-5 row-end-6 p-10 w-72 h-60"
-          ></img>
+            alt="Item3"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 2,
+              delay: 0.4,
+            }}
+          ></motion.img>
         </div>
 
         <div className="h-[84vh] grid grid-rows-6 text-center">
@@ -88,10 +111,11 @@ const Welcome = (props, ref) => {
         </div>
 
         <div className="h-[84vh] grid grid-cols-5 grid-rows-6">
+          {/* ITEM 4 */}
           <motion.img
-            className="col-start-4 col-span-2 row-start-1 row-end-2 p-10 w-72 h-60"
+            className="animate-pulse object-contain col-start-4 col-span-2 row-start-1 row-end-2 p-10 w-72 h-60"
             src={Item4}
-            alt="Item1"
+            alt="Item4"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
@@ -102,16 +126,36 @@ const Welcome = (props, ref) => {
               duration: 2,
             }}
           ></motion.img>
-          <img
+          <motion.img
+            className="animate-pulse object-contain col-start-2 col-span-2 row-start-3 row-end-4 p-10 w-72 h-60"
             src={Item5}
-            alt="tem2"
-            className="col-start-2 col-span-2 row-start-3 row-end-4 p-10 w-72 h-60"
-          ></img>
-          <img
+            alt="Item5"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 2,
+              delay: 0.2,
+            }}
+          ></motion.img>
+          <motion.img
+            className="animate-pulse object-contain col-start-4 col-span-2 row-start-5 row-end-6 p-10 w-72 h-60"
             src={Item6}
-            alt="tem2"
-            className="col-start-4 col-span-2 row-start-5 row-end-6 p-10 w-72 h-60"
-          ></img>
+            alt="Item6"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 2,
+              delay: 0.4,
+            }}
+          ></motion.img>
         </div>
 
         {/* <img

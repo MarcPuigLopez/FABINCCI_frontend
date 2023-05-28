@@ -63,10 +63,10 @@ const HeaderProfile = (props) => {
           <RiCloseLine />
         </button>
         <Link to="/" onClick={props.handleWelcomeClick} className="">
-          WELCOME
+          HOME
         </Link>
         <Link to="/" onClick={props.handleAboutUsClick} className="">
-          ABOUT US
+          SOBRE NOSOTROS
         </Link>
         <Link to="/" onClick={props.handleFabincciClick} className="xl:block hidden">
           <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
@@ -78,7 +78,7 @@ const HeaderProfile = (props) => {
           RESERVAS
         </Link>
         <Link to="/" onClick={props.handleContactClick} className="">
-          CONTACT
+          CONTACTO
         </Link>
       </nav>
 
@@ -92,7 +92,7 @@ const HeaderProfile = (props) => {
           to="/login"
           onClick={handleLogout}
         >
-          Logout
+          Cerrar Sesión
         </Link>
 
       </nav>

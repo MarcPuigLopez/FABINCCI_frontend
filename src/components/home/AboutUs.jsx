@@ -24,7 +24,7 @@ const AboutUs = (props, ref) => {
           duration: 2,
         }}
       >
-        ABOUT US
+        SOBRE NOSOTROS
       </motion.h1>
       <div className="flex">
         <div className="w-welcome-width h-[80vh] relative aspect-auto flex justify-between mr-20 ml-10 mt-1">

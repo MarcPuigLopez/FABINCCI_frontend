@@ -6,7 +6,7 @@ import Header from "./components/helpers/Header";
 import Welcome from "./components/home/Welcome";
 import AboutUs from "./components/home/AboutUs";
 import Fabincci from "./components/home/Fabincci";
-import Reservas from "./components/home/Reservas";
+import Reservas from "./components/home/Reservations";
 import Contact from "./components/home/Contact";
 
 function Index() {

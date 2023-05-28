@@ -42,7 +42,7 @@ const ConfirmAccount = () => {
               FABINCCI <br />
             </Link>
             <span className="text-slate-700">
-              <Link to="/">Confirm Account</Link>
+              <Link to="/">CONFIRMACIÓN DE CUENTA</Link>
             </span>
           </h1>
 

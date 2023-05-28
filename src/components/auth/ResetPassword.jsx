@@ -43,9 +43,9 @@ const ResetPassword = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-16 pb-8 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black text-6xl capitalize text-center">
-            <Link to="/">FABINCCI </Link>
-            <span className="text-slate-700">
-              <Link to="/">Recovery</Link>
+            <Link to="/">FABINCCI <br/></Link>
+            <span className="text-slate-700 text-5xl">
+              <Link to="/">NUEVA CONTRASEÑA</Link>
             </span>
           </h1>
 
@@ -65,7 +65,7 @@ const ResetPassword = () => {
               <input
                 id="email"
                 type="email"
-                placeholder="Email de Registro"
+                placeholder="Correo electrónico"
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -74,23 +74,23 @@ const ResetPassword = () => {
 
             <input
               type="submit"
-              value="Send Instructions"
+              value="Enviar instrucciones"
               className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
             />
           </form>
 
           <nav className="lg:flex lg:justify-between flex mx-10">
             <a className="block text-center my-5 text-slate-500 text-sm">
-              Are you a member?
+              ¿Eres miembro?
               <span className="text-blue-500 mx-2">
-                <Link to="/login">Login</Link>
+                <Link to="/login">Iniciar Sesión</Link>
               </span>
             </a>
 
             <a className="block text-center my-5 text-slate-500 text-sm">
-              Not a member?
+              ¿Aún no te has registrado?
               <span className="text-blue-500 mx-2">
-                <Link to="/register">Register</Link>
+                <Link to="/register">Registrarse</Link>
               </span>
             </a>
           </nav>

@@ -60,9 +60,10 @@ const Login = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-16 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black text-6xl mb-5 text-center">
-            <Link to="/">FABINCCI </Link>
+            <Link to="/">FABINCCI <br/></Link>
             <span className="text-slate-700">
-              <Link to="/">LOGIN</Link>
+              <Link to="/">INICIAR SESIÓN</Link>
+              {/* Login */}
             </span>
           </h1>
 
@@ -82,7 +83,8 @@ const Login = () => {
               <input
                 id="email"
                 type="email"
-                placeholder="Email address"
+                placeholder="Correo electrónico"
+                // Email
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -93,12 +95,14 @@ const Login = () => {
                 className="uppercase text-gray-600 block text-xl font-bold"
                 htmlFor="password"
               >
-                Password
+                Contraseña
+                {/* Password */}
               </label>
               <input
                 id="password"
                 type="password"
-                placeholder="Password"
+                placeholder="Contraseña"
+                // Password
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -111,29 +115,33 @@ const Login = () => {
                 value={rememberMe}
                 onChange={handleRememberMe}
                 id="flexCheckDefault"
-                label=" Remember me"
+                label=" Recuerdame"
+                // Remember me
               />
 
               <Link
                 className="text-blue-600 text-sm"
                 to="/users/reset-password"
               >
-                Forgot password?
+                ¿Has olvidado tu contraseña?
+                {/* Forgot password? */}
               </Link>
             </div>
 
             <input
               type="submit"
-              value="Sign in"
+              value="Iniciar sesión"
+// Login              
               className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
             />
           </form>
 
           <nav className="lg:flex lg:justify-center flex">
             <a className="block text-center my-5 text-slate-500 text-sm">
-              Not a member?
+              ¿Aún no te has registrado?
+              {/* Not a member? */}
               <span className="text-blue-500 mx-2">
-                <Link to="/register">Register</Link>
+                <Link to="/register">Registrarse</Link>
               </span>
             </a>
           </nav>

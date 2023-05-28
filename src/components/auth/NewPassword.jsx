@@ -32,7 +32,7 @@ const NewPassword = () => {
 
     if (password.length < 6) {
       setAlerta({
-        msg: "El Password debe ser minimo de 6 caracteres",
+        msg: "La contraseña debe ser minimo de 6 caracteres",
         error: true,
       });
       return;
@@ -64,7 +64,7 @@ const NewPassword = () => {
         <h1 className="text-sky-600 font-black text-6xl mb-5">
             <Link to="/">FABINCCI <br/></Link>
             <span className="text-slate-700">
-              <Link to="/">Password Recovery</Link>
+              <Link to="/">RECUPERACIÓN DE CONTRASEÑA</Link>
             </span>
           </h1>
 
@@ -80,12 +80,12 @@ const NewPassword = () => {
                   className="uppercase text-gray-600 block text-xl font-bold"
                   htmlFor="password"
                 >
-                  Nuevo Password
+                  Nueva contraseña
                 </label>
                 <input
                   id="password"
                   type="password"
-                  placeholder="Escribe tu Nuevo Password"
+                  placeholder="Escribe tu nueva contraseña"
                   className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -93,7 +93,7 @@ const NewPassword = () => {
               </div>
               <input
                 type="submit"
-                value="Guardar Nuevo Password"
+                value="Guardar nueva contraseña"
                 className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
               />
             </form>

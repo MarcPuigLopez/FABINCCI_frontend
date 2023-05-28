@@ -81,13 +81,13 @@ const Calendar = () => {
       {/* <div className="flex text-center bg-gradient-to-b from-gray-400 to-black p-3"></div> */}
 
       <div className="grid grid-cols-7 p-5 pt-1 bg-white text-black text-center font-bold uppercase">
-        <div className="">Mon</div>
-        <div className="">Tue</div>
-        <div className="">Wed</div>
-        <div className="">Thu</div>
-        <div className="">Fri</div>
-        <div className="">Sat</div>
-        <div className="">Sun</div>
+        <div className="">Lun</div>
+        <div className="">Mar</div>
+        <div className="">Mie</div>
+        <div className="">Jue</div>
+        <div className="">Vie</div>
+        <div className="">Sab</div>
+        <div className="">Dom</div>
       </div>
       <ul className="grid grid-cols-7 text-center align-center bg-white">
         {[...Array(firstDayOfMonth.getDay())].map((_, i) => (

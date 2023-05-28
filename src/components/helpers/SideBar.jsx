@@ -15,24 +15,24 @@ const SideBar = (props) => {
           Hola {auth.nombre}
         </h2>
       </div>
-      <div className="p-10 pt-3 pr-20">
+      <div className="p-10 pt-3 pr-20 w-72">
         <button
           onClick={props.handleProfileClick}
           className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
         >
-          <FaUser className="m-5" /> Profile
+          <FaUser className="m-5" /> Perfil
         </button>
         <button
           onClick={props.handleReservationsClick}
           className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
         >
-          <FaCalendarAlt className="m-5" /> Reservations
+          <FaCalendarAlt className="m-5" /> Citas
         </button>
         <button
           onClick={props.handleBookingClick}
           className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
         >
-          <FaClock className="m-5" /> Booking
+          <FaClock className="m-5" /> Reservas
         </button>
       </div>
     </div>
