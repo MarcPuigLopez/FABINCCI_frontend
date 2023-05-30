@@ -31,7 +31,7 @@ const UserProfile = (props) => {
   };
 
   return (
-    <div className="bg-[url('assets/images/FONDO1.jpg')] h-full">
+    <div className="bg-[url('assets/images/FONDO1.jpg')] bg-fixed h-full">
       <HeaderProfile />
 
       <div className="flex justify-between">

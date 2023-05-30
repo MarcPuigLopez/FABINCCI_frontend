@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import useAuth  from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
+import Alerta from "../helpers/Alerta";
+
 const UserTab = (props, ref) => {
-  const { auth } = useAuth();
+  const { auth, modifyUser } = useAuth();
+
+  const [alerta, setAlerta] = useState({});
 
   const [userData, setUserData] = useState({
     name: auth.nombre,
@@ -15,7 +19,11 @@ const UserTab = (props, ref) => {
   const [editing, setEditing] = useState(false);
 
   const handleInputChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [name]: value,
+    }));
   };
 
   const handleEditClick = () => {
@@ -31,19 +39,32 @@ const UserTab = (props, ref) => {
       phone: auth.telefono,
       password: "*********",
     });
+
   };
 
   const handleSaveClick = () => {
     setEditing(false);
-    // Aquí puedes realizar la lógica para guardar los cambios en la base de datos o enviar una solicitud al servidor.
-    // Por simplicidad, en este ejemplo solo actualizaremos el estado del componente.
+    modifyUser(userData);
+
+    setAlerta({
+      msg: "Usuario modificado correctamente",
+      error: false,
+    });
+
+    setTimeout(() => {
+      setAlerta({});
+    } , 3000);
   };
+
+  const { msg } = alerta;
 
   return (
     <div className="p-4 top-[11vh] scroll-mt-40" ref={ref}>
       <h2 className="ext-lg font-bold mb-4 font-Merienda text-2xl text-center">
         Información de usuario
       </h2>
+
+      {msg && <Alerta alerta={alerta} />}
 
       <div className=" p-10 mx-auto w-3/5 pb-20">
         <div className="mb-4">

@@ -1,67 +1,79 @@
-import { useState, useEffect, createContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import clienteAxios from '../config/clienteAxios';
+import { useState, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
+import clienteAxios from "../config/clienteAxios";
 
 const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
+  const [auth, setAuth] = useState({});
+  const [userData, setUserData] = useState({});
+  const [loading, setLoading] = useState(true);
 
-    const [auth, setAuth] = useState({})
-    const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const autenticarUsuario = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setLoading(false);
+        return;
+      }
 
-    const navigate = useNavigate()
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
-    useEffect(() => {
-        const autenticarUsuario = async () => {
-            const token = localStorage.getItem('token')
-            if(!token){
-                setLoading(false)
-                return
-            }
+      try {
+        const { data } = await clienteAxios("/users/profile", config);
+        setAuth(data);
+      } catch (error) {
+        setAuth({});
+      }
 
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
-                }
-            }
+      setLoading(false);
+    };
+    autenticarUsuario();
+  }, []);
 
-            try {
-                const { data } = await clienteAxios('/users/profile', config)
-                setAuth(data)
+  const logoutAuth = () => {
+    setAuth({});
+  };
 
-            } catch (error) {
-                setAuth({})
-            } 
+  const modifyUser = async (user) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
 
-            setLoading(false)
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-            
-        }
-        autenticarUsuario()
-    }, [])
-
-    const logoutAuth = () => {
-        setAuth({})
+    try {
+      const { data } = await clienteAxios.put("/users/profile", user, config);
+      setUserData(data);
+    } catch (error) {
+      setUserData({});
     }
+  };
 
+  return (
+    <AuthContext.Provider
+      value={{
+        auth,
+        setAuth,
+        loading,
+        logoutAuth,
+        modifyUser,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-    return (
-        <AuthContext.Provider
-            value={{
-                auth,
-                setAuth,
-                loading,
-                logoutAuth
-            }}
-        >
-            {children}
-        </AuthContext.Provider>
-    )
-}
-
-export { 
-    AuthProvider
-}
+export { AuthProvider };
 
 export default AuthContext;

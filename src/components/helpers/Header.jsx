@@ -5,9 +5,12 @@ import logo from "../../assets/images/LogoNegro.png";
 import { RiMenuFill, RiCloseLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
+
+//Cookies
+import Cookies from "js-cookie";
 
 const Header = (props) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -33,6 +36,7 @@ const Header = (props) => {
     logoutAuth();
     localStorage.removeItem("token");
     window.location.reload(false);
+    Navigate("/login");
   };
 
   return (
@@ -40,7 +44,7 @@ const Header = (props) => {
       <img src={logo} alt="Fabincci Logo" className="w-16 h-8 xl:hidden" />
 
       <nav
-        className={` fixed w-full h-full right-0 top-0 xl:static 
+        className={`fixed w-full h-full right-0 top-0 xl:static 
           flex-1 flex flex-col xl:flex-row items-center justify-center gap-8 
           xl:gap-32 transition ease-linear duration-500 xl:visible xl:opacity-100 z-50 ${
             showMenu ? "visible opacity-100" : "invisible opacity-0"
@@ -70,13 +74,13 @@ const Header = (props) => {
       </nav>
 
       <nav
-        className={`lg:flex lg:justify-center xl:visible xl:opacity-100 ${
+        className={`lg:flex lg:justify-center items-center h-full xl:visible xl:opacity-100 gap-2 ${
           showMenu ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
         <Link
           className="block text-center m-5 text-black uppercase text-sm "
-          to={`${isLoggedIn ? "/" : "/login"}`}
+          to={`${isLoggedIn ? "/login" : "/login"}`}
           onClick={handleLogout}
         >
           {`${isLoggedIn ? "Cerrar Sesión" : "Iniciar Sesión"}`}

@@ -18,7 +18,6 @@ const HeaderProfile = (props) => {
   const location = useLocation();
 
   useEffect(() => {
-
     const checkLoginStatus = () => {
       const loggedIn = localStorage.getItem("token");
       setIsLoggedIn(loggedIn);
@@ -49,7 +48,8 @@ const HeaderProfile = (props) => {
   };
 
   return (
-    <header className="flex bg-white border-b-2 items-center pl-40 justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif sticky top-0">
+    <header className="flex bg-white border-b-2 items-center pl-40 justify-between 
+    xl:justify-end w-full p-4 h-[9vh] font-sarif sticky top-0 z-10">
       <img src={logo} alt="Fabincci Logo" className="w-16 h-8 xl:hidden" />
 
       <nav
@@ -68,10 +68,18 @@ const HeaderProfile = (props) => {
         <Link to="/" onClick={props.handleAboutUsClick} className="">
           SOBRE NOSOTROS
         </Link>
-        <Link to="/" onClick={props.handleFabincciClick} className="xl:block hidden">
+        <Link
+          to="/"
+          onClick={props.handleFabincciClick}
+          className="xl:block hidden"
+        >
           <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
         </Link>
-        <Link to="/" onClick={props.handleFabincciClick} className="xl:hidden block">
+        <Link
+          to="/"
+          onClick={props.handleFabincciClick}
+          className="xl:hidden block"
+        >
           FABINCCI
         </Link>
         <Link to="/" onClick={props.handleReservasClick} className="">
@@ -83,7 +91,7 @@ const HeaderProfile = (props) => {
       </nav>
 
       <nav
-        className={`lg:flex lg:justify-center xl:visible xl:opacity-100 ${
+        className={`lg:flex lg:justify-center items-center h-full xl:visible xl:opacity-100 gap-2 ${
           showMenu ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
@@ -94,7 +102,6 @@ const HeaderProfile = (props) => {
         >
           Cerrar Sesión
         </Link>
-
       </nav>
 
       <button

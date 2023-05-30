@@ -1,47 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-// Css Classnames
-import classNames from "classnames";
-
-import moment from "moment";
-
-// Arrow icons
 import { RiArrowDropRightLine, RiArrowDropLeftLine } from "react-icons/ri";
-
-import useReservations from "../../hooks/useReservations";
-
-// Date functions
-import {
-  format,
-  startOfMonth,
-  getDaysInMonth,
-  addMonths,
-  subMonths,
-} from "date-fns";
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const Month = new Date();
 
-  const currentDay = currentMonth.getDate();
-
   const daysInMonth = getDaysInMonth(currentMonth);
   const firstDayOfMonth = startOfMonth(currentMonth);
   const monthName = format(firstDayOfMonth, "MMMM yyyy");
 
-  const { getMonthlyReservations, reservations } = useReservations();
-
-  const [showHours, setShowHours] = useState(false);
-
   const handleDateClick = (date) => {
-    if (selectedDate?.toDateString() === date.toDateString()) {
-      setSelectedDate(null);
-      setShowHours(false);
-    } else {
-      setSelectedDate(date);
-      setShowHours(true);
-    }
+    setSelectedDate(date);
   };
 
   const handlePrevMonth = () => {
@@ -62,47 +33,23 @@ const Calendar = () => {
         i
       );
       const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
-      const isSunday = date.getDay() === 0;
-      const isReserved = reservations.confirmed;
-
-      const cellClasses = classNames("p-5", {
-        "bg-yellow-500 text-white":
-          selectedDate?.toDateString() === date.toDateString(),
-        "text-black": selectedDate?.toDateString() !== date.toDateString(),
-        "cursor-not-allowed pointer-events-none opacity-50":
-          i < currentDay && currentMonth.getMonth() === Month.getMonth(),
-        "cursor-not-allowed pointer-events-none bg-gray-400": isSunday,
-        "cursor-pointer bg-white hover:bg-yellow-500 hover:transition hover:duration-200 hover:ease-in-out":
-          !isSunday,
-      });
-
+      const isSunday = date.getDay() === 6;
       const cell = (
         <div
           key={i}
-          className={cellClasses}
+          className={`p-5 ${
+            selectedDate?.toDateString() === date.toDateString()
+              ? "bg-yellow-500 text-white"
+              : "text-black"
+          } 
+            ${isSunday && "cursor-not-allowed pointer-events-none bg-gray-300"} 
+            ${
+              !isSunday &&
+              "cursor-pointer bg-white hover:bg-yellow-500 hover:transition hover:duration-200 hover:ease-in-out"
+            }`}
           onClick={() => handleDateClick(date)}
         >
-          <span>{isCurrentMonth && i}</span>
-
-          {showHours && (
-            <ul className="absolute bg-black mt-2 p-2 shadow">
-              {isReserved ? (
-                <li>Reservado</li>
-              ) : (
-                <>
-                  <li>09:00</li>
-                  <li>10:00</li>
-                  <li>11:00</li>
-                  <li>12:00</li>
-                  <li>------</li>
-                  <li>17:00</li>
-                  <li>18:00</li>
-                  <li>19:00</li>
-                  <li>20:00</li>
-                </>
-              )}
-            </ul>
-          )}
+          {isCurrentMonth && i}
         </div>
       );
       cells.push(cell);
@@ -123,8 +70,7 @@ const Calendar = () => {
         </button>
         <h1 className="text-xl">{monthName}</h1>
         <button className="mr-4" onClick={handleNextMonth}>
-          {currentMonth.getMonth() === Month.getMonth() + 1 ||
-          currentDay <= 20 ? (
+          {currentMonth.getMonth() === Month.getMonth() + 6 ? (
             ""
           ) : (
             <RiArrowDropRightLine />
@@ -144,10 +90,10 @@ const Calendar = () => {
         <div className="">Dom</div>
       </div>
       <ul className="grid grid-cols-7 text-center align-center bg-white">
-        {[...Array(firstDayOfMonth.getDay() - 1)].map((_, i) => (
+        {[...Array(firstDayOfMonth.getDay())].map((_, i) => (
           <li
             key={`empty-${i}`}
-            className="pointer-events-none justify-center"
+            className="pointer-events-none justify-center  text-black "
           ></li>
         ))}
         {renderCalendarCells()}
@@ -163,5 +109,13 @@ const Calendar = () => {
     </div>
   );
 };
+
+import {
+  format,
+  startOfMonth,
+  getDaysInMonth,
+  addMonths,
+  subMonths,
+} from "date-fns";
 
 export default Calendar;

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Alerta from "../helpers/Alerta";
 import clienteAxios from "../../config/clienteAxios";
 import useAuth from "../../hooks/useAuth";
@@ -16,7 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   function handleRememberMe() {
-    setRememberMe(!rememberMe);
+    setRememberMe((prevRememberMe) => !prevRememberMe);
   }
 
   const handleSubmit = async (e) => {
@@ -38,6 +38,11 @@ const Login = () => {
       });
       setAlerta({});
       localStorage.setItem("token", data.token);
+      console.log(data);
+
+      if (rememberMe) {
+      }
+
       setAuth(data);
       navigate("/profile");
     } catch (error) {
@@ -45,11 +50,6 @@ const Login = () => {
         msg: error.response.data.msg,
         error: true,
       });
-    }
-
-    if (rememberMe) {
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
     }
   };
 
@@ -60,7 +60,9 @@ const Login = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-16 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black text-6xl mb-5 text-center">
-            <Link to="/">FABINCCI <br/></Link>
+            <Link to="/">
+              FABINCCI <br />
+            </Link>
             <span className="text-slate-700">
               <Link to="/">INICIAR SESIÓN</Link>
               {/* Login */}
@@ -131,19 +133,19 @@ const Login = () => {
             <input
               type="submit"
               value="Iniciar sesión"
-// Login              
+              // Login
               className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
             />
           </form>
 
           <nav className="lg:flex lg:justify-center flex">
-            <a className="block text-center my-5 text-slate-500 text-sm">
+            <div className="block text-center my-5 text-slate-500 text-sm">
               ¿Aún no te has registrado?
               {/* Not a member? */}
               <span className="text-blue-500 mx-2">
                 <Link to="/register">Registrarse</Link>
               </span>
-            </a>
+            </div>
           </nav>
         </div>
       </div>
