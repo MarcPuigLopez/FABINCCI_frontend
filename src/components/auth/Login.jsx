@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Alerta from "../helpers/Alerta";
 import clienteAxios from "../../config/clienteAxios";
 import useAuth from "../../hooks/useAuth";
 
 import { MDBCheckbox } from "mdb-react-ui-kit";
 
-const Login = () => {
+const Login = (res) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -14,6 +14,13 @@ const Login = () => {
   const [alerta, setAlerta] = useState({});
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  
+  // si esta logeado lo redirecciona a profile
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/profile");
+    }
+  }, []);
 
   function handleRememberMe() {
     setRememberMe((prevRememberMe) => !prevRememberMe);
@@ -35,14 +42,10 @@ const Login = () => {
       const { data } = await clienteAxios.post(url, {
         email,
         password,
+        rememberMe,
       });
       setAlerta({});
       localStorage.setItem("token", data.token);
-      console.log(data);
-
-      if (rememberMe) {
-      }
-
       setAuth(data);
       navigate("/profile");
     } catch (error) {
@@ -56,7 +59,7 @@ const Login = () => {
   const { msg } = alerta;
 
   return (
-    <main className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center h-screen">
+    <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center h-screen">
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-16 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black text-6xl mb-5 text-center">
