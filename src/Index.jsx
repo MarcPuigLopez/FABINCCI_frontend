@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
+// Import react-router-dom components
+import { useLocation } from "react-router-dom";
+
 // Imports dels components del lloc web
 import Footer from "./components/helpers/Footer";
 import Header from "./components/helpers/Header";
@@ -16,6 +19,12 @@ function Index() {
   const fabincciRef = useRef(null);
   const reservasRef = useRef(null);
   const contactRef = useRef(null);
+
+  const containerRef = useRef(null);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [lastScrollTime, setLastScrollTime] = useState(0);
+
+  const location = useLocation();
 
   const scrollToWelcome = () => {
     welcomeRef.current.scrollIntoView({ behavior: "smooth" });
@@ -41,16 +50,13 @@ function Index() {
     contactRef.current.scrollIntoView({ behavior: "smooth" });
     setScrollLeft(contactRef.current.clientWidth * 4);
   };
-
-  const containerRef = useRef(null);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [lastScrollTime, setLastScrollTime] = useState(0);
-
+  
   // Configuració per mantenir el scroll al fer reload de la pàgina
-  //Guarda la posició del scroll al sortir de la pàgina
+  // Guarda la posició del scroll al sortir de la pàgina
   useEffect(() => {
     const handleBeforeUnload = () => {
-      localStorage.setItem("scrollpos", containerRef.current.scrollLeft);
+      console.log(containerRef.current.scrollLeft);
+      localStorage.setItem("scrollposHome", containerRef.current.scrollLeft);
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -62,7 +68,7 @@ function Index() {
 
   // Restaura la posició del scroll al carregar la página
   useEffect(() => {
-    const scrollpos = localStorage.getItem("scrollpos");
+    const scrollpos = localStorage.getItem("scrollposHome");
     if (scrollpos) {
       containerRef.current.scrollTo({
         left: parseInt(scrollpos),
@@ -77,9 +83,6 @@ function Index() {
     const container = containerRef.current;
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
     let scrollAmount = event.deltaY;
-
-    // console.log()
-    // console.log(event.deltaY)
 
     if (!event.shiftKey) scrollAmount = scrollAmount / 2;
 
@@ -127,19 +130,20 @@ function Index() {
           setScrollLeft(containerRef.current.scrollLeft);
         }}
       >
-        <div className="">
+        <div className="bg-[url('assets/images/HomeBg/bg-welcome.webp')] bg-cover bg-center">
           <Welcome ref={welcomeRef} />
         </div>
-        <div className="">
+        <div className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-no-repeat bg-center">
           <AboutUs ref={aboutUsRef} />
         </div>
-        <div className="">
+        {/* <div className="bg-[url('assets/images/HomeBg/2-bg-saberHace.webp')] bg-cover bg-no-repeat bg-center"> */}
+        <div className="bg-[url('assets/images/HomeBg/FONDO3.png')] bg-cover bg-center bg-no-repeat ">
           <Fabincci ref={fabincciRef} />
         </div>
-        <div className="">
+        <div className="bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-cover bg-no-repeat bg-center">
           <Reservas ref={reservasRef} />
         </div>
-        <div className="">
+        <div className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] bg-cover bg-no-repeat bg-center">
           <Contact ref={contactRef} />
         </div>
       </div>

@@ -9,7 +9,7 @@ const SideBar = (props) => {
     const {auth} = useAuth();
 
   return (
-    <div className="bg-gray-300 shadow rounded-lg m-3 ml-8 text-xl h-[85vh] fixed top-[11vh]">
+    <div className="-left-full lg:left-0 transition-all ease-linear transition-500 bg-gray-300 shadow rounded-lg m-3 ml-8 text-xl h-[85vh] fixed top-[11vh]">
       <div className="border-b-2 pb-1">
         <h2 className="flex m-5 items-center justify-center font-bold text-black pointer-events-none">
           Hola {auth.nombre}

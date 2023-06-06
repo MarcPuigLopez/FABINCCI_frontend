@@ -79,7 +79,7 @@ const Register = () => {
   const { msg } = alerta;
 
   return (
-    <main className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center h-screen">
+    <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center h-screen">
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-14 pb-2 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black text-6xl text-center">

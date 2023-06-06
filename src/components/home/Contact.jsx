@@ -15,48 +15,49 @@ const Contact = (props, ref) => {
   return (
     <div
       ref={ref}
-      className="bg-[url('assets/images/FONDO5.png')] bg-cover bg-center bg-no-repeat h-[84vh] w-contact-width"
+      className="h-[84vh] w-contact-width font-Roboto"
     >
-      <div>
+      {/* <div>
         <h1 className="font-press-start p-5 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
           CONTACTA CON NOSOTROS
         </h1>
-      </div>
+      </div> */}
       <div className="flex flex-col p-10 mx-auto justify-center items-center">
-        <ul className="bg-black p-5 grid grid-cols-3 rounded-xl shadow-xl border-t border-r w-1/5">
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
+        <h1 className="text-5xl font-bold text-white pt-3"> ¡CONTACTA CON NOSOTROS!</h1>
+        <ul className="grid grid-cols-3 w-84 h-84 rotate-45 m-40">
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+          </li>
+
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+          </li>
+
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
             <AiFillInstagram />
           </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
-            <FaTiktok />
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
           </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
             <BsTwitter />
           </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
             <FiTwitch />
+            {/* <AiFillFacebook /> */}
           </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
             <AiFillYoutube />
+            {/* <BsPinterest /> */}
           </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
-            <AiFillFacebook />
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+            {/* <AiFillLinkedin /> */}
+            <FaTiktok />
           </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
-            <BsPinterest />
-          </li>
-
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
-            <AiFillLinkedin />
-          </li>
-
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125">
+          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
             <AiOutlineWhatsApp />
           </li>
         </ul>

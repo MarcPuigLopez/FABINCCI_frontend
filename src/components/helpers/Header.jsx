@@ -5,7 +5,7 @@ import logo from "../../assets/images/LogoNegro.png";
 import { RiMenuFill, RiCloseLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
 
@@ -17,6 +17,7 @@ const Header = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // if (location.pathname === "/profile") setisLoggedIn(true);
@@ -35,9 +36,13 @@ const Header = (props) => {
     if (!isLoggedIn) return;
     logoutAuth();
     localStorage.removeItem("token");
+    localStorage.setItem("scrollposHome", containerRef.current.scrollLeft)
     window.location.reload(false);
-    Navigate("/login");
   };
+
+  const handleLogin = () => {
+    localStorage.setItem("scrollposHome", containerRef.current.scrollLeft)
+  }
 
   return (
     <header className="flex bg-white border-b-2 items-center pl-40 justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif sticky top-0">
@@ -57,7 +62,7 @@ const Header = (props) => {
           HOME
         </button>
         <button onClick={props.handleAboutUsClick} className="">
-          SOBRE NOSOTROS
+          SABER HACER
         </button>
         <button onClick={props.handleFabincciClick} className="xl:block hidden">
           <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
@@ -89,6 +94,7 @@ const Header = (props) => {
         <Link
           className="block text-center m-5 text-black uppercase text-sm"
           to={`${isLoggedIn ? "/profile" : "/register"}`}
+          onClick={handleLogin}
         >
           {isLoggedIn ? <ProfileIcon /> : "Registro"}
         </Link>

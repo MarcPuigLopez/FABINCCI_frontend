@@ -34,7 +34,7 @@ const ConfirmAccount = () => {
   const { msg } = alerta;
 
   return (
-    <main className="bg-[url('assets/images/FONDO1.jpg')] bg-cover bg-center bg-no-repeat h-screen">
+    <main className="bg-[url('assets/images/HomeBg/bg-welcome.webp')] bg-cover bg-center bg-no-repeat h-screen">
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-16 pb-8 bg-white rounded-lg mb-16">
           <h1 className="text-sky-600 font-black text-6xl capitalize text-center">

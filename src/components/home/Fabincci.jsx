@@ -4,7 +4,7 @@ const Fabincci = (props, ref) => {
   return (
     <div
       ref={ref}
-      className="bg-[url('assets/images/FONDO3.png')] bg-cover bg-center bg-no-repeat h-[84vh] w-fabincci-width flex "
+      className="h-[84vh] w-fabincci-width flex "
     >
       <a> FABINCCI</a>
       <div className="p-56"> ESPACIO </div>
