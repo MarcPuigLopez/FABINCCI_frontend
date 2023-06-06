@@ -7,6 +7,7 @@ const ReservationsContext = createContext();
 
 const ReservationsProvider = ({ children }) => {
   const [reservations, setReservations] = useState([]);
+  const [userReservations, setUserReservations] = useState([]);
   const [alerta, setAlerta] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +30,9 @@ const ReservationsProvider = ({ children }) => {
         config
       );
       setReservations([...reservations, data]);
+      setUserReservations([...userReservations, data]);
     } catch (error) {
+      setUserReservations([]);
       setReservations([]);
     }
 
@@ -50,9 +53,9 @@ const ReservationsProvider = ({ children }) => {
 
     try {
       const { data } = await clienteAxios("/reservation/user", config);
-      setReservations(data);
+      setUserReservations(data);
     } catch (error) {
-      setReservations([]);
+      setUserReservations([]);
     }
 
     setLoading(false);
@@ -62,8 +65,6 @@ const ReservationsProvider = ({ children }) => {
   const getMonthlyReservations = async (fecha) => {
     const token = localStorage.getItem("token");
     if (!token) return;
-
-    console.log(fecha);
 
     const config = {
       headers: {
@@ -103,23 +104,17 @@ const ReservationsProvider = ({ children }) => {
         reservations.filter((reservation) => reservation._id !== id)
       );
 
-      // setAlerta({
-      //   msg: data.msg,
-      //   error: false,
-      // });
-
-      // setTimeout(() => {
-      //   setAlerta({});
-      // }, 3000);
-    } catch (error) {
-      console.log(error);
-    }
+      setUserReservations(
+        userReservations.filter((reservation) => reservation._id !== id)
+      );
+    } catch (error) {}
   };
 
   return (
     <ReservationsContext.Provider
       value={{
         reservations,
+        userReservations,
         addReservation,
         getUserReservations,
         getMonthlyReservations,

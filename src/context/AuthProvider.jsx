@@ -40,6 +40,30 @@ const AuthProvider = ({ children }) => {
     setAuth({});
   };
 
+  const getUser = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setLoading(false);
+      return;
+    }
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    try {
+      const { data } = await clienteAxios("/users/profile", config);
+      setUserData(data);
+    } catch (error) {
+      setUserData({});
+    }
+
+    setLoading(false);
+  };
+
   const modifyUser = async (user) => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -53,7 +77,13 @@ const AuthProvider = ({ children }) => {
 
     try {
       const { data } = await clienteAxios.put("/users/profile", user, config);
-      setUserData(data);
+      setUserData({
+        nombre: data.nombre,
+        apellidos: data.apellidos,
+        email: data.email,
+        telefono: data.telefono,
+        password: "*********",
+      });
     } catch (error) {
       setUserData({});
     }
@@ -67,6 +97,9 @@ const AuthProvider = ({ children }) => {
         loading,
         logoutAuth,
         modifyUser,
+        getUser,
+        userData,
+        setUserData,
       }}
     >
       {children}

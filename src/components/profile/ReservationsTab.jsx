@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Calendar from "../helpers/Calendar";
+
+import CalendarShowReservations from "../helpers/CalendarShowReservations";
 
 import useReservations from "../../hooks/useReservations";
 
+import { sortBy, prop } from "ramda";
 import moment from "moment";
-moment.updateLocale('es')
-
+moment.updateLocale("es");
 
 const ReservationsTab = (props, ref) => {
-  const { reservations, getUserReservations, deleteReservation } =
+  const { reservations, userReservations, getUserReservations, deleteReservation } =
     useReservations();
   const [showModal, setShowModal] = useState(false);
   const [cancelReservationId, setCancelReservationId] = useState("");
@@ -18,12 +19,14 @@ const ReservationsTab = (props, ref) => {
   }, []);
 
   // Filtrar las reservas activas
-  const activeReservations = reservations.filter(
+  const activeReservations = userReservations.filter(
     (reservation) =>
       reservation.confirmed === true &&
-      moment(reservation.fecha).format("DDMM") >= moment().format("DDMM") &&
-      moment(reservation.fecha).format("HHmm") >= moment().format("HHmm")
+      moment(reservation.fecha).format("MMDDHHmm") >=
+        moment().format("MMDDHHmm")
   );
+
+  const sortedReservations = sortBy(prop("fecha"))(activeReservations);
 
   const handleOpenModal = (id) => {
     setCancelReservationId(id);
@@ -38,7 +41,6 @@ const ReservationsTab = (props, ref) => {
   const handleCancelButton = () => {
     // Lógica para cancelar la reserva con el ID cancelReservationId
     // Realiza la llamada a la base de datos u otras acciones necesarias
-    console.log("Cancelar reserva con ID:", cancelReservationId);
     deleteReservation(cancelReservationId);
 
     // Cierra el modal después de cancelar la reserva
@@ -46,33 +48,36 @@ const ReservationsTab = (props, ref) => {
   };
 
   return (
-    <div className="font-Merienda p-4 scroll-mt-32" ref={ref}>
-      <h2 className="text-2xl font-bold mb-4 text-center">Gestión de Citas</h2>
+    <div className="font-Roboto p-4 scroll-mt-32" ref={ref}>
+      <h2 className="text-2xl font-bold mb-4 text-center ">Gestión de Citas</h2>
 
-      <div className="flex pb-20 justify-center mt-10">
-        <div className="ml-10 w-1/2">
+      <div className="xl:flex pb-20 justify-center mt-10">
+        <div className="mr-5 xl:w-1/2">
           <h3 className="text-2xl font-bold mb-16 text-center">
             Reservas Activas
           </h3>
           <h4 className="text-xl font-bold pl-10">
             Próximas citas: {activeReservations.length}
           </h4>
-          <div className="flex flex-col p-10 pt-8">
+          <div className="flex flex-col p-10 pt-8 h-96 overflow-y-auto">
             {activeReservations.length > 0 ? (
-              activeReservations.map((reservation) => (
+              sortedReservations.map((reservation) => (
                 <div className="flex text-justify" key={reservation._id}>
                   <p className="text-lg mb-5 pl-1 p-5 w-4/5">
-                    El próximo{" "}
-                    <span className="font-bold">
+                    El día:{" "}
+                    <span className="font-bold text-xl">
                       {moment(reservation.fecha).format("DD-MM-YY")}
                     </span>{" "}
-                    a las{" "}
+                    a las:{" "}
+                    <span className="font-bold text-xl">
+                      {moment(reservation.fecha).format("HH:mm")}h. <br />
+                    </span>
                     <span className="font-bold">
-                      {moment(reservation.fecha).format("HH:mm")}h.
+                      {" "}
+                      {reservation.corte}
                     </span>{" "}
-                    para un{" "}
-                    <span className="font-bold">Corte {reservation.corte}</span>{" "}
-                    con Fabian Viñas
+                    con{" "}
+                    <span className="font-bold text-xl">Fabian Viñas</span>
                   </p>
                   <button
                     className="m-4 my-8 p-2 bg-gray-400 rounded-lg hover:bg-gray-300 transition-colors w-1/5"
@@ -87,11 +92,12 @@ const ReservationsTab = (props, ref) => {
             )}
           </div>
         </div>
-        <div className="w-1/2 mr-5">
+        <div className="xl:w-1/2 ml-5">
           <h3 className="text-2xl font-bold mb-4 text-center">
             Localiza tu cita
           </h3>
-          <Calendar />
+          <CalendarShowReservations />
+          <p className="text-center mt-4"> Situa el ratón encima del dia para ver información sobre tu cita.  </p>
         </div>
       </div>
 

@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
-
-// Css Classnames
+import { FaSpinner } from "react-icons/fa";
 import classNames from "classnames";
-
 import moment from "moment";
-
-// Arrow icons
-import { RiArrowDropRightLine, RiArrowDropLeftLine } from "react-icons/ri";
-
-import useReservations from "../../hooks/useReservations";
-
-// Date functions
+import { Link } from "react-router-dom";
 import {
   format,
   startOfMonth,
@@ -18,29 +10,103 @@ import {
   addMonths,
   subMonths,
 } from "date-fns";
+import { RiArrowDropRightLine, RiArrowDropLeftLine } from "react-icons/ri";
+import Alerta from "./Alerta";
 
-const Calendar = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
+import useReservations from "../../hooks/useReservations";
+import useAuth from "../../hooks/useAuth";
+
+const Calendar = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [alerta, setAlerta] = useState({});
+
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedHour, setSelectedHour] = useState(null);
+
+  const [isDateSelected, setIsDateSelected] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const Month = new Date();
 
   const currentDay = currentMonth.getDate();
-
   const daysInMonth = getDaysInMonth(currentMonth);
   const firstDayOfMonth = startOfMonth(currentMonth);
   const monthName = format(firstDayOfMonth, "MMMM yyyy");
 
-  const { getMonthlyReservations, reservations } = useReservations();
+  const [showHours, setShowHours] = useState({});
 
-  const [showHours, setShowHours] = useState(false);
+  const [showModalConfirm, setShowModalConfirm] = useState(false);
+  const [showModalNotLogged, setShowModalNotLogged] = useState(false);
+  const [showModalLogged, setShowModalLogged] = useState(false);
+  const [availableHours, setAvailableHours] = useState([]);
+
+  const { reservations, getMonthlyReservations, addReservation } =
+    useReservations();
+  const { auth } = useAuth();
+  const { cutType } = props;
+
+  useEffect(() => {
+    getMonthlyReservations(format(currentMonth, "yyyy-MM"));
+  }, [currentMonth]);
+
+  const allHours = [
+    "09:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "16:00",
+    "17:00",
+    "18:00",
+    "19:00",
+  ];
+
+  useEffect(() => {
+    const reservedHours = reservations.map((reservation) =>
+      moment(reservation.fecha).format("DD-MM") ===
+      moment(selectedDay).format("DD-MM")
+        ? moment(reservation.fecha).format("HH:mm")
+        : ""
+    );
+
+    const hoursAvailable = allHours.filter(
+      (hour) => !reservedHours.includes(hour)
+    );
+    setAvailableHours(hoursAvailable);
+  }, [showModalLogged, reservations]);
 
   const handleDateClick = (date) => {
-    if (selectedDate?.toDateString() === date.toDateString()) {
-      setSelectedDate(null);
-      setShowHours(false);
+    setSelectedDay(date);
+    setShowHours((prev) => ({ ...prev, [date.toDateString()]: true }));
+    if (Object.keys(auth).length !== 0) {
+      setShowModalLogged(true);
     } else {
-      setSelectedDate(date);
-      setShowHours(true);
+      setShowModalNotLogged(true);
+    }
+  };
+
+  const handleCloseModal = (date) => {
+    setShowHours({});
+    setShowModalLogged(false);
+    if (Object.keys(auth).length !== 0) {
+      setShowModalLogged(false);
+    } else {
+      setShowModalNotLogged(false);
+    }
+  };
+
+  const handleCloseConfirmModal = () => {
+    setShowModalConfirm(false);
+    setSelectedDay(null);
+    setSelectedHour(null);
+    setIsDateSelected(false);
+  };
+
+  const handleSelectedHour = (hour) => {
+    if (isDateSelected === true && selectedHour === hour) {
+      setIsDateSelected(false);
+      setSelectedHour(null);
+    } else {
+      setIsDateSelected(true);
+      setSelectedHour(hour);
     }
   };
 
@@ -50,6 +116,59 @@ const Calendar = () => {
 
   const handleNextMonth = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
+  };
+
+  const handleConfirmReservation = async () => {
+    try {
+      setIsLoading(true);
+
+      await addReservation({
+        fecha: moment(selectedDay).format(
+          "YYYY-MM-DD[T]" + selectedHour + ":00.000Z"
+        ),
+        corte: cutType,
+        confirmed: true,
+        usuario: auth._id,
+      });
+
+      setIsLoading(false);
+      setShowModalLogged(false);
+      setShowModalConfirm(true);
+      props.handleCalendarOpen();
+    } catch (error) {
+      setIsLoading(false);
+      // Manejar el error si ocurriera
+      console.log("Ha habido un error: ", error);
+      let errorMessage = "Ha habido un error al confirmar la reserva.";
+
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        errorMessage = error.response.data.message;
+      }
+
+      setAlerta({
+        msg: errorMessage,
+        error: true,
+      });
+    }
+  };
+
+  const isDayComplete = (day) => {
+    const reservasDelDia = reservations.filter((reservation) => {
+      const fechaReserva = moment(reservation.fecha).format("D");
+      return parseInt(fechaReserva, 10) === day;
+    });
+
+    return allHours.every((hour) => {
+      const horaReservada = reservasDelDia.find((reserva) => {
+        const horaReserva = moment(reserva.fecha).format("HH:mm");
+        return horaReserva === hour;
+      });
+      return horaReservada;
+    });
   };
 
   const renderCalendarCells = () => {
@@ -63,16 +182,18 @@ const Calendar = () => {
       );
       const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
       const isSunday = date.getDay() === 0;
-      const isReserved = reservations.confirmed;
 
       const cellClasses = classNames("p-5", {
         "bg-yellow-500 text-white":
-          selectedDate?.toDateString() === date.toDateString(),
-        "text-black": selectedDate?.toDateString() !== date.toDateString(),
+          selectedDay?.toDateString() === date.toDateString() &&
+          showModalLogged === true,
+        "text-black": selectedDay?.toDateString() !== date.toDateString(),
         "cursor-not-allowed pointer-events-none opacity-50":
           i < currentDay && currentMonth.getMonth() === Month.getMonth(),
+        "cursor-not-allowed pointer-events-none text-red-500":
+          isDayComplete(i) && parseInt(moment().format("D")) <= i,
         "cursor-not-allowed pointer-events-none bg-gray-400": isSunday,
-        "cursor-pointer bg-white hover:bg-yellow-500 hover:transition hover:duration-200 hover:ease-in-out":
+        "cursor-pointer bg-white hover:bg-yellow-500 transition duration-400 ease-in-out":
           !isSunday,
       });
 
@@ -83,26 +204,6 @@ const Calendar = () => {
           onClick={() => handleDateClick(date)}
         >
           <span>{isCurrentMonth && i}</span>
-
-          {showHours && (
-            <ul className="absolute bg-black mt-2 p-2 shadow">
-              {isReserved ? (
-                <li>Reservado</li>
-              ) : (
-                <>
-                  <li>09:00</li>
-                  <li>10:00</li>
-                  <li>11:00</li>
-                  <li>12:00</li>
-                  <li>------</li>
-                  <li>17:00</li>
-                  <li>18:00</li>
-                  <li>19:00</li>
-                  <li>20:00</li>
-                </>
-              )}
-            </ul>
-          )}
         </div>
       );
       cells.push(cell);
@@ -111,8 +212,35 @@ const Calendar = () => {
     return cells;
   };
 
+  const renderHourList = () => {
+    return allHours.map((hour) =>
+      availableHours.includes(hour) ? (
+        <li
+          key={hour}
+          className={classNames("text-lg p-1 px-2 rounded", {
+            "cursor-pointer hover:bg-gray-400": isLoading === false,
+            "cursor-not-allowed opacity-50": isLoading === true,
+            "bg-gray-300": isDateSelected ? selectedHour === hour : "",
+          })}
+          onClick={() => handleSelectedHour(hour)}
+        >
+          {hour} : Disponible
+        </li>
+      ) : (
+        <li
+          key={hour}
+          className="text-lg cursor-not-allowed pointer-events-none opacity-50 p-1"
+        >
+          {hour} : Reservado
+        </li>
+      )
+    );
+  };
+
+  const { msg } = alerta;
+
   return (
-    <div className="flex flex-col p-10 font-Bebas">
+    <div className="flex flex-col p-10 font-Bebas transition-all ease-linear transition-500">
       <div className="flex w-full justify-between text-lg text-center font-bold p-2 rounded-t-lg bg-white">
         <button className="ml-4" onClick={handlePrevMonth}>
           {currentMonth.getMonth() === Month.getMonth() ? (
@@ -131,8 +259,6 @@ const Calendar = () => {
           )}
         </button>
       </div>
-
-      {/* <div className="flex text-center bg-gradient-to-b from-gray-400 to-black p-3"></div> */}
 
       <div className="grid grid-cols-7 p-5 pt-1 bg-white text-black text-center font-bold uppercase">
         <div className="">Lun</div>
@@ -160,6 +286,101 @@ const Calendar = () => {
           )
         )}
       </ul>
+
+      {showModalLogged && (
+        <div
+          className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50"
+          onClick={handleCloseModal}
+        >
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-200 opacity-50" />
+          <div
+            className="bg-white rounded-lg p-8 flex flex-col items-center justify-center relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2
+              className={classNames("text-lg p-1", {
+                "text-2xl font-bold text-center cursor-default":
+                  isLoading === false,
+                "cursor-default opacity-50": isLoading === true,
+              })}
+            >
+              ¡Selecciona una hora disponible!
+            </h2>
+
+            {msg && <Alerta alerta={alerta} className="font-sans" />}
+
+            <ul className="text-center mt-8">
+              {selectedDay && showHours[selectedDay.toDateString()] && (
+                <>{renderHourList()}</>
+              )}
+            </ul>
+            {isLoading && (
+              <div className="absolute items-center justify-center mt-5">
+                <FaSpinner className="animate-spin text-gray-500 h-8 w-8 " />
+              </div>
+            )}
+            <button
+              className={`mt-5 bg-yellow-500 mb-5 w-full py-3 text-white uppercase rounded ${
+                !isDateSelected
+                  ? "pointer-events-none opacity-50"
+                  : "hover:cursor-pointer hover:bg-sky-800 transition-colors"
+              }`}
+              onClick={() => handleConfirmReservation()}
+              disabled={!isDateSelected}
+            >
+              {" "}
+              Reservar{" "}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showModalNotLogged && (
+        <div
+          className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50"
+          onClick={handleCloseConfirm}
+        >
+          <div className="bg-white rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-4 text-center">
+              ¡No has iniciado sesión!
+            </h3>
+            <div className="text-center text-lg m-8">
+              <h2>
+                Para reservar una cita debes <br />
+                entrar con tu cuenta
+              </h2>
+            </div>
+            <div className="flex justify-center">
+              <span className="m-2 mt-0 p-2 bg-gray-400 rounded-lg hover:bg-gray-300 transition-colors ">
+                <Link to="/login">Iniciar sesión</Link>
+              </span>
+              <button
+                className="m-2 mt-0 p-2 bg-gray-400 rounded-lg hover:bg-gray-300 transition-colors"
+                onClick={handleCloseModal}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showModalConfirm && (
+        <div
+          className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50"
+          onClick={handleCloseConfirmModal}
+        >
+          <div className="bg-white rounded-lg p-8">
+            <h3 className="text-2xl font-bold p-10 text-center">
+              ¡Has reservado tu cita para el dia: <br />
+              {moment(selectedDay).format("DD-MM-YYYY")} a las {selectedHour}!
+            </h3>
+            <h4 className="text-center text-xl">
+              {" "}
+              Gracias por confiar en FABINCCI
+            </h4>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
