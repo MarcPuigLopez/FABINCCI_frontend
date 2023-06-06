@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily: {
         "Bebas": ["Bebas Neue", "sans-serif"],
-        "Merienda": ["Merienda", "cursive"],
+        "Roboto": ["Roboto Condensed", "sans-serif"],
+
       },
       spacing: {
         "welcome-width": "1917px",
