@@ -84,7 +84,7 @@ const AboutUs = (props, ref) => {
           {/* Text 1 */}
           <div className="col-start-2">
             <motion.div
-              className="p-14 pr-0 m-4 "
+              className="p-14 pr-0 m-4"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -97,24 +97,18 @@ const AboutUs = (props, ref) => {
                 visible: { opacity: 1 },
               }}
             >
-              <h2 className="p-2 text-2xl font-bold text-white text-center">
+              <h2 className="p-2 text-xl font-bold text-white text-center my-10 mt-20">
                 {" "}
                 ¿No encuentras el look adecuado?{" "}
               </h2>
-              <p className="pt-5 text-white text-justify">
+              <h2 className="p-2 text-xl font-bold text-white text-center my-10">
                 {" "}
-                En FABINCCI, somos los expertos en adaptar cada estilo a las
-                fascinantes particularidades de cada persona. Tomamos en cuenta
-                las facciones, el tipo de cabello que tienes (rizado, liso,
-                encrespado, etc.) para asesorarte y encontrar el estilo más
-                adecuado que realce tu belleza única. <br />
-                <br />A través de años de experiencia y formación continua,
-                hemos creado un conjunto de habilidades y técnicas que nos
-                permite superar las expectativas de nuestros clientes y brindar
-                resultados impecables. No importa cuán desafiante parezca,
-                ¡estamos seguros de que juntos lograremos descubrir el look
-                perfecto para ti!
-              </p>
+                ¿Te cuesta expresar que tipo de peinado quieres?{" "}
+              </h2>
+              <h2 className="p-2 text-xl font-bold text-white text-center my-10">
+                {" "}
+                ¿Tu barbero/estilista no te deja como tú le pides?{" "}
+              </h2>
             </motion.div>
           </div>
           {/* Cadro y video 2 */}
@@ -189,20 +183,21 @@ const AboutUs = (props, ref) => {
                 visible: { opacity: 1 },
               }}
             >
-              <h2 className="p-2 text-2xl font-bold text-white text-center">
-                {" "}
-                ¿Tu barbero/estilista no te dejan como tú le pides?{" "}
-              </h2>
               <p className="pt-5 text-white text-justify">
+                {/* TODO: TREURE PER QUE NOMES SIGUI UN PARAGRAF */}
                 {" "}
-                En Saber Hacer, nos enorgullece decir que somos diferentes.
-                Nuestro enfoque se basa en comprender y trabajar en armonía con
-                las características individuales de cada cliente. Consideramos
-                las partes craneales, la dirección natural de tu cabello, tus
-                rasgos faciales y el tipo de cabello que tienes para lograr y
-                asesorar el estilo más adecuado para ti. Nos esforzamos por
-                crear una experiencia de barbería excepcional que garantice que
-                salgas con un look que te haga sentir seguro y satisfecho.
+                En FABINCCI Barber S.L. , somos expertos en adaptar cada estilo
+                a las fascinantes particularidades de cada persona. Tomamos en
+                cuenta la dirección natural de tu cabello, los rasgos faciales,
+                el tipo de pelo, para asesorarte y encontrar el estilo más
+                adecuado que realce tu belleza única.
+                <br />
+                <br />A través de años de experiencia y formación continua,
+                hemos creado un conjunto de habilidades y técnicas que nos
+                permite superar las expectativas de nuestros clientes y brindar
+                resultados impecables. No importa cuán desafiante parezca,
+                ¡estamos seguros de que juntos lograremos descubrir el look
+                perfecto para ti!
               </p>
             </motion.div>
           </div>

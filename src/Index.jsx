@@ -55,7 +55,7 @@ function Index() {
   // Guarda la posició del scroll al sortir de la pàgina
   useEffect(() => {
     const handleBeforeUnload = () => {
-      console.log(containerRef.current.scrollLeft);
+      // console.log(containerRef.current.scrollLeft);
       localStorage.setItem("scrollposHome", containerRef.current.scrollLeft);
     };
 

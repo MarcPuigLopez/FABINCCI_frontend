@@ -32,12 +32,42 @@ const ReservationsProvider = ({ children }) => {
       setReservations([...reservations, data]);
       setUserReservations([...userReservations, data]);
     } catch (error) {
+      console.log(error);
       setUserReservations([]);
       setReservations([]);
     }
 
     setLoading(false);
   };
+
+    // el admin añade una cita
+    const addAdminReservation = async (reservation) => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+  
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+  
+      try {
+        const { data } = await clienteAxios.post(
+          "/reservation/admin/add",
+          reservation,
+          config
+        );
+        setReservations([...reservations, data]);
+        setUserReservations([...userReservations, data]);
+      } catch (error) {
+        console.log(error);
+        setUserReservations([]);
+        setReservations([]);
+      }
+  
+      setLoading(false);
+    };
 
   // Citas de un usuario
   const getUserReservations = async (reservation) => {
@@ -116,6 +146,7 @@ const ReservationsProvider = ({ children }) => {
         reservations,
         userReservations,
         addReservation,
+        addAdminReservation,
         getUserReservations,
         getMonthlyReservations,
         deleteReservation,

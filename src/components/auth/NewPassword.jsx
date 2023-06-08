@@ -61,7 +61,7 @@ const NewPassword = () => {
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center bg-no-repeat h-screen">
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-16 bg-white rounded-lg mb-48">
-        <h1 className="text-sky-600 font-black text-6xl mb-5">
+        <h1 className="text-sky-600 font-black text-6xl mb-5 text-center">
             <Link to="/">FABINCCI <br/></Link>
             <span className="text-slate-700">
               <Link to="/">RECUPERACIÓN DE CONTRASEÑA</Link>

@@ -7,7 +7,9 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
   const [userData, setUserData] = useState({});
+  const [usersData, setUsersData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const autenticarUsuario = async () => {
@@ -26,6 +28,13 @@ const AuthProvider = ({ children }) => {
 
       try {
         const { data } = await clienteAxios("/users/profile", config);
+
+        if (data.email === import.meta.env.VITE_ADMIN_EMAIL) {
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
+
         setAuth(data);
       } catch (error) {
         setAuth({});
@@ -61,6 +70,28 @@ const AuthProvider = ({ children }) => {
       setUserData({});
     }
 
+    setLoading(false);
+  };
+
+  const getUsers = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    if (isAdmin) {
+      try {
+        const { data } = await clienteAxios(`/users/all`, config);
+        setUsersData(data);
+      } catch (error) {
+        setUsersData({});
+      }
+    }
     setLoading(false);
   };
 
@@ -100,6 +131,9 @@ const AuthProvider = ({ children }) => {
         getUser,
         userData,
         setUserData,
+        isAdmin,
+        getUsers,
+        usersData,
       }}
     >
       {children}

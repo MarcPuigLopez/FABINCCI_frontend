@@ -15,7 +15,7 @@ const UserTab = (props, ref) => {
     nombre: userData.nombre || "loading...",
     apellidos: userData.apellidos || "loading...",
     email: userData.email || "loading...",
-    telefono: userData.telefono || "",
+    phone: userData.phone || "",
     password: "*********",
   });
 
@@ -25,7 +25,7 @@ const UserTab = (props, ref) => {
         nombre: userData.nombre || "loading...",
         apellidos: userData.apellidos || "loading...",
         email: userData.email || "loading...",
-        telefono: userData.telefono || "",
+        phone: userData.phone || "",
         password: "*********",
       });
     }
@@ -50,14 +50,14 @@ const UserTab = (props, ref) => {
   const handleEditClick = () => {
     setEditing(true);
   };
-
+email: userData.email
   const handleCancelClick = () => {
     setEditing(false);
     setData({
       nombre: data.nombre,
       apellidos: data.apellidos,
       email: data.email,
-      telefono: data.telefono,
+      phone: data.phone,
       password: "*********",
     });
   };
@@ -68,7 +68,7 @@ const UserTab = (props, ref) => {
       data.nombre === userData.nombre &&
       data.apellidos === userData.apellidos &&
       data.email === userData.email &&
-      data.telefono === userData.telefono
+      data.phone === userData.phone
     ) {
       setEditing(false);
       setAlerta({
@@ -83,12 +83,11 @@ const UserTab = (props, ref) => {
     
     try {
       await modifyUser(data);
-      console.log(userData);
       setUserData({
         nombre: data.nombre,
         apellidos: data.apellidos,
         email: data.email,
-        telefono: data.telefono,
+        phone: data.phone,
         password: "*********",
       });
 
@@ -177,15 +176,15 @@ const UserTab = (props, ref) => {
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
-            htmlFor="telefono"
+            htmlFor="phone"
           >
-            telefono
+            Telefono
           </label>
           <input
-            type="telefono"
-            id="telefono"
-            name="telefono"
-            value={data.telefono}
+            type="phone"
+            id="phone"
+            name="phone"
+            value={data.phone}
             onChange={handleInputChange}
             disabled={!editing}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"

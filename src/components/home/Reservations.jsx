@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { motion } from "framer-motion";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 
 import Calendar from "../helpers/Calendar";
@@ -14,26 +15,47 @@ const Reservas = (props, ref) => {
   const handleReservaClick = (cutType) => {
     setCutType(cutType);
 
-    setShowTablon(false);
-    setShowCalendar(true);
+      setShowTablon(false);
+      setShowCalendar(true);
+  };
+
+  const handleCalendarOpen = () => {
+    setShowTablon(true);
+    setShowCalendar(false);
   };
 
   return (
     <div ref={ref} className="flex w-reservas-width">
       <div className="grid w-reservas-width h-[84vh] relative ">
         {showTablon && (
-          <div className="p-5 mx-auto">
+          <motion.div
+            exit={{ opacity: 0 }}
+            initial={{ opacity: showCalendar ? 1 : 0, duration: 1000 }}
+            animate={{ opacity: 1 }}
+            className={`transition-opacity duration-1000 p-5 mx-auto${
+              showTablon ? "" : "hidden"
+            }`}
+          >
             <h1 className="font-press-start p-10 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
-              <span className="px-8 ">NUESTRAS TARIFAS</span>
+              <span className="">NUESTRAS TARIFAS</span>
             </h1>
             <TablonReservas handleReservation={handleReservaClick} />
-          </div>
+          </motion.div>
         )}
         {showCalendar && (
-          <div className="">
-            <div className="p-5 w-2/5 mx-auto">
+          <motion.div
+            exit={{ opacity: 0 }}
+            initial={{ opacity: showTablon ? 1 : 0, duration: 1000 }}
+            animate={{ opacity: 1 }}
+            className=""
+          >
+            <div
+              className={`transition-opacity duration-1000 p-5 w-2/5 mx-auto ${
+                showCalendar ? "" : "hidden"
+              }`}
+            >
               <h1 className="font-press-start p-10 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
-                <span className="px-8 ">RESERVAS</span>
+                <span className="">RESERVAS</span>
               </h1>
               <div className="relative">
                 <div className="absolute top-0 left-0">
@@ -50,9 +72,9 @@ const Reservas = (props, ref) => {
                 </div>
               </div>
 
-              <Calendar cutType={cutType} />
+              <Calendar cutType={cutType} handleCalendarOpen={handleCalendarOpen} />
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

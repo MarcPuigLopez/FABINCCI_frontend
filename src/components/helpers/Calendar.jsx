@@ -16,7 +16,7 @@ import Alerta from "./Alerta";
 import useReservations from "../../hooks/useReservations";
 import useAuth from "../../hooks/useAuth";
 
-const Calendar = (props) => {
+const Calendar = (props, { handleCalendarOpen }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [alerta, setAlerta] = useState({});
 
@@ -85,19 +85,11 @@ const Calendar = (props) => {
 
   const handleCloseModal = (date) => {
     setShowHours({});
-    setShowModalLogged(false);
     if (Object.keys(auth).length !== 0) {
       setShowModalLogged(false);
     } else {
       setShowModalNotLogged(false);
     }
-  };
-
-  const handleCloseConfirmModal = () => {
-    setShowModalConfirm(false);
-    setSelectedDay(null);
-    setSelectedHour(null);
-    setIsDateSelected(false);
   };
 
   const handleSelectedHour = (hour) => {
@@ -141,18 +133,23 @@ const Calendar = (props) => {
       console.log("Ha habido un error: ", error);
       let errorMessage = "Ha habido un error al confirmar la reserva.";
 
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        errorMessage = error.response.data.message;
-      }
+      setTimeout(() => {
+        setAlerta({
+          msg: errorMessage,
+          error: true,
+        });
+      }, 3000);
+    }
+  };
 
-      setAlerta({
-        msg: errorMessage,
-        error: true,
-      });
+  const handleCloseConfirmModal = () => {
+    if (alerta.error) {
+      setAlerta({});
+    } else {
+      setShowModalConfirm(false);
+      setSelectedDay(null);
+      setSelectedHour(null);
+      setIsDateSelected(false);
     }
   };
 
@@ -338,7 +335,7 @@ const Calendar = (props) => {
       {showModalNotLogged && (
         <div
           className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50"
-          onClick={handleCloseConfirm}
+          onClick={handleCloseModal}
         >
           <div className="bg-white rounded-lg p-8">
             <h3 className="text-2xl font-bold mb-4 text-center">

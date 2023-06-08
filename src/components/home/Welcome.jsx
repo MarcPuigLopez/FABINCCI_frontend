@@ -11,7 +11,6 @@ import Item3 from "../../assets/images/WelcomeElements/Item3.png";
 import Item4 from "../../assets/images/WelcomeElements/Item4.png";
 import Item5 from "../../assets/images/WelcomeElements/Item5.png";
 import Item6 from "../../assets/images/WelcomeElements/Item6.png";
-import ItemP1 from "../../assets/images/WelcomeElements/ItemP1.jpg";
 
 const Welcome = (props, ref) => {
   return (
@@ -104,18 +103,12 @@ const Welcome = (props, ref) => {
           >
             ¡BIENVENIDO AL UNIVERSO FABINCCI!
           </motion.h2>
-          <motion.p className="row-start-5 row-span-2 pt-2 text-white text-base px-16 font-Roboto">
-            <h3 className="text-center">
-              En FABINCCI, no competimos con nadie.
-            </h3>
-            <h4 className="pt-3 text-center">
-              Queremos brindar el mejor servicio adaptado a cada persona.
+          <motion.div className="row-start-5 row-span-2 pt-2 text-white text-base px-16 font-Roboto">
+            <h4 className="pt-3 px-5 text-center">
+              Brindamos el mejor servicio adaptado a cada persona para una
+              experiencia personalizada que superará todas tus expectativas.
             </h4>
-            <h4 className="pt-3 text-center">
-              Por eso, te ofrecemos una experiencia personalizada que superará
-              todas tus expectativas.
-            </h4>
-          </motion.p>
+          </motion.div>
         </div>
 
         {/* COLUMNA 3 */}
