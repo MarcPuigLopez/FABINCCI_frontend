@@ -12,9 +12,9 @@ const Login = (res) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const [alerta, setAlerta] = useState({});
-  const { setAuth } = useAuth();
+  const { setAuth, isAdmin, setIsAdmin } = useAuth();
   const navigate = useNavigate();
-  
+
   // si esta logeado lo redirecciona a profile
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -47,7 +47,8 @@ const Login = (res) => {
       setAlerta({});
       localStorage.setItem("token", data.token);
       setAuth(data);
-      navigate("/profile");
+      navigate("/login");
+      navigate(0)
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,

@@ -5,8 +5,7 @@ import { FaUser, FaCalendarAlt, FaClock } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 
 const SideBar = (props) => {
-
-    const {auth} = useAuth();
+  const { auth, isAdmin } = useAuth();
 
   return (
     <div className="-left-full lg:left-0 transition-all ease-linear transition-500 bg-gray-300 shadow rounded-lg m-3 ml-8 text-xl h-[85vh] fixed top-[11vh]">
@@ -17,22 +16,29 @@ const SideBar = (props) => {
       </div>
       <div className="p-10 pt-3 pr-20 w-72">
         <button
-          onClick={props.handleProfileClick}
-          className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
-        >
-          <FaUser className="m-5" /> Perfil
-        </button>
-        <button
           onClick={props.handleReservationsClick}
           className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
         >
-          <FaCalendarAlt className="m-5" /> Citas
+          <FaCalendarAlt className="m-5" /> {isAdmin ? "Calendario" : "Citas"}
         </button>
         <button
           onClick={props.handleBookingClick}
           className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
         >
-          <FaClock className="m-5" /> Reservas
+          {isAdmin ? (
+            ""
+          ) : (
+            <>
+              <FaClock className="m-5" />
+              Reservas
+            </>
+          )}
+        </button>
+        <button
+          onClick={props.handleProfileClick}
+          className="flex items-center text-black hover:text-gray-500 hover:transition"
+        >
+          <FaUser className="m-5" /> Perfil
         </button>
       </div>
     </div>

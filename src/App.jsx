@@ -21,8 +21,8 @@ import { AuthProvider } from "./context/AuthProvider";
 import { ReservationsProvider } from "./context/ReservationsProvider";
 
 // Páginas de usuário autenticado y administrador
-import UserProfile from "./components/profile/Profile";
-import AdminProfile from "./components/profile/AdminProfile";
+import UserProfile from "./components/profile/UserProfile";
+import AdminProfile from "./components/admin/AdminProfile";
 
 function App() {
   return (
@@ -54,7 +54,7 @@ function App() {
 
             {/* Ruta Privada Admin*/}
             <Route path="admin/profile/" element={<ProtectedAdminRoute />}>
-              <Route element={<AdminProfile />} />
+              <Route index element={<AdminProfile />} />
             </Route>
           </Routes>
         </ReservationsProvider>

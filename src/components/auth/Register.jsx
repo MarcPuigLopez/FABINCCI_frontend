@@ -7,6 +7,7 @@ const Register = () => {
   const [nombre, setNombre] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
   const [alerta, setAlerta] = useState({});
@@ -14,7 +15,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([nombre, apellidos, email, password, repetirPassword].includes("")) {
+    if ([nombre, apellidos, email, phone, password, repetirPassword].includes("")) {
       setAlerta({
         msg: "Todos los campos son obligatorios",
         error: true,
@@ -46,6 +47,14 @@ const Register = () => {
       return;
     }
 
+    if (phone.length < 9) {
+      setAlerta({
+        msg: "El telefono debe tener minimo 9 caracteres",
+        error: true,
+      });
+      return;
+    }
+
     setAlerta({});
 
     // Crear el usuario en la API
@@ -55,6 +64,7 @@ const Register = () => {
         nombre,
         apellidos,
         email,
+        phone,
         password,
       });
 
@@ -66,6 +76,7 @@ const Register = () => {
       setNombre("");
       setApellidos("");
       setEmail("");
+      setPhone("");
       setPassword("");
       setRepetirPassword("");
     } catch (error) {
@@ -82,7 +93,7 @@ const Register = () => {
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center h-screen">
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 p-14 pb-2 bg-white rounded-lg">
-          <h1 className="text-sky-600 font-black text-6xl text-center">
+          <h1 className="text-sky-600 font-black text-5xl text-center">
             <Link to="/">FABINCCI </Link>
             <span className="text-slate-700">
               <Link to="/">REGISTRO</Link>
@@ -93,12 +104,12 @@ const Register = () => {
           {msg && <Alerta alerta={alerta} />}
 
           <form
-            className="my-7 mt-5 bg-white shadow rounded-lg p-10"
+            className="my-2 bg-white shadow rounded-lg p-10"
             onSubmit={handleSubmit}
           >
             <div className="my-1">
               <label
-                className="uppercase text-gray-600 block text-xl font-bold"
+                className="uppercase text-gray-600 block text-lg font-bold"
                 htmlFor="name"
               >
                 Nombre
@@ -107,7 +118,7 @@ const Register = () => {
                 id="nombre"
                 type="text"
                 placeholder="Tu nombre"
-                className="w-full mt-2 p-3 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
@@ -115,7 +126,7 @@ const Register = () => {
 
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-xl font-bold"
+                className="uppercase text-gray-600 block text-lg font-bold"
                 htmlFor="apellidos"
               >
                 Apellidos
@@ -124,7 +135,7 @@ const Register = () => {
                 id="apellidos"
                 type="text"
                 placeholder="Tus apellidos"
-                className="w-full mt-2 p-3 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
                 value={apellidos}
                 onChange={(e) => setApellidos(e.target.value)}
               />
@@ -132,7 +143,7 @@ const Register = () => {
 
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-xl font-bold"
+                className="uppercase text-gray-600 block text-lg font-bold"
                 htmlFor="email"
               >
                 Email
@@ -141,14 +152,30 @@ const Register = () => {
                 id="email"
                 type="email"
                 placeholder="Correo electrónico"
-                className="w-full mt-2 p-3 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-xl font-bold"
+                className="uppercase text-gray-600 block text-lg font-bold"
+                htmlFor="phone"
+              >
+                Teléfono
+              </label>
+              <input
+                id="phone"
+                type="phone"
+                placeholder="Teléfono de contacto"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
+            <div className="my-4">
+              <label
+                className="uppercase text-gray-600 block text-lg font-bold"
                 htmlFor="password"
               >
                 Constraseña
@@ -157,7 +184,7 @@ const Register = () => {
                 id="password"
                 type="password"
                 placeholder="Constraseña de Registro"
-                className="w-full mt-2 p-3 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -165,7 +192,7 @@ const Register = () => {
 
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-xl font-bold"
+                className="uppercase text-gray-600 block text-lg font-bold"
                 htmlFor="password2"
               >
                 Repetir Constraseña
@@ -174,7 +201,7 @@ const Register = () => {
                 id="password2"
                 type="password"
                 placeholder="Repetir tu contraseña"
-                className="w-full mt-2 p-3 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
                 value={repetirPassword}
                 onChange={(e) => setRepetirPassword(e.target.value)}
               />
@@ -183,7 +210,7 @@ const Register = () => {
             <input
               type="submit"
               value="Registrarse"
-              className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
+              className="bg-sky-700 mb-1 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
             />
           </form>
 
