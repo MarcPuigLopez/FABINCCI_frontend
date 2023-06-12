@@ -140,7 +140,6 @@ function Index() {
         <div className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-no-repeat bg-center">
           <AboutUs ref={aboutUsRef} />
         </div>
-        {/* <div className="bg-[url('assets/images/HomeBg/2-bg-saberHace.webp')] bg-cover bg-no-repeat bg-center"> */}
         <div className="bg-[url('assets/images/HomeBg/bg-fabincci.jpeg')] bg-cover bg-center bg-no-repeat ">
           <Fabincci ref={fabincciRef} />
         </div>
