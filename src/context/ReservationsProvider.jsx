@@ -1,14 +1,14 @@
 import { useState, useEffect, createContext } from "react";
 import clienteAxios from "../config/clienteAxios";
 
-import Alerta from "../components/helpers/Alerta";
+import Alert from "../components/helpers/Alert";
 
 const ReservationsContext = createContext();
 
 const ReservationsProvider = ({ children }) => {
   const [reservations, setReservations] = useState([]);
   const [userReservations, setUserReservations] = useState([]);
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
   const [loading, setLoading] = useState(true);
 
   // Añadir una cita
@@ -69,7 +69,7 @@ const ReservationsProvider = ({ children }) => {
       setLoading(false);
     };
 
-  // Citas de un usuario
+  // Citas de un user
   const getUserReservations = async (reservation) => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -92,7 +92,7 @@ const ReservationsProvider = ({ children }) => {
   };
 
   // Citas del mes
-  const getMonthlyReservations = async (fecha) => {
+  const getMonthlyReservations = async (date) => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
@@ -105,7 +105,7 @@ const ReservationsProvider = ({ children }) => {
 
     try {
       const { data } = await clienteAxios(
-        `/reservation/month/${fecha}`,
+        `/reservation/month/${date}`,
         config
       );
       setReservations(data);

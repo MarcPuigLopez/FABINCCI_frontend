@@ -68,7 +68,7 @@ const UserProfile = () => {
     bookingRef.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="bg-[url('assets/images/HomeBg/bg-welcome.webp')] bg-cover bg-fixed h-full">
+    <div className="bg-[url('assets/images/HomeBg/bg-home.webp')] bg-cover bg-fixed h-full">
       <HeaderProfile />
 
       <div ref={containerRef} className="flex justify-between">

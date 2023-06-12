@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import clienteAxios from "../../config/clienteAxios";
-import Alerta from "../helpers/Alerta";
+import Alert from "../helpers/Alert";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (email === "" || email.length < 6) {
-      setAlerta({
+      setAlert({
         msg: "Introduce un email valido",
         error: true,
       });
@@ -24,19 +24,19 @@ const ResetPassword = () => {
         email,
       });
 
-      setAlerta({
+      setAlert({
         msg: data.msg,
         error: false,
       });
     } catch (error) {
-      setAlerta({
+      setAlert({
         msg: error.response.data.msg,
         error: true,
       });
     }
   };
 
-  const { msg } = alerta;
+  const { msg } = alert;
 
   return (
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center bg-no-repeat h-screen">
@@ -49,7 +49,7 @@ const ResetPassword = () => {
             </span>
           </h1>
 
-          {msg && <Alerta alerta={alerta} />}
+          {msg && <Alert alert={alert} />}
 
           <form
             className="my-10 bg-white shadow rounded-lg p-10"

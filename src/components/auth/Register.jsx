@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Alerta from "../helpers/Alerta";
+import Alert from "../helpers/Alert";
 import clienteAxios from "../../config/clienteAxios";
 
 const Register = () => {
-  const [nombre, setNombre] = useState("");
-  const [apellidos, setApellidos] = useState("");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([nombre, apellidos, email, phone, password, repetirPassword].includes("")) {
-      setAlerta({
+    if ([name, lastName, email, phone, password, repetirPassword].includes("")) {
+      setAlert({
         msg: "Todos los campos son obligatorios",
         error: true,
       });
@@ -24,7 +24,7 @@ const Register = () => {
     }
 
     if (email.length < 6) {
-      setAlerta({
+      setAlert({
         msg: "Introduce un correo valido",
         error: true,
       });
@@ -32,7 +32,7 @@ const Register = () => {
     }
 
     if (password !== repetirPassword) {
-      setAlerta({
+      setAlert({
         msg: "Las contraseñas no son iguales",
         error: true,
       });
@@ -40,7 +40,7 @@ const Register = () => {
     }
 
     if (password.length < 6) {
-      setAlerta({
+      setAlert({
         msg: "La contraseña es muy corta, debe tener minimo 6 caracteres",
         error: true,
       });
@@ -48,46 +48,46 @@ const Register = () => {
     }
 
     if (phone.length < 9) {
-      setAlerta({
+      setAlert({
         msg: "El telefono debe tener minimo 9 caracteres",
         error: true,
       });
       return;
     }
 
-    setAlerta({});
+    setAlert({});
 
-    // Crear el usuario en la API
+    // Crear el user en la API
     try {
       const url = `/users`;
       const { data } = await clienteAxios.post(url, {
-        nombre,
-        apellidos,
+        name,
+        lastName,
         email,
         phone,
         password,
       });
 
-      setAlerta({
+      setAlert({
         msg: data.msg,
         error: false,
       });
 
-      setNombre("");
-      setApellidos("");
+      setName("");
+      setLastName("");
       setEmail("");
       setPhone("");
       setPassword("");
       setRepetirPassword("");
     } catch (error) {
-      setAlerta({
+      setAlert({
         msg: error.msg,
         error: true,
       });
     }
   };
 
-  const { msg } = alerta;
+  const { msg } = alert;
 
   return (
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center h-screen">
@@ -101,7 +101,7 @@ const Register = () => {
             </span>
           </h1>
 
-          {msg && <Alerta alerta={alerta} />}
+          {msg && <Alert alert={alert} />}
 
           <form
             className="my-2 bg-white shadow rounded-lg p-10"
@@ -115,29 +115,29 @@ const Register = () => {
                 Nombre
               </label>
               <input
-                id="nombre"
+                id="name"
                 type="text"
                 placeholder="Tu nombre"
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
 
             <div className="my-4">
               <label
                 className="uppercase text-gray-600 block text-lg font-bold"
-                htmlFor="apellidos"
+                htmlFor="lastName"
               >
                 Apellidos
               </label>
               <input
-                id="apellidos"
+                id="lastName"
                 type="text"
                 placeholder="Tus apellidos"
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
-                value={apellidos}
-                onChange={(e) => setApellidos(e.target.value)}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
 

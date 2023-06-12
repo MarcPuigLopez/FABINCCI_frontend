@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// Import react-router-dom components
-import { useLocation } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 // Imports dels components del lloc web
 import Footer from "./components/helpers/Footer";
 import Header from "./components/helpers/Header";
-import Welcome from "./components/home/Welcome";
+import Home from "./components/home/Home";
 import AboutUs from "./components/home/AboutUs";
 import Fabincci from "./components/home/Fabincci";
 import Reservas from "./components/home/Reservations";
 import Contact from "./components/home/Contact";
 
 function Index() {
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
   // Configuració dels botons del Header per anar a les seves seccions
-  const welcomeRef = useRef(null);
+  const homeRef = useRef(null);
   const aboutUsRef = useRef(null);
   const fabincciRef = useRef(null);
   const reservasRef = useRef(null);
@@ -24,10 +24,8 @@ function Index() {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [lastScrollTime, setLastScrollTime] = useState(0);
 
-  const location = useLocation();
-
-  const scrollToWelcome = () => {
-    welcomeRef.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToHome = () => {
+    homeRef.current.scrollIntoView({ behavior: "smooth" });
     setScrollLeft(1);
   };
 
@@ -50,7 +48,7 @@ function Index() {
     contactRef.current.scrollIntoView({ behavior: "smooth" });
     setScrollLeft(contactRef.current.clientWidth * 4);
   };
-  
+
   // Configuració per mantenir el scroll al fer reload de la pàgina
   // Guarda la posició del scroll al sortir de la pàgina
   useEffect(() => {
@@ -78,6 +76,7 @@ function Index() {
 
   // Configuració del scroll horitzontal de la pàgina
   const handleScroll = (event) => {
+    if (isTabletOrSmaller) return;
     if (event.ctrlKey) return;
 
     const container = containerRef.current;
@@ -115,7 +114,7 @@ function Index() {
     <div>
       <header>
         <Header
-          handleWelcomeClick={scrollToWelcome}
+          handleHomeClick={scrollToHome}
           handleAboutUsClick={scrollToAboutUs}
           handleFabincciClick={scrollToFabincci}
           handleReservasClick={scrollToReservas}
@@ -124,20 +123,25 @@ function Index() {
       </header>
       <div
         ref={containerRef}
-        className="flex flex-nowrap overflow-x-scroll overflow-y-hidden"
+        className={`${
+          isTabletOrSmaller ? "overflow-x-hidden" : "flex flex-nowrap overflow-x-scroll"
+        } overflow-y-hidden`}
         onWheel={handleScroll}
         onScroll={() => {
           setScrollLeft(containerRef.current.scrollLeft);
         }}
       >
-        <div className="bg-[url('assets/images/HomeBg/bg-welcome.webp')] bg-cover bg-center">
-          <Welcome ref={welcomeRef} />
+        <div
+          className="bg-cover bg-center
+                      lg:bg-[url('assets/images/HomeBg/bg-home.webp')] bg-[url('assets/images/HomeBg/bg-contacto.webp')] "
+        >
+          <Home ref={homeRef} />
         </div>
         <div className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-no-repeat bg-center">
           <AboutUs ref={aboutUsRef} />
         </div>
         {/* <div className="bg-[url('assets/images/HomeBg/2-bg-saberHace.webp')] bg-cover bg-no-repeat bg-center"> */}
-        <div className="bg-[url('assets/images/HomeBg/FONDO3.png')] bg-cover bg-center bg-no-repeat ">
+        <div className="bg-[url('assets/images/HomeBg/bg-fabincci.jpeg')] bg-cover bg-center bg-no-repeat ">
           <Fabincci ref={fabincciRef} />
         </div>
         <div className="bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-cover bg-no-repeat bg-center">

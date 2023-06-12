@@ -48,7 +48,7 @@ const HeaderProfile = (props) => {
       <img src={logo} alt="Fabincci Logo" className="w-16 h-8 xl:hidden" />
       <Link
         to="/"
-        className="flex gap-2 text-center m-5 text-black uppercase text-sm"
+        className="flex gap-2 text-center m-5 text-black uppercase text-sm" 
       >
         <RiArrowLeftSFill className="my-auto text-xl" />
         Volver al inicio
@@ -64,7 +64,7 @@ const HeaderProfile = (props) => {
         {/* <button onClick={() => setShowMenu(!showMenu)} className="xl:hidden">
           <RiCloseLine />
         </button>
-        <Link to="/" onClick={handleScrollToWelcome} className="">
+        <Link to="/" onClick={handleScrollToHome} className="">
           HOME
         </Link>
         <Link to="/" onClick={handleScrollToAboutUs} className="">

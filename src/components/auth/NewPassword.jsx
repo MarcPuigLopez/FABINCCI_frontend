@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import clienteAxios from "../../config/clienteAxios";
-import Alerta from "../helpers/Alerta";
+import Alert from "../helpers/Alert";
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
   const [tokenValido, setTokenValido] = useState(false);
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
   const [passwordModificado, setPasswordModificado] = useState(false);
 
   const params = useParams();
@@ -18,7 +18,7 @@ const NewPassword = () => {
         await clienteAxios(`/users/reset-password/${token}`);
         setTokenValido(true);
       } catch (error) {
-        setAlerta({
+        setAlert({
           msg: error.response.data.msg,
           error: true,
         });
@@ -31,7 +31,7 @@ const NewPassword = () => {
     e.preventDefault();
 
     if (password.length < 6) {
-      setAlerta({
+      setAlert({
         msg: "La contraseña debe ser minimo de 6 caracteres",
         error: true,
       });
@@ -42,20 +42,20 @@ const NewPassword = () => {
       const url = `/users/reset-password/${token}`;
       const { data } = await clienteAxios.post(url, { password });
 
-      setAlerta({
+      setAlert({
         msg: data.msg,
         error: false,
       });
       setPasswordModificado(true);
     } catch (error) {
-      setAlerta({
+      setAlert({
         msg: error.response.data.msg,
         error: true,
       });
     }
   };
 
-  const { msg } = alerta;
+  const { msg } = alert;
 
   return (
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center bg-no-repeat h-screen">
@@ -68,7 +68,7 @@ const NewPassword = () => {
             </span>
           </h1>
 
-          {msg && <Alerta alerta={alerta} />}
+          {msg && <Alert alert={alert} />}
 
           {tokenValido && (
             <form

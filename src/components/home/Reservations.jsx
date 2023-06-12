@@ -26,7 +26,7 @@ const Reservas = (props, ref) => {
 
   return (
     <div ref={ref} className="flex w-reservas-width">
-      <div className="grid w-reservas-width h-[84vh] relative ">
+      <div className="grid w-screen lg:h-[84vh] relative ">
         {showTablon && (
           <motion.div
             exit={{ opacity: 0 }}

@@ -11,14 +11,14 @@ import {
   subMonths,
 } from "date-fns";
 import { RiArrowDropRightLine, RiArrowDropLeftLine } from "react-icons/ri";
-import Alerta from "./Alerta";
+import Alert from "./Alert";
 
 import useReservations from "../../hooks/useReservations";
 import useAuth from "../../hooks/useAuth";
 
-const Calendar = (props, { handleCalendarOpen }) => {
+const Calendar = (props) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
 
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedHour, setSelectedHour] = useState(null);
@@ -61,9 +61,9 @@ const Calendar = (props, { handleCalendarOpen }) => {
 
   useEffect(() => {
     const reservedHours = reservations.map((reservation) =>
-      moment(reservation.fecha).format("DD-MM") ===
+      moment(reservation.date).format("DD-MM") ===
       moment(selectedDay).format("DD-MM")
-        ? moment(reservation.fecha).format("HH:mm")
+        ? moment(reservation.date).format("HH:mm")
         : ""
     );
 
@@ -115,18 +115,17 @@ const Calendar = (props, { handleCalendarOpen }) => {
       setIsLoading(true);
 
       await addReservation({
-        fecha: moment(selectedDay).format(
+        date: moment(selectedDay).format(
           "YYYY-MM-DD[T]" + selectedHour + ":00.000Z"
         ),
-        corte: cutType,
+        cutType: cutType,
         confirmed: true,
-        usuario: auth._id,
+        user: auth._id,
       });
-
+      
       setIsLoading(false);
       setShowModalLogged(false);
       setShowModalConfirm(true);
-      props.handleCalendarOpen();
     } catch (error) {
       setIsLoading(false);
       // Manejar el error si ocurriera
@@ -134,7 +133,7 @@ const Calendar = (props, { handleCalendarOpen }) => {
       let errorMessage = "Ha habido un error al confirmar la reserva.";
 
       setTimeout(() => {
-        setAlerta({
+        setAlert({
           msg: errorMessage,
           error: true,
         });
@@ -143,25 +142,26 @@ const Calendar = (props, { handleCalendarOpen }) => {
   };
 
   const handleCloseConfirmModal = () => {
-    if (alerta.error) {
-      setAlerta({});
+    if (alert.error) {
+      setAlert({});
     } else {
       setShowModalConfirm(false);
       setSelectedDay(null);
       setSelectedHour(null);
       setIsDateSelected(false);
+      props.handleCalendarOpen();
     }
   };
 
   const isDayComplete = (day) => {
     const reservasDelDia = reservations.filter((reservation) => {
-      const fechaReserva = moment(reservation.fecha).format("D");
-      return parseInt(fechaReserva, 10) === day;
+      const dateReservation = moment(reservation.date).format("D");
+      return parseInt(dateReservation, 10) === day;
     });
 
     return allHours.every((hour) => {
       const horaReservada = reservasDelDia.find((reserva) => {
-        const horaReserva = moment(reserva.fecha).format("HH:mm");
+        const horaReserva = moment(reserva.date).format("HH:mm");
         return horaReserva === hour;
       });
       return horaReservada;
@@ -234,7 +234,7 @@ const Calendar = (props, { handleCalendarOpen }) => {
     );
   };
 
-  const { msg } = alerta;
+  const { msg } = alert;
 
   return (
     <div className="flex flex-col p-10 font-Bebas transition-all ease-linear transition-500">
@@ -304,7 +304,7 @@ const Calendar = (props, { handleCalendarOpen }) => {
               ¡Selecciona una hora disponible!
             </h2>
 
-            {msg && <Alerta alerta={alerta} className="font-sans" />}
+            {msg && <Alert alert={alert} className="font-sans" />}
 
             <ul className="text-center mt-8">
               {selectedDay && showHours[selectedDay.toDateString()] && (

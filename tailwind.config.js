@@ -12,7 +12,7 @@ export default {
 
       },
       spacing: {
-        "welcome-width": "1917px",
+        "home-width": "1917px",
         "aboutUs-width": "1917px",
         "fabincci-width": "1917px",
         "reservas-width": "1917px",

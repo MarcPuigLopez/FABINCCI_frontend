@@ -8,7 +8,7 @@ import Video3 from "../../assets/videos/AboutUsVideo3.mp4";
 
 const AboutUs = (props, ref) => {
   return (
-    <motion.div ref={ref} className="h-[84vh] w-screen">
+    <motion.div ref={ref} className="lg:h-[84vh] lg:w-screen w-aboutUs-width">
       <motion.h1
         className="p-2 pb-0 pt-3 text-7xl font-bold text-white text-center font-press-start"
         initial={{ scale: 0 }}
@@ -24,7 +24,7 @@ const AboutUs = (props, ref) => {
         SABER HACER
       </motion.h1>
       <div className="">
-        <div className="w-welcome-width h-[80vh] relative aspect-auto justify-between -ml-3 mt-1 grid-cols-5 grid">
+        <div className="w-home-width h-[80vh] relative aspect-auto justify-between -ml-3 mt-1 grid-cols-5 grid">
           <div className="col-start-1">
             {/* Cadro y video 1 */}
             <motion.div
@@ -183,21 +183,18 @@ const AboutUs = (props, ref) => {
                 visible: { opacity: 1 },
               }}
             >
-              <p className="pt-5 text-white text-justify">
-                {/* TODO: TREURE PER QUE NOMES SIGUI UN PARAGRAF */}
-                {" "}
-                En FABINCCI Barber S.L. , somos expertos en adaptar cada estilo
-                a las fascinantes particularidades de cada persona. Tomamos en
-                cuenta la dirección natural de tu cabello, los rasgos faciales,
-                el tipo de pelo, para asesorarte y encontrar el estilo más
-                adecuado que realce tu belleza única.
+              <p className="pt-10 text-white text-justify">
+                En <b>FABINCCI Barber S.L. </b>, somos expertos en adaptar cada
+                estilo a las fascinantes particularidades de cada persona.
                 <br />
-                <br />A través de años de experiencia y formación continua,
+                <br /> A través de años de experiencia y formación continua,
                 hemos creado un conjunto de habilidades y técnicas que nos
                 permite superar las expectativas de nuestros clientes y brindar
-                resultados impecables. No importa cuán desafiante parezca,
-                ¡estamos seguros de que juntos lograremos descubrir el look
-                perfecto para ti!
+                resultados impecables.
+                <br />
+                <br />
+                No importa cuán desafiante parezca, ¡estamos seguros de que
+                juntos lograremos descubrir el look perfecto para ti!
               </p>
             </motion.div>
           </div>

@@ -11,14 +11,14 @@ import {
   subMonths,
 } from "date-fns";
 import { RiArrowDropRightLine, RiArrowDropLeftLine } from "react-icons/ri";
-import Alerta from "./Alerta";
+import Alert from "./Alert";
 
 import useReservations from "../../hooks/useReservations";
 import useAuth from "../../hooks/useAuth";
 
 const Calendar = (props) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
 
   const [isDateSelected, setIsDateSelected] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -58,8 +58,8 @@ const Calendar = (props) => {
 
   useEffect(() => {
     const selectedDatesAndHours = userReservations
-      .filter((reservation) => reservation.usuario === auth._id)
-      .map((reservation) => moment(reservation.fecha).format("MM-DD HH:mm"));
+      .filter((reservation) => reservation.user === auth._id)
+      .map((reservation) => moment(reservation.date).format("MM-DD HH:mm"));
 
     setSelectedDaysAndHours(selectedDatesAndHours);
   }, [userReservations, auth._id]);
@@ -111,7 +111,7 @@ const Calendar = (props) => {
       const cellClasses = classNames("p-5", {
         "cursor-not-allowed pointer-events-none opacity-50":
           i < currentDay && currentMonth.getMonth() === Month.getMonth(),
-        "cursor-pointer bg-white hover:bg-yellow-500 transition duration-400 ease-in-out text-red-500 hover:text-white":
+        "cursor-pointer bg-white hover:bg-yellow-500 transition duration-400 ease-in-out bg-yellow-400 text-white hover:text-white":
           isDayReserved(i) && parseInt(moment().format("D")) <= i,
         "cursor-not-allowed pointer-events-none bg-gray-400": isSunday,
         "cursor-not-allowed pointer-events-none":
@@ -163,7 +163,7 @@ const Calendar = (props) => {
     ));
   };
 
-  const { msg } = alerta;
+  const { msg } = alert;
 
   return (
     <div className="flex flex-col p-10 font-Bebas transition-all ease-linear transition-500">
@@ -236,7 +236,7 @@ const Calendar = (props) => {
                 Tienes una reserva para el día {modalDay} de {monthName}
               </h2>
 
-              {msg && <Alerta alerta={alerta} className="font-sans" />}
+              {msg && <Alert alert={alert} className="font-sans" />}
 
               <ul className="text-center mt-8">{renderHourList()}</ul>
               {isLoading && (

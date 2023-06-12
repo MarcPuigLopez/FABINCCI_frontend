@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { format, startOfWeek, addDays, addWeeks } from "date-fns";
 import { RiArrowDropRightLine, RiArrowDropLeftLine } from "react-icons/ri";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { sortBy, prop, set } from "ramda";
 
 import classNames from "classnames";
 import moment from "moment";
 import es from "date-fns/locale/es";
 
-import Alerta from "../helpers/Alerta";
+import Alert from "../helpers/Alert";
 import useReservations from "../../hooks/useReservations";
 import useAuth from "../../hooks/useAuth";
 
 const AdminCalendar = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
 
   const actualDate = moment().format("DD");
   const actualHour = moment().format("HH:mm");
@@ -24,8 +23,6 @@ const AdminCalendar = () => {
   const [selectedHour, setSelectedHour] = useState(null);
 
   const [selectedReservation, setSelectedReservation] = useState(null);
-  const [selectedReservationUser, setSelectedReservationUser] = useState(null);
-  const [selectedCutType, setSelectedCutType] = useState(null);
 
   const [currentWeek, setCurrentWeek] = useState(startOfWeek(new Date()));
 
@@ -69,10 +66,6 @@ const AdminCalendar = () => {
     setCurrentWeek((prevWeek) => addWeeks(prevWeek, 1));
   };
 
-//   const handleEditButton = () => {
-//     setEditing(true);
-//   };
-
   const handleCloseModifyReservationModal = () => {
     setEditing(false);
     setData({
@@ -100,35 +93,33 @@ const AdminCalendar = () => {
     setEditing(false);
   };
 
-//   const handleModifyReservationButton = () => {
-//     setShowModalModifyReservation(false);
-//     setEditing(false);
-    
-//   };
-
   const handleNewReservationButton = async () => {
-    setShowModalNewReservation(false);
-
     const reservationUser = usersData.find((user) => user.email === data.email);
 
     if (!reservationUser) {
-      setAlerta({
+      setAlert({
         msg: "El usuario no existe",
-        error: false,
+        error: true,
       });
+      setTimeout(() => {
+        setAlert({});
+      }, 1000);
     } else {
+      setIsLoading(true);
       await addAdminReservation({
-        fecha: moment(currentWeek).format(
+        date: moment(currentWeek).format(
           "YYYY-MM-" +
             `${selectedDay <= 9 ? "0" + selectedDay : selectedDay}` +
             "[T]" +
             selectedHour +
             ":00.000Z"
         ),
-        corte: data.cutType,
+        cutType: data.cutType,
         confirmed: true,
         user: reservationUser._id,
       });
+      setIsLoading(false);
+      setShowModalNewReservation(false);
     }
 
     setData({
@@ -162,26 +153,25 @@ const AdminCalendar = () => {
   ) => {
     setSelectedDay(day);
     setSelectedHour(hour);
-    setSelectedCutType(reservation.corte);
     setSelectedReservation(reservation);
-    setSelectedReservationUser(reservationUser);
+    reservationUser;
 
     setData((prevData) => ({
       ...prevData,
-      name: reservationUser.nombre || "loading...",
+      name: reservationUser.name || "loading...",
       email: reservationUser.email || "loading...",
       phone: reservationUser.telefono || "loading...",
-      cutType: reservation.corte || "loading...",
+      cutType: reservation.cutType || "loading...",
       day: day || "loading...",
       hour: hour || "loading...",
     }));
 
     setPrevData((prevData) => ({
       ...prevData,
-      name: reservationUser.nombre || "loading...",
+      name: reservationUser.name || "loading...",
       email: reservationUser.email || "loading...",
       phone: reservationUser.telefono || "loading...",
-      cutType: reservation.corte || "loading...",
+      cutType: reservation.cutType || "loading...",
       day: day || "loading...",
       hour: hour || "loading...",
     }));
@@ -189,15 +179,9 @@ const AdminCalendar = () => {
     setShowModalModifyReservation(true);
   };
 
-  const handleShowNewReservationButton = (
-    day,
-    hour,
-    reservation,
-    reservationUser
-  ) => {
+  const handleShowNewReservationButton = (day, hour) => {
     setSelectedDay(day);
     setSelectedHour(hour);
-    setSelectedCutType();
 
     setData({
       name: "",
@@ -234,8 +218,6 @@ const AdminCalendar = () => {
     setSelectedDay();
     setSelectedHour();
     setSelectedReservation();
-    setSelectedReservationUser();
-    setSelectedCutType();
 
     setShowModalNewReservation(false);
     setShowModalModifyReservation(false);
@@ -284,11 +266,11 @@ const AdminCalendar = () => {
     for (let i = startDay; i <= finalDay; i++) {
       const formattedDate = format(startDate, "EEEE d", { locale: es });
       const dayReservations = reservations.filter((reservation) => {
-        const reservationDate = moment(reservation.fecha).format("YYYY-MM-DD");
+        const reservationDate = moment(reservation.date).format("YYYY-MM-DD");
         return reservationDate === moment(startDate).format("YYYY-MM-DD");
       });
 
-      const sortedDayReservations = sortBy(prop("fecha"))(dayReservations);
+      const sortedDayReservations = sortBy(prop("date"))(dayReservations);
 
       days.push(
         <div key={i}>
@@ -302,11 +284,11 @@ const AdminCalendar = () => {
           >
             {allHours.map((hour) => {
               const reservation = sortedDayReservations.find(
-                (res) => moment(res.fecha).format("HH:mm") === hour
+                (res) => moment(res.date).format("HH:mm") === hour
               );
 
               const reservationUser = reservation
-                ? usersData.find((user) => user._id === reservation.usuario)
+                ? usersData.find((user) => user._id === reservation.user)
                 : null;
 
               return (
@@ -333,14 +315,13 @@ const AdminCalendar = () => {
                       }
                     >
                       <span className="font-bold text-sm capitalize">
-                        {reservationUser?.nombre} {reservationUser?.apellidos}{" "}
+                        {reservationUser?.name} {reservationUser?.lastName}{" "}
                         <br />
                       </span>
 
                       <span className="text-sm capitalize">
-                        {reservation?.corte} <br />
+                        {reservation?.cutType} <br />
                       </span>
-                      {/* Render additional reservation data as needed */}
                     </div>
                   ) : (
                     <div
@@ -349,7 +330,6 @@ const AdminCalendar = () => {
                       onClick={() => handleShowNewReservationButton(i, hour)}
                     >
                       <span className="">Disponible</span>
-                      {/* Render additional non-reservation data as needed */}
                     </div>
                   )}
                 </div>
@@ -363,6 +343,8 @@ const AdminCalendar = () => {
 
     return days;
   };
+
+  const { msg } = alert;
 
   return (
     <div className="bg-white p-4 rounded-lg shadow font-Bebas">
@@ -519,38 +501,12 @@ const AdminCalendar = () => {
                   </div>
 
                   <div className="flex justify-center mt-5 gap-5 font-Bebas">
-                    {/* TODO: EN PRINCIPIO EDITING FUERA */}
-                    {/* {!editing ? ( */}
-                      <button
-                        className="p-3 py-1 m-2 bg-red-500 hover:bg-red-600 text-white rounded"
-                        onClick={handleCancelReservationButton}
-                      >
-                        Cancelar Cita
-                      </button>
-                    {/* ) : (
-                      <button
-                        className="p-3 py-1 m-2 bg-gray-300 hover:bg-gray-400 rounded"
-                        onClick={handleCloseModifyReservationModal}
-                      >
-                        Cancelar
-                      </button>
-                    )} */}
-
-                    {/* {!editing ? (
-                      <button
-                        className="p-3 py-1 m-2 bg-yellow-300 hover:bg-yellow-400 rounded"
-                        onClick={handleEditButton}
-                      >
-                        Editar
-                      </button>
-                    ) : (
-                      <button
-                        className="p-3 py-1 m-2 bg-yellow-300 hover:bg-yellow-400 rounded"
-                        onClick={handleModifyReservationButton}
-                      >
-                        Modificar cita
-                      </button>
-                    )} */}
+                    <button
+                      className="p-3 py-1 m-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                      onClick={handleCancelReservationButton}
+                    >
+                      Cancelar Cita
+                    </button>
                   </div>
                 </div>
               </div>
@@ -578,6 +534,8 @@ const AdminCalendar = () => {
             >
               El dia {selectedDay} a las {selectedHour}:{" "}
             </h2>
+
+            {msg && <Alert alert={alert} />}
 
             {isLoading && (
               <div className="absolute items-center justify-center mt-5">
@@ -633,13 +591,6 @@ const AdminCalendar = () => {
                       >
                         Crear Reserva
                       </button>
-
-                      {/* <button
-                        className="p-3 py-1 m-2 bg-gray-500 hover:bg-gray-600 text-white rounded"
-                        onClick={handleCloseNewReservationButton}
-                      >
-                        Cancelar
-                      </button> */}
                     </div>
                   </div>
                 </div>

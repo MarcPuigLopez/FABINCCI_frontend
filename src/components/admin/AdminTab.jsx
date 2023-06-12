@@ -2,30 +2,30 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
-import Alerta from "../helpers/Alerta";
+import Alert from "../helpers/Alert";
 
 const AdminTab = (props, ref) => {
   const { userData, setUserData, modifyUser, getUser } = useAuth();
   const [reload, setReload] = useState(true);
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState({
-    nombre: userData.nombre || "loading...",
-    apellidos: userData.apellidos || "loading...",
+    name: userData.name || "loading...",
+    lastName: userData.lastName || "loading...",
     email: userData.email || "loading...",
-    telefono: userData.telefono || "",
+    phone: userData.phone || "",
     password: "*********",
   });
 
   useEffect(() => {
     if (userData) {
       setData({
-        nombre: userData.nombre || "loading...",
-        apellidos: userData.apellidos || "loading...",
+        name: userData.name || "loading...",
+        lastName: userData.lastName || "loading...",
         email: userData.email || "loading...",
-        telefono: userData.telefono || "",
+        phone: userData.phone || "",
         password: "*********",
       });
     }
@@ -54,29 +54,29 @@ const AdminTab = (props, ref) => {
   const handleCancelClick = () => {
     setEditing(false);
     setData({
-      nombre: data.nombre,
-      apellidos: data.apellidos,
+      name: data.name,
+      lastName: data.lastName,
       email: data.email,
-      telefono: data.telefono,
+      phone: data.phone,
       password: "*********",
     });
   };
 
   const handleSaveClick = async () => {
-    // Si los parametros nombre, apellidos, email o telefono no han cambiado, no se modifica el usuario
+    // Si los parametros name, lastName, email o telefono no han cambiado, no se modifica el user
     if (
-      data.nombre === userData.nombre &&
-      data.apellidos === userData.apellidos &&
+      data.name === userData.name &&
+      data.lastName === userData.lastName &&
       data.email === userData.email &&
-      data.telefono === userData.telefono
+      data.phone === userData.phone
     ) {
       setEditing(false);
-      setAlerta({
+      setAlert({
         msg: "No se han realizado cambios",
         error: false,
       });
       setTimeout(() => {
-        setAlerta({});
+        setAlert({});
       }, 2000);
       return;
     }
@@ -84,34 +84,34 @@ const AdminTab = (props, ref) => {
     try {
       await modifyUser(data);
       setUserData({
-        nombre: data.nombre,
-        apellidos: data.apellidos,
+        name: data.name,
+        lastName: data.lastName,
         email: data.email,
-        telefono: data.telefono,
+        phone: data.phone,
         password: "*********",
       });
 
       setEditing(false);
 
-      setAlerta({
+      setAlert({
         msg: "Usuario modificado correctamente",
         error: false,
       });
     } catch (error) {
       console.log(error);
-      setAlerta({
+      setAlert({
         msg: "Error al modificar el usuario",
         error: true,
       });
     }
 
     setTimeout(() => {
-      setAlerta({});
+      setAlert({});
       setReload(true);
     }, 2000);
   };
 
-  const { msg } = alerta;
+  const { msg } = alert;
 
   return (
     <div className="p-4 top-[11vh] scroll-mt-40" ref={ref}>
@@ -119,7 +119,7 @@ const AdminTab = (props, ref) => {
         Información del Administrador
       </h2>
 
-      {msg && <Alerta alerta={alerta} />}
+      {msg && <Alert alert={alert} />}
 
       <div className=" p-10 mx-auto lg:w-3/5 pb-20">
         <div className="mb-4">
@@ -129,9 +129,9 @@ const AdminTab = (props, ref) => {
           <div className="flex justify-between">
             <input
               type="text"
-              id="nombre"
-              name="nombre"
-              value={data.nombre}
+              id="name"
+              name="name"
+              value={data.name}
               onChange={handleInputChange}
               disabled={!editing}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
@@ -142,16 +142,16 @@ const AdminTab = (props, ref) => {
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
-            htmlFor="apellidos"
+            htmlFor="lastName"
           >
             Apellidos
           </label>
           <div className="flex justify-between">
             <input
               type="text"
-              id="apellidos"
-              name="apellidos"
-              value={data.apellidos}
+              id="lastName"
+              name="lastName"
+              value={data.lastName}
               onChange={handleInputChange}
               disabled={!editing}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
@@ -176,15 +176,15 @@ const AdminTab = (props, ref) => {
         <div className="mb-4">
           <label
             className="block text-gray-700 font-bold mb-2"
-            htmlFor="telefono"
+            htmlFor="phone"
           >
-            telefono
+            Teléfono:
           </label>
           <input
-            type="telefono"
-            id="telefono"
-            name="telefono"
-            value={data.telefono}
+            type="phone"
+            id="phone"
+            name="phone"
+            value={data.phone}
             onChange={handleInputChange}
             disabled={!editing}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"

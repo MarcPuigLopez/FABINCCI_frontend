@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const autenticarUsuario = async () => {
+    const authenticateUser = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
         setLoading(false);
@@ -37,12 +37,13 @@ const AuthProvider = ({ children }) => {
 
         setAuth(data);
       } catch (error) {
+        localStorage.removeItem("token");
         setAuth({});
       }
 
       setLoading(false);
     };
-    autenticarUsuario();
+    authenticateUser();
   }, []);
 
   const logoutAuth = () => {
@@ -109,8 +110,8 @@ const AuthProvider = ({ children }) => {
     try {
       const { data } = await clienteAxios.put("/users/profile", user, config);
       setUserData({
-        nombre: data.nombre,
-        apellidos: data.apellidos,
+        name: data.name,
+        lastName: data.lastName,
         email: data.email,
         telefono: data.telefono,
         password: "*********",

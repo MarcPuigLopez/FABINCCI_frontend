@@ -36,29 +36,29 @@ const Header = (props) => {
     if (!isLoggedIn) return;
     logoutAuth();
     localStorage.removeItem("token");
-    localStorage.setItem("scrollposHome", containerRef.current.scrollLeft)
+    localStorage.setItem("scrollposHome", containerRef.current.scrollLeft);
     window.location.reload(false);
   };
 
   const handleLogin = () => {
-    localStorage.setItem("scrollposHome", containerRef.current.scrollLeft)
-  }
+    localStorage.setItem("scrollposHome", containerRef.current.scrollLeft);
+  };
 
   return (
-    <header className="flex bg-white border-b-2 items-center pl-40 justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif sticky top-0">
+    <header className="flex bg-white border-b-2 items-center xl:pl-56 pl-10 justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif sticky top-0">
       <img src={logo} alt="Fabincci Logo" className="w-16 h-8 xl:hidden" />
 
       <nav
         className={`fixed w-full h-full right-0 top-0 xl:static 
           flex-1 flex flex-col xl:flex-row items-center justify-center gap-8 
           xl:gap-32 transition ease-linear duration-500 xl:visible xl:opacity-100 z-50 ${
-            showMenu ? "visible opacity-100" : "invisible opacity-0"
+            showMenu ? "visible opacity-100 bg-white" : "invisible opacity-0"
           }`}
       >
         <button onClick={() => setShowMenu(!showMenu)} className="xl:hidden">
           <RiCloseLine />
         </button>
-        <button onClick={props.handleWelcomeClick} className="">
+        <button onClick={props.handleHomeClick} className="">
           HOME
         </button>
         <button onClick={props.handleAboutUsClick} className="">
@@ -79,7 +79,7 @@ const Header = (props) => {
       </nav>
 
       <nav
-        className={`lg:flex lg:justify-center items-center h-full xl:visible xl:opacity-100 gap-2 ${
+        className={`lg:flex lg:justify-center items-center h-full xl:visible xl:opacity-100 gap-2 z-50 ${
           showMenu ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
@@ -102,7 +102,7 @@ const Header = (props) => {
 
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className="xl:hidden text-2xl p-2"
+        className="xl:hidden text-2xl pr-10"
       >
         <RiMenuFill />
       </button>

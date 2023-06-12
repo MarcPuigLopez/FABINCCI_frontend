@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Alerta from "../helpers/Alerta";
+import Alert from "../helpers/Alert";
 import clienteAxios from "../../config/clienteAxios";
 import useAuth from "../../hooks/useAuth";
 
@@ -11,7 +11,7 @@ const Login = (res) => {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  const [alerta, setAlerta] = useState({});
+  const [alert, setAlert] = useState({});
   const { setAuth, isAdmin, setIsAdmin } = useAuth();
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const Login = (res) => {
     e.preventDefault();
 
     if ([email, password].includes("")) {
-      setAlerta({
+      setAlert({
         msg: "Todos los campos son obligatorios",
         error: true,
       });
@@ -44,20 +44,20 @@ const Login = (res) => {
         password,
         rememberMe,
       });
-      setAlerta({});
+      setAlert({});
       localStorage.setItem("token", data.token);
       setAuth(data);
       navigate("/login");
       navigate(0)
     } catch (error) {
-      setAlerta({
+      setAlert({
         msg: error.response.data.msg,
         error: true,
       });
     }
   };
 
-  const { msg } = alerta;
+  const { msg } = alert;
 
   return (
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center h-screen">
@@ -73,7 +73,7 @@ const Login = (res) => {
             </span>
           </h1>
 
-          {msg && <Alerta alerta={alerta} />}
+          {msg && <Alert alert={alert} />}
 
           <form
             className="my-10 bg-white shadow rounded-lg p-10"
