@@ -74,6 +74,17 @@ function Index() {
     }
   }, []);
 
+  useEffect(() => {
+    if (isTabletOrSmaller) {
+      homeRef.current.scrollIntoView();
+      setScrollLeft(0);
+    } else {
+      containerRef.current.scrollTo({
+        left: scrollLeft,
+      });
+    }
+  }, [isTabletOrSmaller]);
+
   // Configuració del scroll horitzontal de la pàgina
   const handleScroll = (event) => {
     if (isTabletOrSmaller) return;

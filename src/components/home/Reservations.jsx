@@ -25,8 +25,8 @@ const Reservas = (props, ref) => {
   };
 
   return (
-    <div ref={ref} className="flex w-reservas-width">
-      <div className="grid w-screen lg:h-[84vh] relative ">
+    <div ref={ref} className="flex lg:w-reservas-width w-screen">
+      <div className="grid lg:h-[84vh] relative lg:w-reservas-width w-screen">
         {showTablon && (
           <motion.div
             exit={{ opacity: 0 }}
@@ -36,7 +36,9 @@ const Reservas = (props, ref) => {
               showTablon ? "" : "hidden"
             }`}
           >
-            <h1 className="font-press-start p-10 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
+            <h1 className=" font-press-start p-10 
+                            font-bold text-white text-center text-shadow-lg shadow-gray-700
+                            lg:text-7xl text-5xl">
               <span className="">NUESTRAS TARIFAS</span>
             </h1>
             <TablonReservas handleReservation={handleReservaClick} />

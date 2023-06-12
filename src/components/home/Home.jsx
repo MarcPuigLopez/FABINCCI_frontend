@@ -118,7 +118,7 @@ const Home = (props, ref) => {
                                   2xl:px-16 xl:px-14  font-Roboto"
           >
             <h4 className="pt-3 text-center
-                            xl:px-5 px-32">
+                            xl:px-5 md:px-32 px-16">
               Brindamos el mejor servicio adaptado a cada persona para una
               experiencia personalizada que superará todas tus expectativas.
             </h4>

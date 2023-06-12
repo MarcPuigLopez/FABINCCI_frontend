@@ -21,59 +21,68 @@ const Contact = (props, ref) => {
         </h1>
       </div> */}
       <div className="flex flex-col p-10 mx-auto justify-center items-center">
-        <h1 className="text-5xl font-bold text-white pt-3">
+        <h1 className="md:text-5xl text-center text-3xl font-bold text-white pt-3">
           {" "}
           ¡CONTACTA CON NOSOTROS!
         </h1>
-        <ul className="grid grid-cols-3 w-84 h-84 rotate-45 m-40">
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
+        <div className="md:m-40 m-32 mt-40 mb-24">
+          <ul
+            className="grid grid-cols-3 rotate-45
+          md:h-84 h-72
+          md:w-84 w-72"
+          >
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-            <Link to="https://www.instagram.com/fabincci_barber/">
-              <AiFillInstagram />
-            </Link>
-          </li>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              <Link to="https://www.instagram.com/fabincci_barber/">
+                <AiFillInstagram />
+              </Link>
+            </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-            <Link to="" target="_blank">
-              <BsTwitter />
-            </Link>
-          </li>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              <Link to="" target="_blank">
+                <BsTwitter />
+              </Link>
+            </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-            {/* <AiFillFacebook /> */}
-            <Link to="" target="_blank">
-              <FiTwitch />
-            </Link>
-          </li>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              {/* <AiFillFacebook /> */}
+              <Link to="" target="_blank">
+                <FiTwitch />
+              </Link>
+            </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-            {/* <BsPinterest /> */}
-            <Link to="https://www.youtube.com/@fabinccibarber" target="_blank">
-              <AiFillYoutube />
-            </Link>
-          </li>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              {/* <BsPinterest /> */}
+              <Link
+                to="https://www.youtube.com/@fabinccibarber"
+                target="_blank"
+              >
+                <AiFillYoutube />
+              </Link>
+            </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-            {/* <AiFillLinkedin /> */}
-            <Link
-              to="https://www.tiktok.com/@fabincci?is_from_webapp=1&sender_device=pc"
-              target="_blank"
-            >
-              <FaTiktok />
-            </Link>
-          </li>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              {/* <AiFillLinkedin /> */}
+              <Link
+                to="https://www.tiktok.com/@fabincci?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+              >
+                <FaTiktok />
+              </Link>
+            </li>
 
-          <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-            <Link to="" target="_blank">
-              <AiOutlineWhatsApp />
-            </Link>
-          </li>
-        </ul>
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              <Link to="" target="_blank">
+                <AiOutlineWhatsApp />
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

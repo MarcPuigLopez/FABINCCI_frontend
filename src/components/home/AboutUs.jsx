@@ -8,9 +8,10 @@ import Video3 from "../../assets/videos/AboutUsVideo3.mp4";
 
 const AboutUs = (props, ref) => {
   return (
-    <motion.div ref={ref} className="lg:h-[84vh] lg:w-screen w-aboutUs-width">
+    <div ref={ref} className="lg:h-[84vh] w-screen lg:w-aboutUs-width">
       <motion.h1
-        className="p-2 pb-0 pt-3 text-7xl font-bold text-white text-center font-press-start"
+        className="p-2 pt-3 font-bold text-white text-center font-press-start
+                    xl:text-7xl md:text-6xl text-3xl"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
@@ -23,12 +24,21 @@ const AboutUs = (props, ref) => {
       >
         SABER HACER
       </motion.h1>
+
       <div className="">
-        <div className="w-home-width h-[80vh] relative aspect-auto justify-between -ml-3 mt-1 grid-cols-5 grid">
+        <div
+          className="xl:h-[80vh] relative aspect-auto justify-between -ml-3 mt-1 grid 
+                        md:mx-16
+                        lg:grid-cols-5 grid-cols-2
+                        lg:grid-rows-1 grid-rows-3"
+        >
           <div className="col-start-1">
             {/* Cadro y video 1 */}
             <motion.div
-              className="m-10 w-72 h-128 border"
+              className="border
+                          xl:m-10 ml-10 m-7 mr-3
+                          xl:w-72 md:w-56 w-24 
+                          xl:h-128 md:h-80 h-52"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -43,7 +53,10 @@ const AboutUs = (props, ref) => {
               }}
             >
               <motion.div
-                className="m-10 w-72 h-128 border"
+                className="border 
+                            xl:m-10 ml-10 m-7 mr-3
+                            xl:w-72 md:w-56 w-24
+                            xl:h-128 md:h-80 h-52"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -62,7 +75,7 @@ const AboutUs = (props, ref) => {
                   loop
                   muted
                   playsInline
-                  className="lazy"
+                  className="lazy w-full h-full object-cover"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
@@ -82,9 +95,11 @@ const AboutUs = (props, ref) => {
             </motion.div>
           </div>
           {/* Text 1 */}
-          <div className="col-start-2">
+          <div className="xl:col-start-2 col-start-2">
             <motion.div
-              className="p-14 pr-0 m-4"
+              className=" xl:p-14 
+                          md:py-28 py-10 
+                          md:pr-16 pr-5"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -97,24 +112,49 @@ const AboutUs = (props, ref) => {
                 visible: { opacity: 1 },
               }}
             >
-              <h2 className="p-2 text-xl font-bold text-white text-center my-10 mt-20">
+              <h2
+                className=" font-bold text-white text-center
+                              xl:p-2 py-2 pt-5
+                              xl:text-xl text-sm
+                              xl:my-10
+                              xl:mt-20
+                              "
+              >
                 {" "}
                 ¿No encuentras el look adecuado?{" "}
               </h2>
-              <h2 className="p-2 text-xl font-bold text-white text-center my-10">
+              <h2
+                className="font-bold text-white text-center
+                              xl:p-2 py-2
+                              xl:text-xl text-sm
+                              xl:my-10
+                              xl:mt-20"
+              >
                 {" "}
                 ¿Te cuesta expresar que tipo de peinado quieres?{" "}
               </h2>
-              <h2 className="p-2 text-xl font-bold text-white text-center my-10">
+              <h2
+                className="font-bold text-white text-center
+                              xl:p-2 py-2
+                              xl:text-xl text-sm
+                              xl:my-10
+                              xl:mt-20"
+              >
                 {" "}
                 ¿Tu barbero/estilista no te deja como tú le pides?{" "}
               </h2>
             </motion.div>
           </div>
           {/* Cadro y video 2 */}
-          <div className="col-start-3">
+          <div
+            className=" xl:col-start-3 col-start-2
+                        xl:row-start-1 row-start-2"
+          >
             <motion.div
-              className="m-10 w-72 h-128 border"
+              className=" border
+                          xl:m-10 md:ml-20 ml-10 m-7 mr-3
+                          xl:w-72 md:w-56 w-24 
+                          xl:h-128 md:h-80 h-52"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -129,7 +169,10 @@ const AboutUs = (props, ref) => {
               }}
             >
               <motion.div
-                className="m-10 w-72 h-128 border"
+                className=" border
+                            xl:m-10 ml-10 m-7 mr-3
+                            xl:w-72 md:w-56 w-24 
+                            xl:h-128 md:h-80 h-52"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -144,7 +187,7 @@ const AboutUs = (props, ref) => {
                 }}
               >
                 <motion.video
-                  className="lazy"
+                  className="lazy w-full h-full object-cover"
                   autoPlay
                   loop
                   muted
@@ -168,9 +211,14 @@ const AboutUs = (props, ref) => {
             </motion.div>
           </div>
           {/* Text 2 */}
-          <div className="col-start-4">
+          <div
+            className="xl:col-start-4 col-start-1
+                          xl:row-start-1 row-start-2"
+          >
             <motion.div
-              className="p-14 pr-0 m-4 "
+              className=" xl:p-14  
+                          xl:pt-32 md:pt-16 pt-7 pl-10 pr-0
+                          xl:m-4"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -183,25 +231,52 @@ const AboutUs = (props, ref) => {
                 visible: { opacity: 1 },
               }}
             >
-              <p className="pt-10 text-white text-justify">
+              <p
+                className="text-white
+                              xl:text-justify text-center
+                              xl:pt-10
+                              xl:text-base md:text-base text-xs"
+              >
                 En <b>FABINCCI Barber S.L. </b>, somos expertos en adaptar cada
                 estilo a las fascinantes particularidades de cada persona.
                 <br />
+              </p>
+              <p
+                className="text-white
+                              xl:text-justify text-center
+                              xl:pt-10
+                              xl:text-base md:text-base text-xs"
+              >
                 <br /> A través de años de experiencia y formación continua,
                 hemos creado un conjunto de habilidades y técnicas que nos
                 permite superar las expectativas de nuestros clientes y brindar
                 resultados impecables.
                 <br />
+              </p>
+              <p
+                className="text-white 
+                              xl:text-justify text-center
+                              xl:block hidden
+                              xl:pt-10
+                              xl:text-base md:text-base text-xs"
+              >
                 <br />
                 No importa cuán desafiante parezca, ¡estamos seguros de que
-                juntos lograremos descubrir el look perfecto para ti!
+                lograremos descubrir el look perfecto para ti!
               </p>
             </motion.div>
           </div>
           {/* Cadro y video 3 */}
-          <div className="col-start-5">
+          <div
+            className=" xl:col-start-5 col-start-1
+                        xl:row-start-1 row-start-3
+                        md:mb-10 mb-20"
+          >
             <motion.div
-              className="m-10 w-72 h-128 border"
+              className=" border
+                          xl:m-10 ml-10 m-5 mr-3
+                          xl:w-72 md:w-56 w-24 
+                          xl:h-128 md:h-80 h-52"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -216,7 +291,10 @@ const AboutUs = (props, ref) => {
               }}
             >
               <motion.div
-                className="m-10 w-72 h-128 border"
+                className="border
+                            xl:m-10 ml-10 m-7 mr-3
+                            xl:w-72 md:w-56 w-24 
+                            xl:h-128 md:h-80 h-52"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -231,7 +309,7 @@ const AboutUs = (props, ref) => {
                 }}
               >
                 <motion.video
-                  className="lazy"
+                  className="lazy w-full h-full object-cover"
                   autoPlay
                   loop
                   muted
@@ -254,9 +332,22 @@ const AboutUs = (props, ref) => {
               </motion.div>
             </motion.div>
           </div>
+          <div
+            className="col-start-2
+                            row-start-3"
+          >
+            <p
+              className=" text-white text-center pt-16 md:pt-32 px-5 md:text-base text-xs pl-6 pr-6
+                              "
+            >
+              <br /> No importa cuán desafiante parezca, ¡estamos seguros de que
+              lograremos descubrir el look perfecto para ti!
+              <br />
+            </p>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
