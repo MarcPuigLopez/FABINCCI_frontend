@@ -15,6 +15,7 @@ import ResetPassword from "./components/auth/ResetPassword";
 import NewPassword from "./components/auth/NewPassword";
 import ConfirmAccount from "./components/auth/ConfirmAccount";
 import NotFound from "./components/auxPages/NotFound";
+import PrivacyPolicy from "./components/auxPages/PrivacyPolicy";
 
 // Import de contexts
 import { AuthProvider } from "./context/AuthProvider";
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             {/* Ruta NotFound */}
             <Route path="/*" element={<NotFound />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
             {/* Ruta Pública Home */}
             <Route path="/" element={<HomeLayout />}>

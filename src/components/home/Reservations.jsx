@@ -58,7 +58,7 @@ const Reservas = (props, ref) => {
                 <span className="">RESERVAS</span>
               </h1>
               <div className="relative">
-                <div className="absolute top-0 left-0">
+                <div className="bg-white ml-10 absolute top-3 left-0 rounded">
                   <button
                     onClick={() => {
                       setShowTablon(true);
@@ -66,7 +66,7 @@ const Reservas = (props, ref) => {
                     }}
                     className="flex text-black font-bold py-2 px-4"
                   >
-                    <BsArrowLeftCircleFill className="my-auto text-xl ml-5 mr-3" />
+                    <BsArrowLeftCircleFill className="my-auto text-xl mr-3" />
                     Volver
                   </button>
                 </div>

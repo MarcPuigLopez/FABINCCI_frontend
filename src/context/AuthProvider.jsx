@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
       try {
         const { data } = await clienteAxios("/users/profile", config);
 
-        if (data.email === import.meta.env.VITE_ADMIN_EMAIL) {
+        if (data.email === import.meta.env.VITE_ADMIN_EMAIL || data.email === import.meta.env.VITE_MARK_EMAIL) {
           setIsAdmin(true);
         } else {
           setIsAdmin(false);

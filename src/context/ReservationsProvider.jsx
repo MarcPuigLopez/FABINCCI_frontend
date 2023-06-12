@@ -1,14 +1,11 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import clienteAxios from "../config/clienteAxios";
-
-import Alert from "../components/helpers/Alert";
 
 const ReservationsContext = createContext();
 
 const ReservationsProvider = ({ children }) => {
   const [reservations, setReservations] = useState([]);
   const [userReservations, setUserReservations] = useState([]);
-  const [alert, setAlert] = useState({});
   const [loading, setLoading] = useState(true);
 
   // Añadir una cita

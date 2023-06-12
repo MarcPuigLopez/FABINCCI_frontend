@@ -40,7 +40,7 @@ const TablonReservas = ({ handleReservation }) => {
 
   return (
     <div className="flex flex-col p-10 transition-all ease-linear transition-500">
-      <ul className="bg-white bg-opacity-50 p-8 grid xl:grid-cols-2 rounded-lg shadow-xl border-t border-r mx-auto">
+      <ul className="bg-white bg-opacity-70 p-8 grid xl:grid-cols-2 rounded-lg shadow-xl border-t border-r mx-auto">
         {servicios.map((servicio, index) => (
           <li
             key={index}

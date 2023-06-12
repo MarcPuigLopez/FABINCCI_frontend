@@ -348,15 +348,9 @@ const Calendar = (props) => {
               </h2>
             </div>
             <div className="flex justify-center">
-              <span className="m-2 mt-0 p-2 bg-gray-400 rounded-lg hover:bg-gray-300 transition-colors ">
+              <span className="m-2 mt-0 p-2 bg-yellow-500 rounded-lg hover:bg-yellow-400 transition-colors ">
                 <Link to="/login">Iniciar sesión</Link>
               </span>
-              <button
-                className="m-2 mt-0 p-2 bg-gray-400 rounded-lg hover:bg-gray-300 transition-colors"
-                onClick={handleCloseModal}
-              >
-                Cerrar
-              </button>
             </div>
           </div>
         </div>
