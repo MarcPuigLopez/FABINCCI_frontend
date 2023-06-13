@@ -8,9 +8,9 @@ import Video3 from "../../assets/videos/AboutUsVideo3.mp4";
 
 const AboutUs = (props, ref) => {
   return (
-    <div ref={ref} className="xl:h-[84vh] w-screen lg:w-aboutUs-width font-Roboto">
+    <div ref={ref} className="h-[84vh] w-screen lg:w-aboutUs-width font-Roboto z-10">
       <motion.h1
-        className="p-2 pt-3 font-bold text-white text-center font-Roboto
+        className="p-2 pt-6 font-bold text-white text-center font-Roboto
                     xl:text-7xl md:text-6xl text-3xl"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
@@ -27,7 +27,7 @@ const AboutUs = (props, ref) => {
 
       <div className="">
         <div
-          className="xl:h-[80vh] relative aspect-auto justify-between -ml-3 mt-1 grid 
+          className="xl:h-[70vh] relative aspect-auto justify-between -ml-3 mt-1 grid 
                         md:mx-16
                         lg:grid-cols-5 grid-cols-2
                         lg:grid-rows-1 grid-rows-3"
@@ -35,10 +35,10 @@ const AboutUs = (props, ref) => {
           <div className="col-start-1">
             {/* Cadro y video 1 */}
             <motion.div
-              className="border
+              className=" border
                           2xl:m-10 xl:m-10 sm:ml-20 ml-10 m-7 mr-3
                           2xl:w-72 xl:w-64 lg:w-60 md:w-52 sm:w-36 w-24 
-                          2xl:h-120 xl:h-96 lg:h-84 md:h-72 sm:h-64 h-52"
+                          2xl:h-120 xl:h-96 lg:h-84 md:h-72 sm:h-64 h-52 "
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}

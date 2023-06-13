@@ -14,10 +14,10 @@ import Item6 from "../../assets/images/HomeElements/Item6.png";
 
 const Home = (props, ref) => {
   return (
-    <div ref={ref} className="lg:pt-0 pt-24 flex lg:h-[84vh] w-screen font-Roboto">
+    <div ref={ref} className="lg:pt-0 pt-24 flex h-[80vh] w-screen font-Roboto">
       <div
         className="w-screen h-[84vh] grid 
-                        lg:grid-cols-8 grid-cols-1 "
+                        lg:grid-cols-8 grid-cols-1"
       >
         {/* COLUMNA 1 */}
         <div
@@ -145,7 +145,7 @@ const Home = (props, ref) => {
           {/* ITEM 4 */}
           <div className="justify-center flex items-center col-start-4 col-span-2 row-start-1 row-span-2">
             <motion.img
-              className="animate-pulse p-16 mt-11 -ml-4"
+              className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 -ml-5 pt-10"
               src={Item4}
               alt="Item4"
               initial={{ scale: 0 }}
@@ -162,7 +162,7 @@ const Home = (props, ref) => {
           {/* ITEM 5 */}
           <div className="justify-center flex items-center col-start-2 col-span-2 row-start-3 row-span-2">
             <motion.img
-              className="animate-pulse p-16 -ml-2 mt-6"
+              className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 -ml-2 "
               src={Item5}
               alt="Item5"
               initial={{ scale: 0 }}
@@ -180,7 +180,7 @@ const Home = (props, ref) => {
           {/* ITEM 6 */}
           <div className="justify-center flex items-center col-start-4 col-span-2 row-start-5 row-span-2">
             <motion.img
-              className="animate-pulse p-24 -mt-14 -ml-5"
+              className="animate-pulse invisible md:visible md:w-5 lg:w-10 xl:w-14 xl:-ml-12 -ml-8 -mt-10"
               src={Item6}
               alt="Item6"
               initial={{ scale: 0 }}

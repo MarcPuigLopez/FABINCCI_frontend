@@ -29,14 +29,20 @@ const Reservas = (props, ref) => {
       <div className="grid lg:h-[84vh] relative lg:w-reservas-width w-screen">
         {showTablon && (
           <motion.div
-            exit={{ opacity: 0 }}
-            initial={{ opacity: showCalendar ? 1 : 0, duration: 1000 }}
-            animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 3,
+          }}
             className={`transition-opacity duration-1000 p-5 mx-auto${
               showTablon ? "" : "hidden"
             }`}
           >
-            <h1 className=" font-press-start p-10 
+            <h1 className=" font-press-start pt-6 
                             font-bold text-white text-center text-shadow-lg shadow-gray-700
                             lg:text-7xl text-5xl">
               <span className="">NUESTRAS TARIFAS</span>
@@ -46,9 +52,15 @@ const Reservas = (props, ref) => {
         )}
         {showCalendar && (
           <motion.div
-            exit={{ opacity: 0 }}
-            initial={{ opacity: showTablon ? 1 : 0, duration: 1000 }}
-            animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 3,
+          }}
             className=""
           >
             <div

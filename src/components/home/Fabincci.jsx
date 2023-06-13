@@ -7,14 +7,17 @@ const Fabincci = (props, ref) => {
   const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
-    <div ref={ref} className="lg:h-[84vh] w-screen lg:w-fabincci-width font-Roboto">
+    <div
+      ref={ref}
+      className="lg:h-[84vh] w-screen lg:w-fabincci-width font-Roboto"
+    >
       <div
         className=" grid w-screen lg:w-fabincci-width
                     lg:grid-cols-5 md:grid-cols-3 grid-cols-2
                     lg:grid-rows-1 grid-rows-3"
       >
         {/* TEXTO 1 */}
-        <div
+        <motion.div
           className="lg:col-start-2 md:col-start-1 md:row-start-2 col-start-1 row-start-2
                        bg-white bg-opacity-20 backdrop-filter backdrop-blur-md 
                        border border-white border-opacity-30 drop-shadow-2xl
@@ -22,6 +25,15 @@ const Fabincci = (props, ref) => {
                        shadow-gray-700 font-Roboto text-justify
                        lg:mb-60 lg:-ml-20 lg:mr-28
                        my-2 mx-5"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 2,
+          }}
         >
           <h2 className="text-2xl text-center font-bold p-5">FABINCCI</h2>
           <p className="lg:text-base text-xs p-5">
@@ -41,10 +53,10 @@ const Fabincci = (props, ref) => {
               </p>
             )}
           </p>
-        </div>
+        </motion.div>
 
         {/* TITULO */}
-        <div className="lg:col-start-3 md:col-start-2 col-start-1 sm:col-span-1 col-span-2 justify-center text-center">
+        <div className="lg:col-start-3 md:col-start-2 col-start-1 md:col-span-1 sm:col-span-2 col-span-2 justify-center text-center">
           <motion.h1
             className="mt-10 xl:text-8xl lg:text-7xl text-6xl font-bold text-white pt-6 p-5 text-shadow-lg shadow-gray-700 font-Roboto"
             initial={{ scale: 0 }}
@@ -63,7 +75,7 @@ const Fabincci = (props, ref) => {
 
         {/* TEXTO 2 */}
 
-        <div
+        <motion.div
           className="lg:col-start-4 md:col-start-3 md:row-start-2 col-start-2 row-start-2
            bg-white bg-opacity-20 backdrop-filter backdrop-blur-md 
                         border border-white border-opacity-30 drop-shadow-2xl
@@ -71,6 +83,15 @@ const Fabincci = (props, ref) => {
                         shadow-gray-700 font-Roboto text-justify
                         lg:mb-60 lg:-mr-20 lg:ml-28
                         my-2 mx-5"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 2,
+          }}
         >
           <h2 className="text-2xl text-center font-bold p-5">FABINCCI</h2>
           <p className="lg:text-base text-xs p-5">
@@ -88,7 +109,7 @@ const Fabincci = (props, ref) => {
               </p>
             )}
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ export default {
         "contact-width": "1917px",
         84: "22rem",
         100: "25rem",
+        110: "27.5rem",
         120: "30rem",
         128: "32rem",
       },

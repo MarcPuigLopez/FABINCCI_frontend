@@ -1,5 +1,7 @@
 import React from "react";
 
+import { motion } from "framer-motion";
+
 import {
   AiFillInstagram,
   AiFillYoutube,
@@ -14,22 +16,45 @@ import { Link } from "react-router-dom";
 
 const Contact = (props, ref) => {
   return (
-    <div ref={ref} className="lg:h-[84vh] w-screen font-Roboto">
+    <div ref={ref} className="lg:h-[84vh] w-screen font-Roboto z-10">
       {/* <div>
         <h1 className="font-press-start p-5 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
           CONTACTA CON NOSOTROS
         </h1>
       </div> */}
       <div className="flex flex-col p-10 mx-auto justify-center items-center">
-        <h1 className="md:text-5xl text-center text-3xl font-bold text-white pt-3">
+        <motion.h1
+          className="md:text-5xl text-center text-3xl font-bold text-white pt-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 3,
+          }}
+        >
           {" "}
           ¡CONTACTA CON NOSOTROS!
-        </h1>
-        <div className="md:m-40 m-32 mt-40 mb-24">
+        </motion.h1>
+        <div className="h-1/2">.</div>
+        <motion.div
+          className=""
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            duration: 3,
+          }}
+        >
           <ul
             className="grid grid-cols-3 rotate-45
-          md:h-84 h-72
-          md:w-84 w-72"
+          lg: md:h-84 h-72
+          lg: md:w-84 w-72"
           >
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 
@@ -82,7 +107,7 @@ const Contact = (props, ref) => {
               </Link>
             </li>
           </ul>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

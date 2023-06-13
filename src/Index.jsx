@@ -26,27 +26,32 @@ function Index() {
 
   const scrollToHome = () => {
     homeRef.current.scrollIntoView({ behavior: "smooth" });
-    setScrollLeft(1);
+    setScrollLeft(0);
+    localStorage.setItem("scrollposHome", 0);
   };
 
   const scrollToAboutUs = () => {
     aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
     setScrollLeft(aboutUsRef.current.clientWidth);
+    localStorage.setItem("scrollposHome", aboutUsRef.current.clientWidth);
   };
 
   const scrollToFabincci = () => {
     fabincciRef.current.scrollIntoView({ behavior: "smooth" });
-    setScrollLeft(fabincciRef.current.clientWidth * 2);
+    setScrollLeft(fabincciRef.current.clientWidth);
+    localStorage.setItem("scrollposHome", fabincciRef.current.clientWidth * 2);
   };
 
   const scrollToReservas = () => {
     reservasRef.current.scrollIntoView({ behavior: "smooth" });
-    setScrollLeft(reservasRef.current.clientWidth * 3);
+    setScrollLeft(reservasRef.current.clientWidth);
+    localStorage.setItem("scrollposHome", reservasRef.current.clientWidth * 3);
   };
 
   const scrollToContact = () => {
     contactRef.current.scrollIntoView({ behavior: "smooth" });
-    setScrollLeft(contactRef.current.clientWidth * 4);
+    setScrollLeft(contactRef.current.clientWidth);
+    localStorage.setItem("scrollposHome", contactRef.current.clientWidth * 4);
   };
 
   // Configuració per mantenir el scroll al fer reload de la pàgina
@@ -75,15 +80,16 @@ function Index() {
   }, []);
 
   useEffect(() => {
+    const scrollpos = localStorage.getItem("scrollposHome");
     if (isTabletOrSmaller) {
       homeRef.current.scrollIntoView();
       setScrollLeft(0);
-    } else {
+    } else if (scrollpos) {
       containerRef.current.scrollTo({
-        left: scrollLeft,
+        left: parseInt(scrollpos),
       });
     }
-  }, [isTabletOrSmaller]);
+  }, []);
 
   // Configuració del scroll horitzontal de la pàgina
   const handleScroll = (event) => {
@@ -135,7 +141,9 @@ function Index() {
       <div
         ref={containerRef}
         className={`${
-          isTabletOrSmaller ? "overflow-x-hidden" : "flex flex-nowrap overflow-x-scroll"
+          isTabletOrSmaller
+            ? "overflow-x-hidden"
+            : "flex flex-nowrap overflow-x-scroll"
         } overflow-y-hidden`}
         onWheel={handleScroll}
         onScroll={() => {
@@ -157,7 +165,7 @@ function Index() {
         <div className="bg-[url('assets/images/HomeBg/bg-reservas.jpeg')] bg-cover bg-no-repeat bg-center">
           <Reservas ref={reservasRef} />
         </div>
-        <div className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] bg-cover bg-no-repeat bg-center">
+        <div className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] bg-fixed bg-cover bg-center">
           <Contact ref={contactRef} />
         </div>
       </div>
