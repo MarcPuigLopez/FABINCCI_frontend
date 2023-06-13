@@ -10,7 +10,7 @@ const AboutUs = (props, ref) => {
   return (
     <div
       ref={ref}
-      className="h-[84vh] w-screen lg:w-aboutUs-width font-Roboto z-10"
+      className="lg:h-[84vh] h-full w-screen lg:w-aboutUs-width font-Roboto z-10"
     >
       <motion.h1
         className="p-2 pt-6 font-bold text-white text-center font-Roboto

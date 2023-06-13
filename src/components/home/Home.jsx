@@ -14,14 +14,14 @@ import Item6 from "../../assets/images/HomeElements/Item6.png";
 
 const Home = (props, ref) => {
   return (
-    <div ref={ref} className="lg:pt-0 pt-24 flex h-[80vh] w-screen font-Roboto">
+    <div ref={ref} className="lg:pt-0 pt-24 flex lg:h-[84vh] h-screen w-screen font-Roboto">
       <div
-        className="w-screen h-[84vh] grid 
+        className="w-screen lg:h-[84vh] h-screen grid 
                         lg:grid-cols-8 grid-cols-1"
       >
         {/* COLUMNA 1 */}
         <div
-          className="h-[84vh] col-start-1 col-span-3 grid-cols-6 grid-rows-6 
+          className="lg:h-[84vh] h-screen col-start-1 col-span-3 grid-cols-6 grid-rows-6 
                         lg:grid hidden"
         >
           {/* ITEM 1 */}
@@ -127,8 +127,8 @@ const Home = (props, ref) => {
             }}
           >
             <h4
-              className=" pt-3 text-center
-                          xl:px-0 px-5
+              className=" md:pt-5 sm:pt-7 pt-10 text-center
+                          lg:px-0 px-10
                           xl:mt-0 lg:mt-2"
             >
               Brindamos el mejor servicio adaptado a cada persona para una

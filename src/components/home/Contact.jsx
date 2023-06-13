@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const Contact = (props, ref) => {
   return (
-    <div ref={ref} className="lg:h-[84vh] w-screen font-Roboto z-10">
+    <div ref={ref} className="lg:h-[84vh] h-screen w-screen font-Roboto">
       {/* <div>
         <h1 className="font-press-start p-5 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
           CONTACTA CON NOSOTROS
@@ -50,9 +50,9 @@ const Contact = (props, ref) => {
           }}
         >
           <ul
-            className="grid grid-cols-3 rotate-45
-          lg: md:h-84 h-72
-          lg: md:w-84 w-72"
+            className=" grid grid-cols-3 rotate-45
+                        lg: md:h-84 h-64
+                        lg: md:w-84 w-70"
           >
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 

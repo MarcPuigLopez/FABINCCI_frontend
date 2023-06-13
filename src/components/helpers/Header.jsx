@@ -12,7 +12,7 @@ import useAuth from "../../hooks/useAuth";
 import { useMediaQuery } from "react-responsive";
 
 const Header = (props) => {
-  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1279px)" });
   const [showMenu, setShowMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 

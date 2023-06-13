@@ -17,6 +17,7 @@ export default {
         "fabincci-width": "1917px",
         "reservas-width": "1917px",
         "contact-width": "1917px",
+        70: "17.5rem",
         84: "22rem",
         100: "25rem",
         110: "27.5rem",
