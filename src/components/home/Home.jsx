@@ -14,7 +14,7 @@ import Item6 from "../../assets/images/HomeElements/Item6.png";
 
 const Home = (props, ref) => {
   return (
-    <div ref={ref} className="lg:pt-0 pt-24 flex lg:h-[84vh] w-screen">
+    <div ref={ref} className="lg:pt-0 pt-24 flex lg:h-[84vh] w-screen font-Roboto">
       <div
         className="w-screen h-[84vh] grid 
                         lg:grid-cols-8 grid-cols-1 "
@@ -116,9 +116,21 @@ const Home = (props, ref) => {
             className="row-start-5 row-span-2 pt-2 text-white 
                                   2xl:text-lg lg:text-base sm:text-sm 
                                   2xl:px-16 xl:px-14  font-Roboto"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 2,
+            }}
           >
-            <h4 className="pt-3 text-center
-                            xl:px-5 md:px-32 px-16">
+            <h4
+              className=" pt-3 text-center
+                          xl:px-0 px-5
+                          xl:mt-0 lg:mt-2"
+            >
               Brindamos el mejor servicio adaptado a cada persona para una
               experiencia personalizada que superará todas tus expectativas.
             </h4>

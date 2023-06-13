@@ -18,6 +18,8 @@ export default {
         "reservas-width": "1917px",
         "contact-width": "1917px",
         84: "22rem",
+        100: "25rem",
+        120: "30rem",
         128: "32rem",
       },
       textShadow: {

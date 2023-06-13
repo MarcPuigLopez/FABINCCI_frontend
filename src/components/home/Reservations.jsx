@@ -25,7 +25,7 @@ const Reservas = (props, ref) => {
   };
 
   return (
-    <div ref={ref} className="flex lg:w-reservas-width w-screen">
+    <div ref={ref} className="flex lg:w-reservas-width w-screen font-Roboto">
       <div className="grid lg:h-[84vh] relative lg:w-reservas-width w-screen">
         {showTablon && (
           <motion.div

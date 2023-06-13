@@ -71,7 +71,7 @@ const UserAdmin = () => {
           handleReservationsClick={scrollToReservations}
         />
 
-        <div className="transition-all ease-linear transition-500 bg-white shadow rounded-lg m-7 p-10 w-full lg:ml-84 h-auto mt-24">
+        <div className="transition-all ease-linear transition-500 bg-white shadow rounded-lg m-7 p-10 w-full lg:ml-84 h-auto mt-8">
           <div className="h-auto">
             <CalendarTab ref={reservationsRef} />
             <AdminTab ref={adminRef} />

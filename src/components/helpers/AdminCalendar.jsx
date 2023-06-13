@@ -15,7 +15,8 @@ import useAuth from "../../hooks/useAuth";
 import { useMediaQuery } from "react-responsive";
 
 const AdminCalendar = () => {
-  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 737px)" });
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
+  const showSecondName = useMediaQuery({ query: "(min-width: 1520px)" });
 
   const [isLoading, setIsLoading] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -54,11 +55,11 @@ const AdminCalendar = () => {
   }, [currentWeek, reservations]);
 
   useEffect(() => {
-    const daysToAdd = actualDate - (actualWeek.getDate() + 1);
+    const daysToAdd = actualDate - (currentWeek.getDate() + 1);
     if (isTabletOrSmaller) {
       setCurrentWeek((prevWeek) => addDays(prevWeek, daysToAdd));
     }
-  }, [isTabletOrSmaller]);
+  }, [, isTabletOrSmaller]);
 
   const allHours = [
     "09:00",
@@ -163,7 +164,7 @@ const AdminCalendar = () => {
       ...prevData,
       name: reservationUser.name || "loading...",
       email: reservationUser.email || "loading...",
-      phone: reservationUser.telefono || "loading...",
+      phone: reservationUser.phone || "loading...",
       cutType: reservation.cutType || "loading...",
       day: day || "loading...",
       hour: hour || "loading...",
@@ -173,7 +174,7 @@ const AdminCalendar = () => {
       ...prevData,
       name: reservationUser.name || "loading...",
       email: reservationUser.email || "loading...",
-      phone: reservationUser.telefono || "loading...",
+      phone: reservationUser.phone || "loading...",
       cutType: reservation.cutType || "loading...",
       day: day || "loading...",
       hour: hour || "loading...",
@@ -310,7 +311,7 @@ const AdminCalendar = () => {
                     >
                       <span className="font-bold text-sm capitalize">
                         {reservationUser?.name}{" "}
-                        {isTabletOrSmaller
+                        {!showSecondName
                           ? reservationUser?.lastName.split(" ")[0]
                           : reservationUser?.lastName}{" "}
                         <br />
@@ -322,7 +323,7 @@ const AdminCalendar = () => {
                     </div>
                   ) : (
                     <div
-                      className="bg-green-100 hover:bg-green-200 py-4 p-2 
+                      className="bg-green-100 hover:bg-green-200 py-4 p-2
                                 rounded h-16 my-auto flex items-center justify-center cursor-pointer"
                       onClick={() => handleShowNewReservationButton(i, hour)}
                     >
@@ -364,7 +365,7 @@ const AdminCalendar = () => {
       </div>
       <div
         className="grid gap-4
-                      md:grid-cols-7 grid-cols-4"
+                      lg:grid-cols-7 grid-cols-4"
       >
         {renderWeekDays()}
       </div>
@@ -376,7 +377,7 @@ const AdminCalendar = () => {
         >
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-200 opacity-50" />
           <div
-            className="bg-white rounded-lg px-8 pt-10 pb-0 w-2/5 flex flex-col items-center justify-center relative"
+            className="bg-white rounded-lg px-8 pt-10 pb-0 lg:w-1/4 md:w-2/5 sm:w-3/5 mx-2 flex flex-col items-center justify-center relative"
             onClick={(e) => e.stopPropagation()}
           >
             <h2
@@ -396,7 +397,7 @@ const AdminCalendar = () => {
             )}
 
             {!isLoading && (
-              <div className="p-10 pt-3 py-20 w-full">
+              <div className="lg:p-10 pt-3 py-20 w-full">
                 <div className="mx-5 pl-2">
                   <div className="grid grid-cols-1 mt-5 gap-2">
                     <label className="block font-bold" htmlFor="name">
@@ -524,7 +525,7 @@ const AdminCalendar = () => {
         >
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-200 opacity-50" />
           <div
-            className="bg-white rounded-lg px-8 pt-10 pb-0 w-2/5 flex flex-col items-center justify-center relative"
+            className="bg-white rounded-lg px-8 pt-10 pb-0 sm:w-2/5 flex flex-col items-center justify-center relative"
             onClick={(e) => e.stopPropagation()}
           >
             <h2
@@ -546,8 +547,8 @@ const AdminCalendar = () => {
             )}
 
             {!isLoading && (
-              <div className="p-10 pt-3 py-20 w-full">
-                <div className="mx-5 pl-2">
+              <div className="lg:p-10 pt-3 lg:py-20 w-full">
+                <div className="lg:mx-5 pl-2">
                   <div className="grid grid-cols-1 mt-5 gap-2">
                     <label className="block font-bold" htmlFor="email">
                       Correo Electrónico:

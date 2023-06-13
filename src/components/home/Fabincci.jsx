@@ -7,9 +7,9 @@ const Fabincci = (props, ref) => {
   const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
-    <div ref={ref} className="lg:h-[84vh] w-screen ">
+    <div ref={ref} className="lg:h-[84vh] w-screen lg:w-fabincci-width font-Roboto">
       <div
-        className=" grid w-screen
+        className=" grid w-screen lg:w-fabincci-width
                     lg:grid-cols-5 md:grid-cols-3 grid-cols-2
                     lg:grid-rows-1 grid-rows-3"
       >
@@ -44,7 +44,7 @@ const Fabincci = (props, ref) => {
         </div>
 
         {/* TITULO */}
-        <div className="xl:col-start-3 md:col-start-2 col-start-1 sm:col-span-1 col-span-2 justify-center text-center">
+        <div className="lg:col-start-3 md:col-start-2 col-start-1 sm:col-span-1 col-span-2 justify-center text-center">
           <motion.h1
             className="mt-10 xl:text-8xl lg:text-7xl text-6xl font-bold text-white pt-6 p-5 text-shadow-lg shadow-gray-700 font-Roboto"
             initial={{ scale: 0 }}

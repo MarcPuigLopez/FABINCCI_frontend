@@ -7,10 +7,10 @@ const Footer = () => {
 
   return (
     <div
-      className="   fixed bottom-0 w-full lg:sticky
+      className="   fixed bottom-0 w-full 
                    bg-white text-black text-sm font-Roboto font-bold justify-between 
                     text-center lg:h-[5vh] h-[6vh] flex items-center cursor-default
-                    xl:px-36 px-5"
+                    xl:px-36 px-5 pb-2"
     >
       <div>
         <p

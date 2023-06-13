@@ -203,11 +203,11 @@ const UserTab = (props, ref) => {
               value={data.password}
               onChange={handleInputChange}
               disabled={true}
-              className="appearance-none border rounded w-full mr-5 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
             />
             {editing && (
               <Link
-                className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full max-w-max transition"
+                className=" bg-blue-500 hover:bg-blue-700 text-white font-bold ml-5 py-2 px-4 rounded w-full max-w-max transition"
                 to="/users/reset-password"
               >
                 Editar Contraseña

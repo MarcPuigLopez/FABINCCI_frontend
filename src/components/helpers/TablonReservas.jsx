@@ -40,18 +40,18 @@ const TablonReservas = ({ handleReservation }) => {
 
   return (
     <div className="flex flex-col transition-all ease-linear transition-500
-                    xl:p-10 p-3 items-center">
+                    xl:p-10 p-3 items-center font-Roboto">
       <ul className="bg-white bg-opacity-70 xl:p-8 p-2 py-6
                         rounded-lg shadow-xl border-t border-r 
-                        xl:grid grid
-                        xl:grid-cols-2 
+                        lg:grid grid
+                        lg:grid-cols-2 
                         sm:mx-auto
-                        sm:w-4/5 w-full 
+                        w-full 
                         mb-8">
         {servicios.map((servicio, index) => (
           <li
             key={index}
-            className=" flex border-b-2 border-black font-black text-black font-serif
+            className=" flex border-b-2 border-black font-black text-black
                         sm:m-3 m-1 my-2
                         sm:pl-3 pl-0
                         sm:pb-3 pb-1
