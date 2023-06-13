@@ -10,8 +10,8 @@ const Fabincci = (props, ref) => {
     <div ref={ref} className="lg:h-[84vh] w-screen ">
       <div
         className=" grid w-screen
-                    xl:grid-cols-5 md:grid-cols-3 grid-cols-2
-                    xl:grid-rows-1 grid-rows-3"
+                    lg:grid-cols-5 md:grid-cols-3 grid-cols-2
+                    lg:grid-rows-1 grid-rows-3"
       >
         {/* TEXTO 1 */}
         <div
@@ -20,7 +20,7 @@ const Fabincci = (props, ref) => {
                        border border-white border-opacity-30 drop-shadow-2xl
                        sm:text-white text-black text-shadow-lg 
                        shadow-gray-700 font-Roboto text-justify
-                       lg:mt-36 lg:mb-60 lg:-ml-20 lg:mr-28
+                       lg:mb-60 lg:-ml-20 lg:mr-28
                        my-2 mx-5"
         >
           <h2 className="text-2xl text-center font-bold p-5">FABINCCI</h2>
@@ -69,7 +69,7 @@ const Fabincci = (props, ref) => {
                         border border-white border-opacity-30 drop-shadow-2xl
                         sm:text-white text-black text-shadow-lg 
                         shadow-gray-700 font-Roboto text-justify
-                        lg:mt-36 lg:mb-60 lg:-mr-20 lg:ml-28
+                        lg:mb-60 lg:-mr-20 lg:ml-28
                         my-2 mx-5"
         >
           <h2 className="text-2xl text-center font-bold p-5">FABINCCI</h2>
