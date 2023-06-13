@@ -119,7 +119,7 @@ const AdminTab = (props, ref) => {
 
   return (
     <div className="p-4 top-[11vh] scroll-mt-40" ref={ref}>
-      <h2 className="ext-lg font-bold mb-4 font-Roboto text-2xl text-center">
+      <h2 className="font-bold mb-4 font-Roboto text-2xl text-center">
         Información del Administrador
       </h2>
 

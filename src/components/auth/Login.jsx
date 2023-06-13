@@ -48,7 +48,7 @@ const Login = (res) => {
       localStorage.setItem("token", data.token);
       setAuth(data);
       navigate("/login");
-      navigate(0)
+      navigate(0);
     } catch (error) {
       setAlert({
         msg: error.response.data.msg,
@@ -62,12 +62,12 @@ const Login = (res) => {
   return (
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center h-screen">
       <div className="flex justify-center items-center h-screen">
-        <div className="md:w-2/3 lg:w-2/5 p-16 bg-white rounded-lg">
-          <h1 className="text-sky-600 font-black text-6xl mb-5 text-center">
+        <div className="md:w-2/3 lg:w-2/5 w-4/5 xl:p-16 p-10 bg-white rounded-lg">
+          <h1 className="text-sky-600 font-black xl:text-6xl md:text-5xl text-4xl xl:mb-5 text-center">
             <Link to="/">
               FABINCCI <br />
             </Link>
-            <span className="text-slate-700">
+            <span className="text-slate-700 xl:text-5xl md:text-4xl text-3xl">
               <Link to="/">INICIAR SESIÓN</Link>
               {/* Login */}
             </span>
@@ -76,12 +76,12 @@ const Login = (res) => {
           {msg && <Alert alert={alert} />}
 
           <form
-            className="my-10 bg-white shadow rounded-lg p-10"
+            className="xl:my-10 bg-white shadow rounded-lg xl:p-10 md:p-5 p-3"
             onSubmit={handleSubmit}
           >
             <div className="my-5">
               <label
-                className="uppercase text-gray-600 block text-xl font-bold"
+                className="uppercase text-gray-600 block md:text-xl text-base font-bold"
                 htmlFor="email"
               >
                 Email
@@ -91,14 +91,14 @@ const Login = (res) => {
                 type="email"
                 placeholder="Correo electrónico"
                 // Email
-                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+                className="w-full mt-3 p-3 border rounded-xl bg-gray-50 md:text-lg text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="my-5">
               <label
-                className="uppercase text-gray-600 block text-xl font-bold"
+                className="uppercase text-gray-600 block md:text-xl text-base font-bold"
                 htmlFor="password"
               >
                 Contraseña
@@ -109,24 +109,31 @@ const Login = (res) => {
                 type="password"
                 placeholder="Contraseña"
                 // Password
-                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+                className="w-full mt-3 p-3 border rounded-xl bg-gray-50 md:text-lg text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
-            <div className="flex justify-between m-8">
+            <div
+              className=" md:flex 
+                          md:justify-between
+                          md:text-justify text-center 
+                          md:m-8 m-6 
+                          md:text-sm text-xs"
+            >
               <MDBCheckbox
                 name="flexCheck"
                 value={rememberMe}
                 onChange={handleRememberMe}
                 id="flexCheckDefault"
                 label=" Recuerdame"
-                // Remember me
+                className="md:mb-0 mb-4"
               />
 
               <Link
-                className="text-blue-600 text-sm"
+                className="text-blue-600 
+                            md:text-sm text-xs"
                 to="/users/reset-password"
               >
                 ¿Has olvidado tu contraseña?
@@ -142,8 +149,8 @@ const Login = (res) => {
             />
           </form>
 
-          <nav className="lg:flex lg:justify-center flex">
-            <div className="block text-center my-5 text-slate-500 text-sm">
+          <nav className="justify-center flex">
+            <div className="block text-center my-5 text-slate-500 md:text-sm text-xs">
               ¿Aún no te has registrado?
               {/* Not a member? */}
               <span className="text-blue-500 mx-2">

@@ -97,7 +97,7 @@ const AboutUs = (props, ref) => {
           {/* Text 1 */}
           <div className="xl:col-start-2 col-start-2">
             <motion.div
-              className=" xl:p-14 
+              className=" xl:p-12 md:p-10 p-4
                           md:py-28 py-10 
                           md:pr-16 pr-5"
               initial="hidden"
@@ -216,8 +216,8 @@ const AboutUs = (props, ref) => {
                           xl:row-start-1 row-start-2"
           >
             <motion.div
-              className=" xl:p-14  
-                          xl:pt-32 md:pt-16 pt-7 pl-10 pr-0
+              className=" xl:p-14 
+                          xl:pt-20 md:pt-16 pt-7 pl-10 pr-0
                           xl:m-4"
               initial="hidden"
               whileInView="visible"
@@ -253,17 +253,7 @@ const AboutUs = (props, ref) => {
                 resultados impecables.
                 <br />
               </p>
-              <p
-                className="text-white 
-                              xl:text-justify text-center
-                              xl:block hidden
-                              xl:pt-10
-                              xl:text-base md:text-base text-xs"
-              >
-                <br />
-                No importa cuán desafiante parezca, ¡estamos seguros de que
-                lograremos descubrir el look perfecto para ti!
-              </p>
+
             </motion.div>
           </div>
           {/* Cadro y video 3 */}
@@ -337,7 +327,12 @@ const AboutUs = (props, ref) => {
                             row-start-3"
           >
             <p
-              className=" text-white text-center pt-16 md:pt-32 px-5 md:text-base text-xs pl-6 pr-6
+              className=" text-white 
+                            xl:text-justify text-center
+                            lg:hidden block
+                            xl:pt-10
+                            xl:text-base md:text-base text-xs
+                            lg:mt-0 md:mt-32 mt-20
                               "
             >
               <br /> No importa cuán desafiante parezca, ¡estamos seguros de que

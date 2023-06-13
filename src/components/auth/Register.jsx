@@ -15,7 +15,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([name, lastName, email, phone, password, repetirPassword].includes("")) {
+    if (
+      [name, lastName, email, phone, password, repetirPassword].includes("")
+    ) {
       setAlert({
         msg: "Todos los campos son obligatorios",
         error: true,
@@ -92,10 +94,12 @@ const Register = () => {
   return (
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center h-screen">
       <div className="flex justify-center items-center h-screen">
-        <div className="md:w-2/3 lg:w-2/5 p-14 pb-2 bg-white rounded-lg">
-          <h1 className="text-sky-600 font-black text-5xl text-center">
-            <Link to="/">FABINCCI </Link>
-            <span className="text-slate-700">
+        <div className="md:w-2/3 lg:w-2/5 w-4/5 xl:p-8 p-6 bg-white rounded-lg">
+          <h1 className="text-sky-600 font-black md:text-5xl text-4xl xl:mb-2 text-center">
+            <Link to="/">
+              FABINCCI <br />{" "}
+            </Link>
+            <span className="text-slate-700 xl:text-5xl md:text-4xl text-3xl">
               <Link to="/">REGISTRO</Link>
               {/* REGISTER */}
             </span>
@@ -104,12 +108,12 @@ const Register = () => {
           {msg && <Alert alert={alert} />}
 
           <form
-            className="my-2 bg-white shadow rounded-lg p-10"
+            className="xl:my-2 bg-white shadow rounded-lg xl:p-10 md:p-5 p-3"
             onSubmit={handleSubmit}
           >
             <div className="my-1">
               <label
-                className="uppercase text-gray-600 block text-lg font-bold"
+                className="uppercase text-gray-600 block md:text-lg text-base font-bold"
                 htmlFor="name"
               >
                 Nombre
@@ -118,7 +122,7 @@ const Register = () => {
                 id="name"
                 type="text"
                 placeholder="Tu nombre"
-                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -126,7 +130,7 @@ const Register = () => {
 
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-lg font-bold"
+                className="uppercase text-gray-600 block lg:text-xl md:text-lg text-base font-bold"
                 htmlFor="lastName"
               >
                 Apellidos
@@ -135,7 +139,7 @@ const Register = () => {
                 id="lastName"
                 type="text"
                 placeholder="Tus apellidos"
-                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -143,7 +147,7 @@ const Register = () => {
 
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-lg font-bold"
+                className="uppercase text-gray-600 block lg:text-xl md:text-lg text-base font-bold"
                 htmlFor="email"
               >
                 Email
@@ -152,14 +156,14 @@ const Register = () => {
                 id="email"
                 type="email"
                 placeholder="Correo electrónico"
-                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-lg font-bold"
+                className="uppercase text-gray-600 block lg:text-xl md:text-lg text-base font-bold"
                 htmlFor="phone"
               >
                 Teléfono
@@ -168,14 +172,14 @@ const Register = () => {
                 id="phone"
                 type="phone"
                 placeholder="Teléfono de contacto"
-                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-lg font-bold"
+                className="uppercase text-gray-600 block lg:text-xl md:text-lg text-base font-bold"
                 htmlFor="password"
               >
                 Constraseña
@@ -184,7 +188,7 @@ const Register = () => {
                 id="password"
                 type="password"
                 placeholder="Constraseña de Registro"
-                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -192,7 +196,7 @@ const Register = () => {
 
             <div className="my-4">
               <label
-                className="uppercase text-gray-600 block text-lg font-bold"
+                className="uppercase text-gray-600 block lg:text-xl md:text-lg text-base font-bold"
                 htmlFor="password2"
               >
                 Repetir Constraseña
@@ -201,7 +205,7 @@ const Register = () => {
                 id="password2"
                 type="password"
                 placeholder="Repetir tu contraseña"
-                className="w-full mt-1 p-2 border rounded-xl bg-gray-50"
+                className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={repetirPassword}
                 onChange={(e) => setRepetirPassword(e.target.value)}
               />
@@ -210,15 +214,17 @@ const Register = () => {
             <input
               type="submit"
               value="Registrarse"
-              className="bg-sky-700 mb-1 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
+              className="bg-sky-700 mb-1 w-full py-3 text-white uppercase font-bold 
+                            rounded hover:cursor-pointer hover:bg-sky-800 transition-colors
+                            md:text-base text-sm"
             />
           </form>
 
           <nav className="lg:flex lg:justify-center">
-            <p className="block text-center my-4 text-slate-500 text-sm">
+            <p className="block text-center my-4 text-slate-500 md:text-sm text-xs">
               ¿Eres miembro?
               {/* Are you a member? */}
-              <span className="text-blue-500 mx-2">
+              <span className="text-blue-500 mx-2 md:text-sm text-xs">
                 <Link to="/login">Iniciar Sesión</Link>
               </span>
             </p>

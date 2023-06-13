@@ -108,7 +108,7 @@ const Calendar = (props) => {
       const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
       const isSunday = date.getDay() === 0;
 
-      const cellClasses = classNames("p-5", {
+      const cellClasses = classNames("sm:p-5 p-4", {
         "cursor-not-allowed pointer-events-none opacity-50":
           i < currentDay && currentMonth.getMonth() === Month.getMonth(),
         "cursor-pointer bg-white hover:bg-yellow-500 transition duration-400 ease-in-out bg-yellow-400 text-white hover:text-white":
@@ -166,7 +166,7 @@ const Calendar = (props) => {
   const { msg } = alert;
 
   return (
-    <div className="flex flex-col p-10 font-Bebas transition-all ease-linear transition-500">
+    <div className="flex flex-col xl:p-10 sm:p-6 p-0 font-Bebas transition-all ease-linear transition-500">
       <div className="flex w-full justify-between text-lg text-center font-bold p-2 rounded-t-lg bg-white">
         <button className="ml-4" onClick={handlePrevMonth}>
           {currentMonth.getMonth() === Month.getMonth() ? (
@@ -186,7 +186,7 @@ const Calendar = (props) => {
         </button>
       </div>
 
-      <div className="grid grid-cols-7 p-5 pt-1 bg-white text-black text-center font-bold uppercase">
+      <div className="grid grid-cols-7 md:p-5 p-2 pt-1 bg-white text-black text-center font-bold uppercase">
         <div className="">Lun</div>
         <div className="">Mar</div>
         <div className="">Mie</div>
@@ -224,7 +224,7 @@ const Calendar = (props) => {
             <div className=" bg-gray-900 opacity-50" />
             <div className=" bg-gray-200 opacity-0" />
             <div
-              className="bg-white border-2 border-black rounded-lg p-8 flex flex-col items-center justify-center relative"
+              className="bg-white border-2 border-black rounded-lg sm:p-8 p-5 flex flex-col items-center justify-center relative"
               onClick={(e) => e.stopPropagation()}
             >
               <h2
@@ -238,7 +238,7 @@ const Calendar = (props) => {
 
               {msg && <Alert alert={alert} className="font-sans" />}
 
-              <ul className="text-center mt-8">{renderHourList()}</ul>
+              <ul className="text-center sm:mt-8 mt-5">{renderHourList()}</ul>
               {isLoading && (
                 <div className="absolute items-center justify-center mt-5">
                   <FaSpinner className="animate-spin text-gray-500 h-8 w-8 " />

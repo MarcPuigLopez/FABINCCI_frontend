@@ -50,7 +50,7 @@ const UserTab = (props, ref) => {
   const handleEditClick = () => {
     setEditing(true);
   };
-email: userData.email
+  email: userData.email;
   const handleCancelClick = () => {
     setEditing(false);
     setData({
@@ -80,7 +80,7 @@ email: userData.email
       }, 2000);
       return;
     }
-    
+
     try {
       await modifyUser(data);
       setUserData({
@@ -92,7 +92,7 @@ email: userData.email
       });
 
       setEditing(false);
-      
+
       setAlert({
         msg: "Usuario modificado correctamente",
         error: false,
@@ -115,13 +115,13 @@ email: userData.email
 
   return (
     <div className="p-4 top-[11vh] scroll-mt-40" ref={ref}>
-      <h2 className="ext-lg font-bold mb-4 font-Roboto text-2xl text-center">
+      <h2 className="font-bold mb-4 font-Roboto text-2xl text-center">
         Información de usuario
       </h2>
 
       {msg && <Alert alert={alert} />}
 
-      <div className=" p-10 mx-auto lg:w-3/5 pb-20">
+      <div className=" lg:p-10 mx-auto lg:w-3/5 md:w-1/2 w-full pb-20">
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
             Nombre
@@ -174,10 +174,7 @@ email: userData.email
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="phone"
-          >
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="phone">
             Telefono
           </label>
           <input

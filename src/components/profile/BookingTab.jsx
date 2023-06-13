@@ -24,19 +24,19 @@ const BookingTab = (props, ref) => {
   };
 
   return (
-    <div className="p-4 scroll-mt-32" ref={ref}>
+    <div className="xl:p-4 scroll-mt-32" ref={ref}>
       <h2 className="mb-4 font-Roboto text-2xl font-bold text-center">
         Reserva tu cita
       </h2>
 
       {showTablon && (
-        <div className="p-5 mx-auto">
+        <div className="xl:p-5 mx-auto">
           <TablonReservas handleReservation={handleReservaClick} />
         </div>
       )}
       {showCalendar && (
         <div className="">
-          <div className="p-5 w-2/5 mx-auto">
+          <div className="lg:p-10 p-5 mx-auto lg:w-3/5 md:w-1/2 w-full pb-20">
             <div className="relative">
               <div className="absolute top-0 left-0">
                 <button

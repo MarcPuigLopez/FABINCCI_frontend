@@ -13,15 +13,15 @@ const PrivacyPolicy = () => {
             Volver al inicio
           </Link>
         </div>
-        <div className="flex justify-center -mt-10">
+        <div className="flex justify-center -mt-10 lg:pt-0 pt-20 -mb-16">
           <img src={logo} alt="Fabincci Logo" className="w-36 h-20" />
         </div>
 
-        <div className="text-white px-20 mt-28">
-          <h1 className="text-6xl text-white font-bold mt-20 mb-10">
+        <div className="text-white sm:px-20 pr-5 pl-2 mt-28 text-justify">
+          <h1 className="sm:text-6xl text-3xl text-white font-bold mt-20 mb-10">
             Política de privacidad
           </h1>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             La confidencialidad y la seguridad son valores primordiales para
             <b> FABINCCI BARBER SHOP</b> y, en consecuencia, asumimos el
             compromiso de garantizar la privacidad del Usuario en todo momento y
@@ -30,7 +30,7 @@ const PrivacyPolicy = () => {
             de Privacidad en relación con los Datos Personales que recopilamos
             de usted, explicándole:
           </p>
-          <ul className="list-disc text-lg mb-6 px-2 ml-16">
+          <ul className="list-disc sm:text-lg mb-6 px-2 ml-16">
             <li className="mb-2">
               Quién es el responsable del tratamiento de sus datos.
             </li>
@@ -47,19 +47,19 @@ const PrivacyPolicy = () => {
             <li className="mb-2">Cuáles son sus derechos y cómo ejercerlos.</li>
           </ul>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-xl text-white font-bold mt-20 mb-10">
             RESPONSABLE DEL TRATAMIENTO
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             <b>FABINCCI BARBER SHOP</b>, con NIF 08302, es el responsable del
             tratamiento de los datos personales recopilados a través de nuestro
             sitio web.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-xl text-white font-bold mt-20 mb-10">
             DATOS PERSONALES
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             Esta política de privacidad cubre todos los datos personales
             recopilados y utilizados por el sitio web de FABINCCI BARBER SHOP.
             Al proporcionar sus datos personales, usted garantiza que son
@@ -72,13 +72,13 @@ const PrivacyPolicy = () => {
             través del uso de cookies y otras tecnologías de seguimiento.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-xl text-white font-bold mt-20 mb-10">
             FINALIDADES, LEGITIMACIÓN Y CONSERVACIÓN DE LOS DATOS
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             Recopilamos sus datos personales con las siguientes finalidades:
           </p>
-          <ul className="list-disc text-lg mb-6 px-2 ml-16">
+          <ul className="list-disc sm:text-lg mb-6 px-2 ml-16">
             <li className="mb-2">
               Facilitarle un medio para que pueda contactarnos y responder a sus
               solicitudes de información.
@@ -95,7 +95,7 @@ const PrivacyPolicy = () => {
               selección presentes y futuros.
             </li>
           </ul>
-          <p>
+          <p className="sm:text-lg mb-6 px-2">
             La legitimación para el tratamiento de sus datos se basa en su
             consentimiento al proporcionarnos la información o al marcar la
             casilla de aceptación correspondiente. Conservaremos sus datos
@@ -103,10 +103,10 @@ const PrivacyPolicy = () => {
             finalidades mencionadas y de acuerdo con la legislación aplicable.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-xl text-white font-bold mt-20 mb-10">
             DESTINATARIOS DE SUS DATOS
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             Podemos comunicar sus datos personales a terceros que nos ayudan en
             la gestión de leads, proveedores de servicios de TI, servicios de
             alojamiento, mantenimiento y soporte de bases de datos, así como a
@@ -115,11 +115,11 @@ const PrivacyPolicy = () => {
             cumpla con la legislación aplicable.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-xl text-white font-bold mt-20 mb-10">
             SUS DERECHOS
           </h2>
-          <p className="text-lg mb-6 px-2">Usted tiene derecho a:</p>
-          <ul className="list-disc text-lg mb-6 px-2 ml-16">
+          <p className="sm:text-lg mb-6 px-2">Usted tiene derecho a:</p>
+          <ul className="list-disc sm:text-lg mb-6 px-2 ml-16">
             <li className="mb-2">
               Acceder a sus datos personales o solicitar su rectificación si son
               inexactos.
@@ -140,46 +140,45 @@ const PrivacyPolicy = () => {
               Ejercer otros derechos reconocidos por la legislación aplicable.
             </li>
           </ul>
-          <p>
-            Puede ejercer estos derechos enviando una solicitud por escrito a la
-            dirección 08302 o al correo electrónico fabincci@gmail.com. Además,
+          <p className="sm:text-lg mb-6 px-2">
+            Puede ejercer estos derechos enviando una solicitud al correo electrónico fabincci@gmail.com. Además,
             tiene derecho a presentar una reclamación ante la autoridad de
             protección de datos correspondiente si considera que sus derechos no
             han sido respetados.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-white font-bold mt-20 mb-10">
             SEGURIDAD DE SUS DATOS PERSONALES
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             Hemos implementado las medidas técnicas y organizativas necesarias
             para garantizar la seguridad de sus datos personales y evitar su
             alteración, pérdida, tratamiento o acceso no autorizado.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-white font-bold mt-20 mb-10">
             ACTUALIZACIÓN DE SUS DATOS
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             Es importante que nos mantenga informados de cualquier cambio o
             modificación en sus datos personales para garantizar su exactitud.
             No nos hacemos responsables de la veracidad de los datos
             proporcionados si no se nos informa de dichos cambios.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-white font-bold mt-20 mb-10">
             CONTACTO
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             Si tiene alguna pregunta o inquietud sobre nuestra Política de
             Privacidad o desea ejercer sus derechos, puede ponerse en contacto
             con nosotros a través de fabincci@gmail.com.
           </p>
 
-          <h2 className="text-2xl text-white font-bold mt-20 mb-10">
+          <h2 className="sm:text-2xl text-white font-bold mt-20 mb-10">
             CAMBIOS EN LA POLÍTICA DE PRIVACIDAD
           </h2>
-          <p className="text-lg mb-6 px-2">
+          <p className="sm:text-lg mb-6 px-2">
             Nos reservamos el derecho de actualizar o modificar esta Política de
             Privacidad en cualquier momento para adaptarla a cambios en nuestro
             sitio web o en la legislación aplicable. Le recomendamos que
