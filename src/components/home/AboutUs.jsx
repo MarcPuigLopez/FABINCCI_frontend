@@ -8,7 +8,10 @@ import Video3 from "../../assets/videos/AboutUsVideo3.mp4";
 
 const AboutUs = (props, ref) => {
   return (
-    <div ref={ref} className="h-[84vh] w-screen lg:w-aboutUs-width font-Roboto z-10">
+    <div
+      ref={ref}
+      className="h-[84vh] w-screen lg:w-aboutUs-width font-Roboto z-10"
+    >
       <motion.h1
         className="p-2 pt-6 font-bold text-white text-center font-Roboto
                     xl:text-7xl md:text-6xl text-3xl"
@@ -76,17 +79,14 @@ const AboutUs = (props, ref) => {
                   muted
                   playsInline
                   className="lazy w-full h-full object-cover"
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 0.8,
-                    delay: 0.5,
-                    ease: [0, 0.71, 0.2, 1.01],
-                  }}
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.5 },
-                    visible: { opacity: 1, scale: 1 },
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                    duration: 1,
                   }}
                 >
                   <source src={Video1} type="video/mp4"></source>
@@ -221,17 +221,14 @@ const AboutUs = (props, ref) => {
                   loop
                   muted
                   playsInline
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 0.8,
-                    delay: 0.5,
-                    ease: [0, 0.71, 0.2, 1.01],
-                  }}
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.5 },
-                    visible: { opacity: 1, scale: 1 },
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                    duration: 1,
                   }}
                 >
                   <source src={Video2} type="video/mp4"></source>
@@ -309,7 +306,6 @@ const AboutUs = (props, ref) => {
                           2xl:m-10 xl:m-10 sm:ml-20 ml-10 m-7 mr-3
                           2xl:w-72 xl:w-64 lg:w-64 md:w-56 w-24 
                           2xl:h-120 xl:h-96 lg:h-96 md:h-72 sm:h-64 h-52"
-
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -328,7 +324,6 @@ const AboutUs = (props, ref) => {
                             2xl:m-10 xl:m-10 ml-10 m-7 mr-3
                             2xl:w-72 xl:w-64 lg:w-64 md:w-56 sm:w-36 w-24 
                             2xl:h-120 xl:h-96 lg:h-96 md:h-72 sm:h-64 h-52"
-
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -348,17 +343,14 @@ const AboutUs = (props, ref) => {
                   loop
                   muted
                   playsInline
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 0.8,
-                    delay: 0.5,
-                    ease: [0, 0.71, 0.2, 1.01],
-                  }}
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.5 },
-                    visible: { opacity: 1, scale: 1 },
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                    duration: 1,
                   }}
                 >
                   <source src={Video3} type="video/mp4"></source>

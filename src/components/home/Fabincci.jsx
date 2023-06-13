@@ -25,14 +25,14 @@ const Fabincci = (props, ref) => {
                        shadow-gray-700 font-Roboto text-justify
                        lg:mb-60 lg:-ml-20 lg:mr-28
                        my-2 mx-5"
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{
             type: "spring",
             stiffness: 260,
             damping: 20,
-            duration: 2,
+            duration: 3,
           }}
         >
           <h2 className="text-2xl text-center font-bold p-5">FABINCCI</h2>
@@ -83,14 +83,14 @@ const Fabincci = (props, ref) => {
                         shadow-gray-700 font-Roboto text-justify
                         lg:mb-60 lg:-mr-20 lg:ml-28
                         my-2 mx-5"
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{
             type: "spring",
             stiffness: 260,
             damping: 20,
-            duration: 2,
+            duration: 3,
           }}
         >
           <h2 className="text-2xl text-center font-bold p-5">FABINCCI</h2>

@@ -25,9 +25,8 @@ const Contact = (props, ref) => {
       <div className="flex flex-col p-10 mx-auto justify-center items-center">
         <motion.h1
           className="md:text-5xl text-center text-3xl font-bold text-white pt-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
           transition={{
             type: "spring",
             stiffness: 260,
@@ -41,14 +40,13 @@ const Contact = (props, ref) => {
         <div className="h-1/2">.</div>
         <motion.div
           className=""
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
           transition={{
             type: "spring",
             stiffness: 260,
             damping: 20,
-            duration: 3,
+            duration: 2,
           }}
         >
           <ul
