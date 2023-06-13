@@ -7,20 +7,22 @@ const Footer = () => {
 
   return (
     <div
-      className=" bg-white text-black text-sm font-Roboto font-bold justify-between 
-                    text-center h-[5vh] flex items-center cursor-default
+      className="   fixed bottom-0 w-full lg:sticky
+                   bg-white text-black text-sm font-Roboto font-bold justify-between 
+                    text-center lg:h-[5vh] h-[6vh] flex items-center cursor-default
                     xl:px-36 px-5"
     >
       <div>
         <p
-          className=" xl:pl-10
+          className=" xl:pl-10 
                       xl:text-sm text-xs"
         >
-          @2023 Fabincci Barber Shop Mataró
+          @2023 Fabincci <br />
+          Barber Shop Mataró
         </p>
       </div>
       <div
-        className="flex gap-5 
+        className=" flex gap-5 
                     xl:text-sm text-xs"
       >
         <Link className="" onClick={handleClick} to="/privacy-policy">
@@ -29,10 +31,11 @@ const Footer = () => {
       </div>
       <div>
         <p
-          className="pr-10 cursor-default
+          className=" xl:pr-10 
                       xl:text-sm text-xs"
         >
-          Designed by Marc Puig López
+          Designed by <br />
+          Marc Puig López
         </p>
       </div>
     </div>

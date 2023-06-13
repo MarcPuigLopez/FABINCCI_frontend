@@ -44,9 +44,9 @@ const Contact = (props, ref) => {
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-              <Link to="" target="_blank">
+              {/* <Link to="" target="_blank">
                 <BsTwitter />
-              </Link>
+              </Link> */}
             </li>
 
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">

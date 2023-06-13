@@ -52,15 +52,18 @@ const Reservas = (props, ref) => {
             className=""
           >
             <div
-              className={`transition-opacity duration-1000 p-5 w-2/5 mx-auto ${
+              className={`transition-opacity duration-1000 p-5 mx-auto 
+                          lg:w-2/5 md:w-3/5 sm:w-4/5 w-full  ${
                 showCalendar ? "" : "hidden"
               }`}
             >
-              <h1 className="font-press-start p-10 text-7xl font-bold text-white text-center text-shadow-lg shadow-gray-700">
+              <h1 className=" font-press-start p-10
+                              font-bold text-white text-center text-shadow-lg shadow-gray-700
+                              lg:text-7xl text-5xl">
                 <span className="">RESERVAS</span>
               </h1>
               <div className="relative">
-                <div className="bg-white ml-10 absolute top-3 left-0 rounded">
+                <div className="bg-white absolute top-3 left-0 rounded">
                   <button
                     onClick={() => {
                       setShowTablon(true);

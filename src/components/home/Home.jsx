@@ -14,7 +14,7 @@ import Item6 from "../../assets/images/HomeElements/Item6.png";
 
 const Home = (props, ref) => {
   return (
-    <div ref={ref} className="flex lg:h-[84vh] w-screen">
+    <div ref={ref} className="lg:pt-0 pt-24 flex lg:h-[84vh] w-screen">
       <div
         className="w-screen h-[84vh] grid 
                         lg:grid-cols-8 grid-cols-1 "

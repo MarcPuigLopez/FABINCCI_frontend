@@ -215,13 +215,13 @@ const Register = () => {
           </form>
 
           <nav className="lg:flex lg:justify-center">
-            <a className="block text-center my-4 text-slate-500 text-sm">
+            <p className="block text-center my-4 text-slate-500 text-sm">
               ¿Eres miembro?
               {/* Are you a member? */}
               <span className="text-blue-500 mx-2">
                 <Link to="/login">Iniciar Sesión</Link>
               </span>
-            </a>
+            </p>
           </nav>
         </div>
       </div>

@@ -180,7 +180,7 @@ const Calendar = (props) => {
       const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
       const isSunday = date.getDay() === 0;
 
-      const cellClasses = classNames("p-5", {
+      const cellClasses = classNames("sm:p-5 p-4", {
         "bg-yellow-500 text-white":
           selectedDay?.toDateString() === date.toDateString() &&
           showModalLogged === true,
@@ -237,7 +237,7 @@ const Calendar = (props) => {
   const { msg } = alert;
 
   return (
-    <div className="flex flex-col p-10 font-Bebas transition-all ease-linear transition-500">
+    <div className="flex flex-col py-10 font-Bebas transition-all ease-linear transition-500">
       <div className="flex w-full justify-between text-lg text-center font-bold p-2 rounded-t-lg bg-white">
         <button className="ml-4" onClick={handlePrevMonth}>
           {currentMonth.getMonth() === Month.getMonth() ? (
@@ -257,7 +257,7 @@ const Calendar = (props) => {
         </button>
       </div>
 
-      <div className="grid grid-cols-7 p-5 pt-1 bg-white text-black text-center font-bold uppercase">
+      <div className="grid grid-cols-7 md:p-5 p-2 md:pt-1 py-1 bg-white text-black text-center font-bold uppercase">
         <div className="">Lun</div>
         <div className="">Mar</div>
         <div className="">Mie</div>
