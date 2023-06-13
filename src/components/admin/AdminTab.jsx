@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
+import { useMediaQuery } from "react-responsive";
+
 import Alert from "../helpers/Alert";
 
 const AdminTab = (props, ref) => {
@@ -10,6 +12,8 @@ const AdminTab = (props, ref) => {
   const [alert, setAlert] = useState({});
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
 
   const [data, setData] = useState({
     name: userData.name || "loading...",
@@ -121,7 +125,7 @@ const AdminTab = (props, ref) => {
 
       {msg && <Alert alert={alert} />}
 
-      <div className=" p-10 mx-auto lg:w-3/5 pb-20">
+      <div className=" lg:p-10 mx-auto lg:w-3/5 md:w-1/2 w-full pb-20">
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
             Nombre
@@ -213,7 +217,7 @@ const AdminTab = (props, ref) => {
                 className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full max-w-max transition"
                 to="/users/reset-password"
               >
-                Editar Contraseña
+                {isTabletOrSmaller ? "Editar" : "Editar Contraseña"}
               </Link>
             )}
           </div>

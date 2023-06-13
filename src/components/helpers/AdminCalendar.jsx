@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { format, startOfWeek, addDays, addWeeks } from "date-fns";
 import { RiArrowDropRightLine, RiArrowDropLeftLine } from "react-icons/ri";
+import { FaSpinner } from "react-icons/fa";
 import { sortBy, prop, set } from "ramda";
 
 import classNames from "classnames";
@@ -11,13 +12,18 @@ import Alert from "../helpers/Alert";
 import useReservations from "../../hooks/useReservations";
 import useAuth from "../../hooks/useAuth";
 
+import { useMediaQuery } from "react-responsive";
+
 const AdminCalendar = () => {
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 737px)" });
+
   const [isLoading, setIsLoading] = useState(false);
   const [editing, setEditing] = useState(false);
   const [alert, setAlert] = useState({});
 
   const actualDate = moment().format("DD");
   const actualHour = moment().format("HH:mm");
+  const actualWeek = startOfWeek(new Date());
 
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedHour, setSelectedHour] = useState(null);
@@ -47,6 +53,13 @@ const AdminCalendar = () => {
     getUsers();
   }, [currentWeek, reservations]);
 
+  useEffect(() => {
+    const daysToAdd = actualDate - (actualWeek.getDate() + 1);
+    if (isTabletOrSmaller) {
+      setCurrentWeek((prevWeek) => addDays(prevWeek, daysToAdd));
+    }
+  }, [isTabletOrSmaller]);
+
   const allHours = [
     "09:00",
     "10:00",
@@ -59,23 +72,13 @@ const AdminCalendar = () => {
   ];
 
   const handlePrevWeek = () => {
-    setCurrentWeek((prevWeek) => addWeeks(prevWeek, -1));
+    if (isTabletOrSmaller) setCurrentWeek((prevWeek) => addDays(prevWeek, -1));
+    else setCurrentWeek((prevWeek) => addWeeks(prevWeek, -1));
   };
 
   const handleNextWeek = () => {
-    setCurrentWeek((prevWeek) => addWeeks(prevWeek, 1));
-  };
-
-  const handleCloseModifyReservationModal = () => {
-    setEditing(false);
-    setData({
-      name: prevData.name,
-      email: prevData.email,
-      phone: prevData.phone,
-      cutType: prevData.cutType,
-      day: prevData.day,
-      hour: prevData.hour,
-    });
+    if (isTabletOrSmaller) setCurrentWeek((prevWeek) => addDays(prevWeek, 1));
+    else setCurrentWeek((prevWeek) => addWeeks(prevWeek, 1));
   };
 
   const handleCloseModal = () => {
@@ -200,20 +203,6 @@ const AdminCalendar = () => {
     deleteReservation(selectedReservation._id);
   };
 
-  const handleCloseNewReservationButton = () => {
-    setShowModalNewReservation(false);
-    setShowModalModifyReservation(false);
-    setData({
-      name: "",
-      email: "",
-      phone: "",
-      cutType: "Corte",
-      day: "",
-      hour: "",
-    });
-    setEditing(false);
-  };
-
   const handleCloseConfirmModalButton = () => {
     setSelectedDay();
     setSelectedHour();
@@ -250,7 +239,7 @@ const AdminCalendar = () => {
             return (
               <div
                 key={hour}
-                className="my-1 py-3 text-2xl text-center rounded h-16 flex items-center justify-center"
+                className="my-1 py-3 md:text-2xl text-xl text-center rounded h-16 flex items-center justify-center"
               >
                 {hour}
               </div>
@@ -261,7 +250,10 @@ const AdminCalendar = () => {
     );
 
     const startDay = parseInt(format(startDate, "d"));
-    const finalDay = parseInt(format(addDays(startDate, 5), "d"));
+
+    let finalDay = parseInt(format(addDays(startDate, 5), "d"));
+    if (isTabletOrSmaller)
+      finalDay = parseInt(format(addDays(startDate, 0), "d"));
 
     for (let i = startDay; i <= finalDay; i++) {
       const formattedDate = format(startDate, "EEEE d", { locale: es });
@@ -273,9 +265,11 @@ const AdminCalendar = () => {
       const sortedDayReservations = sortBy(prop("date"))(dayReservations);
 
       days.push(
-        <div key={i}>
+        <div key={i} className="lg:col-span-1 col-span-3">
           <div className="flex flex-col items-center justify-center h-12 border border-gray-200 rounded-md capitalize">
-            <div className="">{formattedDate}</div>
+            <div className="xl:text-lg lg:text-base md:text-sm text-sm">
+              {formattedDate}
+            </div>
           </div>
           <div
             className={classNames("grid grid-rows-8 p-2", {
@@ -304,7 +298,7 @@ const AdminCalendar = () => {
                 >
                   {reservation ? (
                     <div
-                      className="bg-red-100 hover:bg-red-200 transition py-4 p-2 rounded h-16 cursor-pointer"
+                      className="bg-red-100 hover:bg-red-200 transition lg:py-4 pt-3 p-2 rounded h-16 cursor-pointer"
                       onClick={() =>
                         handleShowModifyReservationModal(
                           i,
@@ -315,11 +309,14 @@ const AdminCalendar = () => {
                       }
                     >
                       <span className="font-bold text-sm capitalize">
-                        {reservationUser?.name} {reservationUser?.lastName}{" "}
+                        {reservationUser?.name}{" "}
+                        {isTabletOrSmaller
+                          ? reservationUser?.lastName.split(" ")[0]
+                          : reservationUser?.lastName}{" "}
                         <br />
                       </span>
 
-                      <span className="text-sm capitalize">
+                      <span className="lgmd:text-sm text-xs capitalize">
                         {reservation?.cutType} <br />
                       </span>
                     </div>
@@ -365,7 +362,12 @@ const AdminCalendar = () => {
           <RiArrowDropRightLine className="h-5 w-5" />
         </button>
       </div>
-      <div className="grid grid-cols-7 gap-4">{renderWeekDays()}</div>
+      <div
+        className="grid gap-4
+                      md:grid-cols-7 grid-cols-4"
+      >
+        {renderWeekDays()}
+      </div>
 
       {showModalModifyReservation && (
         <div

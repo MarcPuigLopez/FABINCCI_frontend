@@ -4,19 +4,18 @@ import React, { useEffect, useState, useRef } from "react";
 import logo from "../../assets/images/LogoNegro.png";
 
 //Icons
-import { RiMenuFill, RiArrowLeftSFill } from "react-icons/ri";
+import { RiArrowLeftSFill } from "react-icons/ri";
 
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import { useMediaQuery } from "react-responsive";
 
 // Hooks
 import useAuth from "../../hooks/useAuth";
 
 const HeaderProfile = (props) => {
-  const [showMenu, setShowMenu] = useState(false);
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const { logoutAuth } = useAuth();
 
@@ -36,60 +35,34 @@ const HeaderProfile = (props) => {
     window.location.reload(false);
   };
 
-  const handleLogin = () => {
-    localStorage.setItem("scrollposProfile", containerRef.current.scrollLeft);
-  };
-
   return (
     <header
-      className="w-full fixed top-0 z-50 lg:sticky"
+      className="flex bg-white border-b-2 items-center lg:px-10 pl-6 pr-5 justify-between 
+    xl:justify-end w-full p-4 h-[9vh] font-sarif sticky top-0 z-10"
     >
-      <div className="flex bg-white border-b-2 items-center xl:pl-56 pl-10 justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif">
-        <img src={logo} alt="Fabincci Logo" className="w-16 h-8 xl:hidden" />
-        <Link
-          to="/"
-          className="flex gap-2 text-center m-5 text-black uppercase text-sm"
-        >
-          <RiArrowLeftSFill className="my-auto text-xl" />
-          Volver al inicio
+      <Link
+        to="/"
+        className="flex gap-2 text-center lg:m-5 text-black uppercase lg:text-sm text-xs"
+      >
+        <RiArrowLeftSFill className="my-auto text-xl" />
+        {!isTabletOrSmaller ? "Volver al inicio" : "Inicio"}
+      </Link>
+
+      <nav className="w-full h-full right-0 top-0 flex-1 flex items-center justify-center lg:ml-0 ml-8">
+        <Link to="/" className="">
+          <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
         </Link>
+      </nav>
 
-        <nav
-          className={` fixed w-full h-full right-0 top-0 xl:static 
-        flex-1 flex flex-col xl:flex-row items-center justify-center gap-8 
-          xl:gap-32 transition ease-linear duration-500 xl:visible xl:opacity-100 z-50 ${
-            showMenu ? "visible opacity-100" : "invisible opacity-0"
-          }`}
+      <nav className="lg:flex lg:justify-center items-center h-full xl:visible xl:opacity-100 lg:gap-2 ">
+        <Link
+          className="block text-center lg:m-5 mt-3 text-black uppercase lg:text-sm text-xs "
+          to="/login"
+          onClick={handleLogout}
         >
-          <Link to="/" className="xl:block hidden">
-            <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
-          </Link>
-          <Link to="/" className="xl:hidden block">
-            FABINCCI
-          </Link>
-        </nav>
-
-        <nav
-          className={`lg:flex lg:justify-center items-center h-full xl:visible xl:opacity-100 gap-2 ${
-            showMenu ? "visible opacity-100" : "invisible opacity-0"
-          }`}
-        >
-          <Link
-            className="block text-center m-5 text-black uppercase text-sm "
-            to="/login"
-            onClick={handleLogout}
-          >
-            Cerrar Sesión
-          </Link>
-        </nav>
-
-        <button
-          onClick={() => setShowMenu(!showMenu)}
-          className="xl:hidden text-2xl p-2"
-        >
-          <RiMenuFill />
-        </button>
-      </div>
+          Cerrar Sesión
+        </Link>
+      </nav>
     </header>
   );
 };
