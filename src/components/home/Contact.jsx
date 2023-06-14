@@ -9,7 +9,6 @@ import {
   AiFillLinkedin,
   AiOutlineWhatsApp,
 } from "react-icons/ai";
-import { BsTwitter, BsPinterest } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
 import { FiTwitch } from "react-icons/fi";
 import { Link } from "react-router-dom";

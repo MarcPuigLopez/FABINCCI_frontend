@@ -165,7 +165,7 @@ function Index() {
         <div className="bg-[url('assets/images/HomeBg/bg-reservas.jpeg')] bg-cover bg-no-repeat bg-center">
           <Reservas ref={reservasRef} />
         </div>
-        <div className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] bg-fixed bg-cover bg-center">
+        <div className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] xl:bg-fixed md:bg-local bg-cover bg-center">
           <Contact ref={contactRef} />
         </div>
       </div>
