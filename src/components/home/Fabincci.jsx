@@ -34,7 +34,9 @@ const Fabincci = (props, ref) => {
           }}
         >
           <img
-            className="lg:w-44 md:w-40 w-32 h-auto border mx-auto"
+            className=" lg:h-44 md:h-40 h-32
+                        lg:w-44 md:w-40 w-32
+                        border mx-auto"
             src={Cut2}
             alt="Corte de pelo degradado con pico"
           ></img>
@@ -68,15 +70,17 @@ const Fabincci = (props, ref) => {
             compromiso hacia esta profesión.
             <br />
             <br />
+          </p>
+          <>
             {!isTabletOrSmaller && (
-              <a>
+              <p>
                 Nos enorgullece poder ayudar a nuestros clientes a encontrar el
                 corte perfecto que se adapte a sus necesidades diarias. Nuestro
                 objetivo es elevar el estado de ánimo de cada persona que pase
                 por nuestra barbería.
-              </a>
+              </p>
             )}
-          </p>
+          </>
         </motion.div>
 
         {/* IMAGEN 2
@@ -131,7 +135,9 @@ const Fabincci = (props, ref) => {
           }}
         >
           <img
-            className="lg:w-44 md:w-40 w-32 h-auto border mx-auto"
+            className=" lg:h-44 md:h-40 h-32
+                        lg:w-44 md:w-40 w-32
+                        border mx-auto"
             src={Cut1}
             alt="Corte de pelo degradado con dibujo"
           ></img>
@@ -165,6 +171,8 @@ const Fabincci = (props, ref) => {
             cabello y el estilo.
             <br />
             <br />
+          </p>
+          <>
             {!isTabletOrSmaller && (
               <a>
                 Gracias por visitar nuestra página principal y esperamos
@@ -173,7 +181,7 @@ const Fabincci = (props, ref) => {
                 brillar en todos los aspectos de tu vida!
               </a>
             )}
-          </p>
+          </>
         </motion.div>
       </div>
     </div>
