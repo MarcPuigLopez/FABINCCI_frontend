@@ -27,7 +27,10 @@ const Home = (props, ref) => {
           {/* ITEM 1 */}
           <div className="justify-center flex items-center col-start-2 col-span-2 row-start-1 row-span-2">
             <motion.img
-              className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 aspect-auto ml-5 pt-10"
+              className=" animate-pulse invisible md:visible 
+                          ml-5 pt-10
+                          xl:w-24 lg:w-16
+                          xl:h-auto lg:h-auto"
               src={Item1}
               alt="Recipiente para la cera"
               initial={{ scale: 0 }}
@@ -44,7 +47,10 @@ const Home = (props, ref) => {
           {/* ITEM 2 */}
           <div className="justify-center flex  items-center col-start-4 col-span-2 row-start-3 row-span-2">
             <motion.img
-              className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 aspect-auto -ml-5 -mt-3"
+              className=" animate-pulse invisible md:visible 
+                          -ml-5 -mt-3
+                          xl:w-24 lg:w-16
+                          xl:h-auto lg:h-auto"
               src={Item2}
               alt="Pluma para quitar el vello"
               initial={{ scale: 0 }}
@@ -62,7 +68,10 @@ const Home = (props, ref) => {
           {/* ITEM 3 */}
           <div className="justify-center flex items-center col-start-2 col-span-2 row-start-5 row-span-2">
             <motion.img
-              className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 aspect-auto ml-4 -mt-10"
+              className=" animate-pulse invisible md:visible 
+                          ml-4 -mt-10
+                          xl:w-24 lg:w-16
+                          xl:h-auto lg:h-auto"
               src={Item3}
               alt="Cuchilla de afeitar"
               initial={{ scale: 0 }}
@@ -145,7 +154,10 @@ const Home = (props, ref) => {
           {/* ITEM 4 */}
           <div className="justify-center flex items-center col-start-4 col-span-2 row-start-1 row-span-2">
             <motion.img
-              className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 aspect-auto -ml-5 pt-10"
+              className=" animate-pulse invisible md:visible 
+                          -ml-5 mt-10
+                          xl:w-24 lg:w-16
+                          xl:h-auto lg:h-auto"
               src={Item4}
               alt="Tijeras para cortar el pelo"
               initial={{ scale: 0 }}
@@ -162,7 +174,10 @@ const Home = (props, ref) => {
           {/* ITEM 5 */}
           <div className="justify-center flex items-center col-start-2 col-span-2 row-start-3 row-span-2">
             <motion.img
-              className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 aspect-auto -ml-2 "
+              className=" animate-pulse invisible md:visible 
+                          -ml-3
+                          xl:w-24 lg:w-16
+                          xl:h-auto lg:h-auto"
               src={Item5}
               alt="Maquinilla de afeitar antigua"
               initial={{ scale: 0 }}
@@ -180,7 +195,10 @@ const Home = (props, ref) => {
           {/* ITEM 6 */}
           <div className="justify-center flex items-center col-start-4 col-span-2 row-start-5 row-span-2">
             <motion.img
-              className="animate-pulse invisible md:visible md:w-5 lg:w-10 xl:w-14 xl:-ml-12 -ml-8 -mt-10"
+              className=" animate-pulse invisible md:visible 
+                          -ml-12 -mt-8
+                          xl:w-auto lg:w-auto
+                          xl:h-24 lg:h-16"
               src={Item6}
               alt="Maquina para afeitar nueva"
               initial={{ scale: 0 }}

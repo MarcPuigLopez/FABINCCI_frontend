@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, lazy } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useMediaQuery } from "react-responsive";
 
@@ -6,11 +6,10 @@ import { useMediaQuery } from "react-responsive";
 import Footer from "./components/helpers/Footer";
 import Header from "./components/helpers/Header";
 import Home from "./components/home/Home";
-
-const LazyAboutUs = lazy(() => import("./components/home/AboutUs"));
-const LazyFabincci = lazy(() => import("./components/home/Fabincci"));
-const LazyReservas = lazy(() => import("./components/home/Reservations"));
-const LazyContact = lazy(() => import("./components/home/Contact"));
+import AboutUs from "./components/home/AboutUs";
+import Fabincci from "./components/home/Fabincci";
+import Reservas from "./components/home/Reservations";
+import Contact from "./components/home/Contact";
 
 function Index() {
   const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
@@ -152,35 +151,39 @@ function Index() {
         }}
       >
         <div
-          className="bg-cover bg-center
-                      lg:bg-[url('assets/images/HomeBg/bg-home.webp')] bg-[url('assets/images/HomeBg/bg-contacto.webp')] "
+          className=" lg:bg-[url('assets/images/HomeBg/bg-home.webp')] bg-[url('assets/images/HomeBg/bg-contacto-mobil.jpg')]
+                      bg-cover bg-center"
           alt="Sección de home de Fabincci Barbería"
         >
           <Home ref={homeRef} />
         </div>
         <div
-          className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-no-repeat bg-center"
+          className=" lg:bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-[url('assets/images/HomeBg/bg-saberHacer-mobil.jpg')]
+                      bg-cover bg-no-repeat bg-center"
           alt="Sección de Saber Hacer de Fabincci Barbería"
         >
-          <LazyAboutUs ref={aboutUsRef} />
+          <AboutUs ref={aboutUsRef} />
         </div>
         <div
-          className="bg-[url('assets/images/HomeBg/bg-fabincci.webp')] bg-cover bg-center bg-no-repeat"
+          className=" lg:bg-[url('assets/images/HomeBg/bg-fabincci.webp')] bg-[url('assets/images/HomeBg/bg-fabincci-mobil.jpg')]
+                      bg-cover bg-center bg-no-repeat"
           alt="Sección de Fabincci de Fabincci Barbería"
         >
-          <LazyFabincci ref={fabincciRef} />
+          <Fabincci ref={fabincciRef} />
         </div>
         <div
-          className="bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-cover bg-no-repeat bg-center"
+          className=" lg:bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-[url('assets/images/HomeBg/bg-reservas-mobil.jpg')]
+                      bg-cover bg-no-repeat bg-center"
           alt="Sección de Reservas de Fabincci Barbería"
         >
-          <LazyReservas ref={reservasRef} />
+          <Reservas ref={reservasRef} />
         </div>
         <div
-          className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] xl:bg-fixed md:bg-local bg-cover bg-center"
+          className=" lg:bg-[url('assets/images/HomeBg/bg-contacto.webp')] bg-[url('assets/images/HomeBg/bg-contacto-mobil.jpg')]
+                      xl:bg-fixed md:bg-local bg-cover bg-center"
           alt="Sección de Contacto de Fabincci Barbería"
         >
-          <LazyContact ref={contactRef} />
+          <Contact ref={contactRef} />
         </div>
       </div>
       <footer>

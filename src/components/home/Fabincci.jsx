@@ -34,7 +34,7 @@ const Fabincci = (props, ref) => {
           }}
         >
           <img
-            className="lg:w-44 md:w-40 w-32 aspect-auto border mx-auto"
+            className="lg:w-44 md:w-40 w-32 h-auto border mx-auto"
             src={Cut2}
             alt="Corte de pelo degradado con pico"
           ></img>
@@ -131,7 +131,7 @@ const Fabincci = (props, ref) => {
           }}
         >
           <img
-            className="lg:w-44 md:w-40 w-32 aspect-auto border mx-auto"
+            className="lg:w-44 md:w-40 w-32 h-auto border mx-auto"
             src={Cut1}
             alt="Corte de pelo degradado con dibujo"
           ></img>
