@@ -37,7 +37,6 @@ const Contact = (props, ref) => {
           {" "}
           ¡CONTACTA CON NOSOTROS!
         </motion.h1>
-        <div className="h-1/2">.</div>
         <motion.div
           className=""
           initial={{ scale: 0 }}

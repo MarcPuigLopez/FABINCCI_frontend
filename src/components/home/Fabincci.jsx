@@ -36,7 +36,7 @@ const Fabincci = (props, ref) => {
           <img
             className="lg:w-44 lg:h-44 md:w-40 md:h-40 w-32 h-32 border mx-auto"
             src={Cut1}
-            alt="Cut1"
+            alt="Corte de pelo degradado con pico"
           ></img>
         </motion.div>
 
@@ -133,7 +133,7 @@ const Fabincci = (props, ref) => {
           <img
             className="lg:w-44 lg:h-44 md:w-40 md:h-40 w-32 h-32 border mx-auto"
             src={Cut3}
-            alt="Cut3"
+            alt="Corte de pelo degradado con dibujo"
           ></img>
         </motion.div>
 

@@ -1,12 +1,15 @@
 import React from "react";
 
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 import Video1 from "../../assets/videos/AboutUsVideo1.mp4";
 import Video2 from "../../assets/videos/AboutUsVideo2.mp4";
 import Video3 from "../../assets/videos/AboutUsVideo3.mp4";
 
 const AboutUs = (props, ref) => {
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-height: 700px)" });
+
   return (
     <div
       ref={ref}
@@ -38,10 +41,15 @@ const AboutUs = (props, ref) => {
           <div className="col-start-1">
             {/* Cadro y video 1 */}
             <motion.div
-              className=" border
-                          2xl:m-10 xl:m-10 sm:ml-20 ml-10 m-7 mr-3
-                          2xl:w-72 xl:w-64 lg:w-60 md:w-52 sm:w-36 w-24 
-                          2xl:h-120 xl:h-96 lg:h-84 md:h-72 sm:h-64 h-52 "
+              className={` border
+                          2xl:m-10 xl:m-10 lg:ml-12 sm:ml-20 ml-10 m-7 mr-3
+                          2xl:w-72 xl:w-64 md:w-52 sm:w-36 w-24 
+                          2xl:h-120 xl:h-96 md:h-72 sm:h-64 h-52 
+                          ${
+                            isTabletOrSmaller
+                              ? "lg:w-36 lg:h-64"
+                              : "lg:w-64 lg:h-96"
+                          }`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -56,10 +64,15 @@ const AboutUs = (props, ref) => {
               }}
             >
               <motion.div
-                className=" border 
+                className={` border 
                             2xl:m-10 xl:m-10 ml-10 m-7 mr-3
-                            2xl:w-72 xl:w-64 lg:w-64 md:w-56 sm:w-36 w-24 
-                            2xl:h-120 xl:h-96 lg:h-96 md:h-72 sm:h-64 h-52"
+                            2xl:w-72 xl:w-64 md:w-56 sm:w-36 w-24 
+                            2xl:h-120 xl:h-96 md:h-72 sm:h-64 h-52
+                            ${
+                              isTabletOrSmaller
+                                ? "lg:w-36 lg:h-64"
+                                : "lg:w-64 lg:h-96"
+                            }`}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -89,7 +102,11 @@ const AboutUs = (props, ref) => {
                     duration: 1,
                   }}
                 >
-                  <source src={Video1} type="video/mp4"></source>
+                  <source
+                    src={Video1}
+                    alt="Video de Fabincci donde se muestra como hace un corte degradado a un niño"
+                    type="video/mp4"
+                  ></source>
                 </motion.video>
               </motion.div>
             </motion.div>
@@ -97,9 +114,10 @@ const AboutUs = (props, ref) => {
           {/* Text 1 */}
           <div className="lg:col-start-2 col-start-2">
             <motion.div
-              className=" lg:p-12 md:p-10 p-4
+              className={`lg:p-12 md:p-10 p-4
                           xl:py-2 lg:py-0 md:py-28 sm:py-20 py-10 
-                          lg:pr-16 sm:pr-10 pr-5"
+                          lg:pr-16 sm:pr-10 pr-5
+                          ${isTabletOrSmaller ? "" : ""}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -113,12 +131,11 @@ const AboutUs = (props, ref) => {
               }}
             >
               <motion.h2
-                className=" font-bold text-white text-center
+                className={` font-bold text-white text-center
                             lg:p-2 py-2 pt-5
                             xl:text-xl lg:text-lg text-sm
                             lg:my-10
-                            lg:mt-20
-                              "
+                            ${isTabletOrSmaller ? "" : "xl:mt-32 lg:mt-20"}`}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -133,11 +150,11 @@ const AboutUs = (props, ref) => {
                 ¿No encuentras el look adecuado?{" "}
               </motion.h2>
               <motion.h2
-                className=" font-bold text-white text-center
+                className={` font-bold text-white text-center
                             lg:p-2 py-2
                             xl:text-xl lg:text-lg text-sm
                             lg:my-10
-                            lg:mt-20"
+                            ${isTabletOrSmaller ? "" : "lg:mt-2"}`}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -153,11 +170,11 @@ const AboutUs = (props, ref) => {
                 ¿Te cuesta expresar que tipo de peinado quieres?{" "}
               </motion.h2>
               <motion.h2
-                className=" font-bold text-white text-center
+                className={` font-bold text-white text-center
                             lg:p-2 py-2
                             xl:text-xl lg:text-lg text-sm
                             lg:my-10
-                            lg:mt-20"
+                            ${isTabletOrSmaller ? "" : "lg:mt-2"}`}
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
@@ -177,13 +194,19 @@ const AboutUs = (props, ref) => {
           {/* Cadro y video 2 */}
           <div
             className=" lg:col-start-3 col-start-2
-                        lg:row-start-1 row-start-2"
+                        lg:row-start-1 row-start-2
+                        "
           >
             <motion.div
-              className=" border 
-                          2xl:m-10 xl:m-10 sm:ml-20 ml-10 m-7 mr-3
-                          2xl:w-72 xl:w-64 lg:w-64 md:w-56 sm:w-36 w-24 
-                          2xl:h-120 xl:h-96 lg:h-96 md:h-72 sm:h-64 h-52"
+              className={` border 
+                          2xl:m-10 xl:m-10 lg:ml-12 sm:ml-20 ml-10 m-7 mr-3
+                          2xl:w-72 xl:w-64 md:w-56 sm:w-36 w-24 
+                          2xl:h-120 xl:h-96 md:h-72 sm:h-64 h-52
+                          ${
+                            isTabletOrSmaller
+                              ? "lg:w-36 lg:h-64"
+                              : "lg:w-64 lg:h-96"
+                          }`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -198,10 +221,15 @@ const AboutUs = (props, ref) => {
               }}
             >
               <motion.div
-                className=" border 
+                className={` border 
                             2xl:m-10 xl:m-10 ml-10 m-7 mr-3
-                            2xl:w-72 xl:w-64 lg:w-64 md:w-56 sm:w-36 w-24 
-                            2xl:h-120 xl:h-96 lg:h-96 md:h-72 sm:h-64 h-52"
+                            2xl:w-72 xl:w-64 md:w-56 sm:w-36 w-24 
+                            2xl:h-120 xl:h-96 md:h-72 sm:h-64 h-52
+                            ${
+                              isTabletOrSmaller
+                                ? "lg:w-36 lg:h-64"
+                                : "lg:w-64 lg:h-96"
+                            }`}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -231,7 +259,11 @@ const AboutUs = (props, ref) => {
                     duration: 1,
                   }}
                 >
-                  <source src={Video2} type="video/mp4"></source>
+                  <source
+                    src={Video2}
+                    alt="Video de Fabincci donde se muestra como hace un corte degradado a un una mujer"
+                    type="video/mp4"
+                  ></source>
                 </motion.video>
               </motion.div>
             </motion.div>
@@ -242,9 +274,10 @@ const AboutUs = (props, ref) => {
                         lg:row-start-1 row-start-2"
           >
             <motion.div
-              className=" lg:p-14 
-                          lg:pt-20 pt-16 pl-7 -mr-2
-                          lg:m-4"
+              className={` lg:p-14 
+                          pt-16 pl-7 -mr-2
+                          lg:m-4
+                          ${isTabletOrSmaller ? "lg:text-xs lg:pt-5" : "lg:text-base lg:pt-20"}`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -270,10 +303,10 @@ const AboutUs = (props, ref) => {
                 }}
               >
                 <p
-                  className=" text-white
+                  className={` text-white
                               lg:text-justify text-center
-                              lg:pt-10
-                              lg:text-base md:text-base text-xs"
+                               md:text-base text-xs
+                              ${isTabletOrSmaller ? "" : "xl:mt-10 lg:mt-5"}`}
                 >
                   En <b>FABINCCI Barber S.L. </b>, somos expertos en adaptar
                   cada estilo a las fascinantes particularidades de cada
@@ -284,7 +317,7 @@ const AboutUs = (props, ref) => {
                   className=" text-white
                               lg:text-justify text-center
                               lg:pt-10
-                              lg:text-base md:text-base text-xs"
+                               md:text-base text-xs"
                 >
                   A través de años de experiencia y formación continua, hemos
                   creado un conjunto de habilidades y técnicas que nos permite
@@ -302,10 +335,15 @@ const AboutUs = (props, ref) => {
                         mb-10"
           >
             <motion.div
-              className=" border 
-                          2xl:m-10 xl:m-10 sm:ml-20 ml-10 m-7 mr-3
-                          2xl:w-72 xl:w-64 lg:w-64 md:w-56 w-24 
-                          2xl:h-120 xl:h-96 lg:h-96 md:h-72 sm:h-64 h-52"
+              className={` border 
+                          2xl:m-10 xl:m-10 lg:ml-12 sm:ml-20 ml-10 m-7 mr-3
+                          2xl:w-72 xl:w-64 md:w-56 w-24 
+                          2xl:h-120 xl:h-96 md:h-72 sm:h-64 h-52
+                          ${
+                            isTabletOrSmaller
+                              ? "lg:w-36 lg:h-64"
+                              : "lg:w-64 lg:h-96"
+                          }`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -320,10 +358,15 @@ const AboutUs = (props, ref) => {
               }}
             >
               <motion.div
-                className=" border 
+                className={` border 
                             2xl:m-10 xl:m-10 ml-10 m-7 mr-3
-                            2xl:w-72 xl:w-64 lg:w-64 md:w-56 sm:w-36 w-24 
-                            2xl:h-120 xl:h-96 lg:h-96 md:h-72 sm:h-64 h-52"
+                            2xl:w-72 xl:w-64 md:w-56 sm:w-36 w-24 
+                            2xl:h-120 xl:h-96 md:h-72 sm:h-64 h-52
+                            ${
+                              isTabletOrSmaller
+                                ? "lg:w-36 lg:h-64"
+                                : "lg:w-64 lg:h-96"
+                            }`}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -353,7 +396,11 @@ const AboutUs = (props, ref) => {
                     duration: 1,
                   }}
                 >
-                  <source src={Video3} type="video/mp4"></source>
+                  <source
+                    src={Video3}
+                    alt="Video de Fabincci donde se muestra como hace un corte degradado a un una hombre"
+                    type="video/mp4"
+                  ></source>
                 </motion.video>
               </motion.div>
             </motion.div>
