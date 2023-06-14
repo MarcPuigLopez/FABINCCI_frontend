@@ -153,19 +153,32 @@ function Index() {
         <div
           className="bg-cover bg-center
                       lg:bg-[url('assets/images/HomeBg/bg-home.webp')] bg-[url('assets/images/HomeBg/bg-contacto.webp')] "
+          alt="Sección de home de Fabincci Barbería"
         >
           <Home ref={homeRef} />
         </div>
-        <div className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-no-repeat bg-center">
+        <div
+          className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-no-repeat bg-center"
+          alt="Sección de Saber Hacer de Fabincci Barbería"
+        >
           <AboutUs ref={aboutUsRef} />
         </div>
-        <div className="bg-[url('assets/images/HomeBg/bg-fabincci.jpeg')] bg-cover bg-center bg-no-repeat ">
+        <div
+          className="bg-[url('assets/images/HomeBg/bg-fabincci.webp')] bg-cover bg-center bg-no-repeat"
+          alt="Sección de Fabincci de Fabincci Barbería"
+        >
           <Fabincci ref={fabincciRef} />
         </div>
-        <div className="bg-[url('assets/images/HomeBg/bg-reservas.jpeg')] bg-cover bg-no-repeat bg-center">
+        <div
+          className="bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-cover bg-no-repeat bg-center"
+          alt="Sección de Reservas de Fabincci Barbería"
+        >
           <Reservas ref={reservasRef} />
         </div>
-        <div className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] xl:bg-fixed md:bg-local bg-cover bg-center">
+        <div
+          className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] xl:bg-fixed md:bg-local bg-cover bg-center"
+          alt="Sección de Contacto de Fabincci Barbería"
+        >
           <Contact ref={contactRef} />
         </div>
       </div>

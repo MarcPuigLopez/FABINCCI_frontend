@@ -74,6 +74,7 @@ const TablonReservas = ({ handleReservation }) => {
                           sm:ml-5 
                           xl:text-base text-xs"
               onClick={() => handleButtonClick(servicio.cutName)}
+              alt={`Botón para hacer una reserva para: ${servicio.cutName}`}
             >
               Reservar
             </button>

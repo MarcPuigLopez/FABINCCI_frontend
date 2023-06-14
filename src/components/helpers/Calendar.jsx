@@ -122,7 +122,7 @@ const Calendar = (props) => {
         confirmed: true,
         user: auth._id,
       });
-      
+
       setIsLoading(false);
       setShowModalLogged(false);
       setShowModalConfirm(true);
@@ -199,6 +199,9 @@ const Calendar = (props) => {
           key={i}
           className={cellClasses}
           onClick={() => handleDateClick(date)}
+          alt={`El día: ${i} del mes: ${
+            currentMonth.getMonth() + 1
+          } está disponible`}
         >
           <span>{isCurrentMonth && i}</span>
         </div>
@@ -220,6 +223,9 @@ const Calendar = (props) => {
             "bg-gray-300": isDateSelected ? selectedHour === hour : "",
           })}
           onClick={() => handleSelectedHour(hour)}
+          alt={`La hora: ${hour} del día: ${moment(selectedDay).format(
+            "DD-MM"
+          )} está disponible`}
         >
           {hour} : Disponible
         </li>
@@ -239,7 +245,7 @@ const Calendar = (props) => {
   return (
     <div className="flex flex-col py-10 font-Bebas transition-all ease-linear transition-500">
       <div className="flex w-full justify-between text-lg text-center font-bold p-2 rounded-t-lg bg-white">
-        <button className="ml-4" onClick={handlePrevMonth}>
+        <button className="ml-4" onClick={handlePrevMonth} alt="Mes anterior">
           {currentMonth.getMonth() === Month.getMonth() ? (
             ""
           ) : (
@@ -247,7 +253,7 @@ const Calendar = (props) => {
           )}
         </button>
         <h1 className="text-xl">{monthName}</h1>
-        <button className="mr-4" onClick={handleNextMonth}>
+        <button className="mr-4" onClick={handleNextMonth} alt="Mes siguiente">
           {currentMonth.getMonth() === Month.getMonth() + 1 ||
           currentDay <= 20 ? (
             ""
@@ -348,7 +354,10 @@ const Calendar = (props) => {
               </h2>
             </div>
             <div className="flex justify-center">
-              <span className="m-2 mt-0 p-2 bg-yellow-500 rounded-lg hover:bg-yellow-400 transition-colors ">
+              <span
+                alt="Debes iniciar sesión para Hacer una reserva"
+                className="m-2 mt-0 p-2 bg-yellow-500 rounded-lg hover:bg-yellow-400 transition-colors "
+              >
                 <Link to="/login">Iniciar sesión</Link>
               </span>
             </div>

@@ -139,6 +139,7 @@ const AdminTab = (props, ref) => {
               onChange={handleInputChange}
               disabled={!editing}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+              alt="Campo de información de nombre del administrador"
             />
           </div>
         </div>
@@ -159,6 +160,7 @@ const AdminTab = (props, ref) => {
               onChange={handleInputChange}
               disabled={!editing}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+              alt="Campo de información de apellidos del administrador"
             />
           </div>
         </div>
@@ -175,6 +177,7 @@ const AdminTab = (props, ref) => {
             onChange={handleInputChange}
             disabled={!editing}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+            alt="Campo de información de email del administrador"
           />
         </div>
         <div className="mb-4">
@@ -192,6 +195,7 @@ const AdminTab = (props, ref) => {
             onChange={handleInputChange}
             disabled={!editing}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+            alt="Campo de información de teléfono del administrador"
           />
         </div>
 
@@ -211,11 +215,13 @@ const AdminTab = (props, ref) => {
               onChange={handleInputChange}
               disabled={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+              alt="Campo de información de contraseña del administrador"
             />
             {editing && (
               <Link
                 className=" bg-blue-500 hover:bg-blue-700 text-white font-bold ml-5 py-2 px-4 rounded w-full max-w-max transition"
                 to="/users/reset-password"
+                alt="Botón para editar la contraseña del administrador"
               >
                 {isTabletOrSmaller ? "Editar" : "Editar Contraseña"}
               </Link>
@@ -228,6 +234,7 @@ const AdminTab = (props, ref) => {
             <button
               className="center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 transition"
               onClick={handleEditClick}
+              alt="Botón para editar la información del administrador"
             >
               Editar
             </button>
@@ -235,6 +242,7 @@ const AdminTab = (props, ref) => {
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2 transition"
               onClick={handleSaveClick}
+              alt="Botón para guardar la información del administrador"
             >
               Guardar
             </button>
@@ -243,6 +251,7 @@ const AdminTab = (props, ref) => {
             <button
               className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition"
               onClick={handleCancelClick}
+              alt="Botón para cancelar la edición de la información del administrador"
             >
               Cancelar
             </button>

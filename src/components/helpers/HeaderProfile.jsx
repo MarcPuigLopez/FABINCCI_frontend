@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 //Logo
-import logo from "../../assets/images/LogoNegro.png";
+import logo from "../../assets/images/LogoNegro.webp";
 
 //Icons
 import { RiArrowLeftSFill } from "react-icons/ri";

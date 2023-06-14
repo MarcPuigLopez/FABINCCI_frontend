@@ -51,8 +51,10 @@ const ActiveReservations = () => {
       <h4 className="text-xl font-bold sm:pl-10">
         Próximas citas: {activeReservations.length}
       </h4>
-      <div className=" flex flex-col overflow-y-auto
-                        sm:p-10 pt-8 h-96">
+      <div
+        className=" flex flex-col overflow-y-auto
+                        sm:p-10 pt-8 h-96"
+      >
         {activeReservations.length > 0 ? (
           sortedReservations.map((reservation) => (
             <div className="flex text-justify" key={reservation._id}>
@@ -66,11 +68,14 @@ const ActiveReservations = () => {
                   {moment(reservation.date).format("HH:mm")}h. <br />
                 </span>
                 <span className="font-bold"> {reservation.cutType}</span> con{" "}
-                <span className="font-bold sm:text-xl text-base">Fabian Viñas</span>
+                <span className="font-bold sm:text-xl text-base">
+                  Fabian Viñas
+                </span>
               </p>
               <button
                 className="m-4 sm:my-8 my-5  sm:p-2 bg-gray-400 rounded-lg hover:bg-gray-300 transition-colors sm:w-1/5 w-1/4"
                 onClick={() => handleOpenModal(reservation._id)}
+                alt="Botón para cancelar la cita"
               >
                 Cancelar
               </button>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 //Logo
-import logo from "../../assets/images/LogoNegro.png";
+import logo from "../../assets/images/LogoNegro.webp";
 //Icons
 import { RiMenuFill, RiCloseLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";

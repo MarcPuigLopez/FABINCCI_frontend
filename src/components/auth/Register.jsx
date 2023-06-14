@@ -96,11 +96,13 @@ const Register = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 w-4/5 xl:p-8 p-6 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black md:text-5xl text-4xl xl:mb-2 text-center">
-            <Link to="/">
+            <Link alt="Volver a la pagina Home" to="/">
               FABINCCI <br />{" "}
             </Link>
             <span className="text-slate-700 xl:text-5xl md:text-4xl text-3xl">
-              <Link to="/">REGISTRO</Link>
+              <Link alt="Volver a la pagina Home" to="/">
+                REGISTRO
+              </Link>
               {/* REGISTER */}
             </span>
           </h1>
@@ -125,6 +127,7 @@ const Register = () => {
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                alt="Campo para ingresar el nombre"
               />
             </div>
 
@@ -142,6 +145,7 @@ const Register = () => {
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
+                alt="Campo para ingresar los apellidos"
               />
             </div>
 
@@ -159,6 +163,7 @@ const Register = () => {
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                alt="Campo para ingresar el correo electrónico"
               />
             </div>
             <div className="my-4">
@@ -175,6 +180,7 @@ const Register = () => {
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                alt="Campo para ingresar el teléfono"
               />
             </div>
             <div className="my-4">
@@ -191,6 +197,7 @@ const Register = () => {
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                alt="Campo para ingresar la contraseña"
               />
             </div>
 
@@ -208,6 +215,7 @@ const Register = () => {
                 className="w-full mt-1 p-2 border rounded-xl bg-gray-50 md:text-base text-sm"
                 value={repetirPassword}
                 onChange={(e) => setRepetirPassword(e.target.value)}
+                alt="Campo para repetir la contraseña"
               />
             </div>
 
@@ -217,6 +225,7 @@ const Register = () => {
               className="bg-sky-700 mb-1 w-full py-3 text-white uppercase font-bold 
                             rounded hover:cursor-pointer hover:bg-sky-800 transition-colors
                             md:text-base text-sm"
+              alt="Botón para registrarse"
             />
           </form>
 
@@ -224,7 +233,10 @@ const Register = () => {
             <p className="block text-center my-4 text-slate-500 md:text-sm text-xs">
               ¿Eres miembro?
               {/* Are you a member? */}
-              <span className="text-blue-500 mx-2 md:text-sm text-xs">
+              <span
+                className="text-blue-500 mx-2 md:text-sm text-xs"
+                alt="Botón para ir al inicio de sesión"
+              >
                 <Link to="/login">Iniciar Sesión</Link>
               </span>
             </p>

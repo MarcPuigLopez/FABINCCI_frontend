@@ -1,20 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Logo
-import logoBlanco from "../../assets/images/LogoBlanco.png";
-
 // Imagenes
-import Item1 from "../../assets/images/HomeElements/Item1.png";
-import Item2 from "../../assets/images/HomeElements/Item2.png";
-import Item3 from "../../assets/images/HomeElements/Item3.png";
-import Item4 from "../../assets/images/HomeElements/Item4.png";
-import Item5 from "../../assets/images/HomeElements/Item5.png";
-import Item6 from "../../assets/images/HomeElements/Item6.png";
+import Item1 from "../../assets/images/HomeElements/Item1.webp";
+import Item2 from "../../assets/images/HomeElements/Item2.webp";
+import Item3 from "../../assets/images/HomeElements/Item3.webp";
+import Item4 from "../../assets/images/HomeElements/Item4.webp";
+import Item5 from "../../assets/images/HomeElements/Item5.webp";
+import Item6 from "../../assets/images/HomeElements/Item6.webp";
 
 const Home = (props, ref) => {
   return (
-    <div ref={ref} className="lg:pt-0 pt-24 flex lg:h-[84vh] h-screen w-screen font-Roboto">
+    <div
+      ref={ref}
+      className="lg:pt-0 pt-24 flex lg:h-[84vh] h-screen w-screen font-Roboto"
+    >
       <div
         className="w-screen lg:h-[84vh] h-screen grid 
                         lg:grid-cols-8 grid-cols-1"
@@ -29,7 +29,7 @@ const Home = (props, ref) => {
             <motion.img
               className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 ml-5 pt-10"
               src={Item1}
-              alt="Item1"
+              alt="Recipiente para la cera"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -46,7 +46,7 @@ const Home = (props, ref) => {
             <motion.img
               className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 -ml-5 -mt-3"
               src={Item2}
-              alt="Item2"
+              alt="Pluma para quitar el vello"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -64,7 +64,7 @@ const Home = (props, ref) => {
             <motion.img
               className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 ml-4 -mt-10"
               src={Item3}
-              alt="Item3"
+              alt="Cuchilla de afeitar"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -147,7 +147,7 @@ const Home = (props, ref) => {
             <motion.img
               className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 -ml-5 pt-10"
               src={Item4}
-              alt="Item4"
+              alt="Tijeras para cortar el pelo"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -164,7 +164,7 @@ const Home = (props, ref) => {
             <motion.img
               className="animate-pulse invisible md:visible md:w-10 lg:w-16 xl:w-24 -ml-2 "
               src={Item5}
-              alt="Item5"
+              alt="Maquinilla de afeitar antigua"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -182,7 +182,7 @@ const Home = (props, ref) => {
             <motion.img
               className="animate-pulse invisible md:visible md:w-5 lg:w-10 xl:w-14 xl:-ml-12 -ml-8 -mt-10"
               src={Item6}
-              alt="Item6"
+              alt="Maquina para afeitar nueva"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}

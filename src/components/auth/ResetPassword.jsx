@@ -47,11 +47,13 @@ const ResetPassword = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 w-4/5 xl:p-16 p-10 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black xl:text-6xl md:text-5xl text-4xl xl:mb-5 text-center">
-            <Link to="/">
+            <Link alt="Volver a la pagina Home" to="/">
               FABINCCI <br />
             </Link>
             <span className="text-slate-700 xl:text-5xl md:text-4xl text-3xl">
-              <Link to="/">NUEVA CONTRASEÑA</Link>
+              <Link alt="Volver a la pagina Home" to="/">
+                NUEVA CONTRASEÑA
+              </Link>
             </span>
           </h1>
 
@@ -75,6 +77,7 @@ const ResetPassword = () => {
                 className="w-full mt-3 p-3 border rounded-xl bg-gray-50  md:text-lg text-sm"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                alt="Campo para introducir el email"
               />
             </div>
 
@@ -82,6 +85,7 @@ const ResetPassword = () => {
               type="submit"
               value="Enviar instrucciones"
               className="bg-sky-700 mb-5 w-full md:text-sm text-xs py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
+              alt="Boton para enviar las instrucciones de recuperacion de contraseña"
             />
           </form>
 
@@ -92,7 +96,7 @@ const ResetPassword = () => {
             <a className=" items-center sm:block grid text-center sm:my-5 text-slate-500 text-xs">
               ¿Eres miembro?
               <span className="text-blue-500 sm:mx-2 md:mt-0 mt-1">
-                <Link to="/login">Iniciar Sesión</Link>
+                <Link alt="Botón para voler al inicio de sesión" to="/login">Iniciar Sesión</Link>
               </span>
             </a>
 
@@ -102,7 +106,7 @@ const ResetPassword = () => {
                 : "¿Aún no lo eres?"}
 
               <span className="text-blue-500 sm:mx-2">
-                <Link to="/register">Registrarse</Link>
+                <Link alt="Botón para volver al registro" to="/register">Registrarse</Link>
               </span>
             </a>
           </nav>

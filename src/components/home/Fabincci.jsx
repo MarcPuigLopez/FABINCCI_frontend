@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 import { useMediaQuery } from "react-responsive";
 
-import Cut1 from "../../assets/images/CutImages/Cut1.png";
-import Cut2 from "../../assets/images/CutImages/Cut2.png";
-import Cut3 from "../../assets/images/CutImages/Cut3.png";
+import Cut1 from "../../assets/images/CutImages/Cut1.webp";
+import Cut2 from "../../assets/images/CutImages/Cut2.webp";
+import Cut3 from "../../assets/images/CutImages/Cut3.webp";
 
 const Fabincci = (props, ref) => {
   const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });

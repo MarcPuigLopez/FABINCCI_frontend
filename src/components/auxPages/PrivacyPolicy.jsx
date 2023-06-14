@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-import logo from "../../assets/images/LogoBlanco.png";
+import logo from "../../assets/images/LogoBlanco.webp";
 
 const PrivacyPolicy = () => {
   return (

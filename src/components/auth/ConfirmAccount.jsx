@@ -38,11 +38,11 @@ const ConfirmAccount = () => {
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 w-4/5 xl:p-16 p-10 bg-white rounded-lg">
           <h1 className="text-sky-600 font-black xl:text-6xl md:text-5xl text-4xl xl:mb-5 text-center">
-            <Link to="/">
+            <Link alt="Volver a la pagina Home" to="/">
               FABINCCI <br />
             </Link>
             <span className="text-slate-700 xl:text-5xl md:text-4xl text-3xl">
-              <Link to="/">CONFIRMACIÓN DE CUENTA</Link>
+              <Link alt="Volver a la pagina Home" to="/">CONFIRMACIÓN DE CUENTA</Link>
             </span>
           </h1>
 
@@ -53,6 +53,7 @@ const ConfirmAccount = () => {
               <Link
                 className="block text-center my-5 text-slate-500 uppercase text-sm"
                 to="/login"
+                alt="Ir a Iniciar Sesión"
               >
                 Inicia Sesión
               </Link>

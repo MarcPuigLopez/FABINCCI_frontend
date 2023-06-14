@@ -61,10 +61,14 @@ const NewPassword = () => {
     <main className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-center bg-no-repeat h-screen">
       <div className="flex justify-center items-center h-screen">
         <div className="md:w-2/3 lg:w-2/5 w-4/5 xl:p-16 p-10 bg-white rounded-lg">
-        <h1 className="text-sky-600 font-black xl:text-6xl md:text-5xl text-3xl xl:mb-5 mb-5 text-center">
-            <Link to="/">FABINCCI <br/></Link>
+          <h1 className="text-sky-600 font-black xl:text-6xl md:text-5xl text-3xl xl:mb-5 mb-5 text-center">
+            <Link alt="Volver a la pagina Home" to="/">
+              FABINCCI <br />
+            </Link>
             <span className="text-slate-700 xl:text-5xl md:text-4xl text-2xl">
-              <Link to="/">RECUPERACIÓN DE CONTRASEÑA</Link>
+              <Link alt="Volver a la pagina Home" to="/">
+                RECUPERACIÓN DE CONTRASEÑA
+              </Link>
             </span>
           </h1>
 
@@ -89,12 +93,14 @@ const NewPassword = () => {
                   className="w-full mt-3 p-3 border rounded-xl bg-gray-50 md:text-lg text-sm"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  alt="Campo para escribir nueva contraseña"
                 />
               </div>
               <input
                 type="submit"
                 value="Guardar nueva contraseña"
                 className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
+                alt="Botón para guardar nueva contraseña"
               />
             </form>
           )}
@@ -103,6 +109,7 @@ const NewPassword = () => {
             <Link
               className="block text-center my-5 text-slate-500 uppercase text-sm"
               to="/login"
+              alt="Enlace para iniciar sesión"
             >
               Iniciar Sesión
             </Link>

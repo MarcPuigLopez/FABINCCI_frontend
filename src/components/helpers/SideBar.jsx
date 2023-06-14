@@ -18,12 +18,15 @@ const SideBar = (props) => {
         <button
           onClick={props.handleReservationsClick}
           className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
+          alt={`Botón para ir a la página de ${isAdmin ? "Calendario" : "Citas"}`}
         >
           <FaCalendarAlt className="m-5" /> {isAdmin ? "Calendario" : "Citas"}
         </button>
         <button
           onClick={props.handleBookingClick}
           className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
+          alt="Botón para ir a la página de Reservas"
+          
         >
           {isAdmin ? (
             ""
@@ -36,7 +39,8 @@ const SideBar = (props) => {
         </button>
         <button
           onClick={props.handleProfileClick}
-          className="flex items-center text-black hover:text-gray-500 hover:transition"
+          className="flex items-center text-black hover:text-gray-500 hover:transition mt-4"
+          alt="Botón para ir a la página de Perfil"
         >
           <FaUser className="m-5" /> Perfil
         </button>

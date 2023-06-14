@@ -316,6 +316,7 @@ const AdminCalendar = () => {
                           reservationUser
                         )
                       }
+                      alt="Modificar reserva"
                     >
                       <span className="font-bold text-sm capitalize">
                         {reservationUser?.name}{" "}
@@ -334,6 +335,7 @@ const AdminCalendar = () => {
                       className="bg-green-100 hover:bg-green-200 py-4 p-2
                                 rounded h-16 my-auto flex items-center justify-center cursor-pointer"
                       onClick={() => handleShowNewReservationButton(i, hour)}
+                      alt="Nueva reserva"
                     >
                       <span className="">Disponible</span>
                     </div>
@@ -358,6 +360,7 @@ const AdminCalendar = () => {
         <button
           className="flex items-center text-gray-600 hover:text-gray-800"
           onClick={handlePrevWeek}
+          alt={`${isTabletOrSmaller ? "Semana anterior" : "Día anterior"}`}
         >
           <RiArrowDropLeftLine className="h-5 w-5" />
         </button>
@@ -367,6 +370,7 @@ const AdminCalendar = () => {
         <button
           className="flex items-center text-gray-600 hover:text-gray-800"
           onClick={handleNextWeek}
+          alt={`${isTabletOrSmaller ? "Semana siguiente" : "Día siguiente"}`}
         >
           <RiArrowDropRightLine className="h-5 w-5" />
         </button>

@@ -135,6 +135,7 @@ const UserTab = (props, ref) => {
               onChange={handleInputChange}
               disabled={!editing}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+              alt="Campo de información de nombre"
             />
           </div>
         </div>
@@ -155,6 +156,7 @@ const UserTab = (props, ref) => {
               onChange={handleInputChange}
               disabled={!editing}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+              alt="Campo de información de apellidos"
             />
           </div>
         </div>
@@ -171,6 +173,7 @@ const UserTab = (props, ref) => {
             onChange={handleInputChange}
             disabled={!editing}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+            alt="Campo de información de email"
           />
         </div>
         <div className="mb-4">
@@ -185,6 +188,7 @@ const UserTab = (props, ref) => {
             onChange={handleInputChange}
             disabled={!editing}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+            alt="Campo de información de telefono"
           />
         </div>
 
@@ -204,11 +208,13 @@ const UserTab = (props, ref) => {
               onChange={handleInputChange}
               disabled={true}
               className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition"
+              alt="Campo de información de contraseña"
             />
             {editing && (
               <Link
                 className=" bg-blue-500 hover:bg-blue-700 text-white font-bold ml-5 py-2 px-4 rounded w-full max-w-max transition"
                 to="/users/reset-password"
+                alt="Botón para editar contraseña"
               >
                 Editar Contraseña
               </Link>
@@ -221,6 +227,7 @@ const UserTab = (props, ref) => {
             <button
               className="center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 transition"
               onClick={handleEditClick}
+              alt="Botón para editar información de usuario"
             >
               Editar
             </button>
@@ -228,6 +235,7 @@ const UserTab = (props, ref) => {
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2 transition"
               onClick={handleSaveClick}
+              alt="Botón para guardar información de usuario"
             >
               Guardar
             </button>
@@ -236,6 +244,7 @@ const UserTab = (props, ref) => {
             <button
               className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition"
               onClick={handleCancelClick}
+              alt="Botón para cancelar edición de información de usuario"
             >
               Cancelar
             </button>

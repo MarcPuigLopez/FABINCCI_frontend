@@ -56,7 +56,10 @@ const Contact = (props, ref) => {
 
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 
-            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+            <li
+              alt="Instagram"
+              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
+            >
               <Link to="https://www.instagram.com/fabincci_barber/">
                 <AiFillInstagram />
               </Link>
@@ -70,14 +73,20 @@ const Contact = (props, ref) => {
               </Link> */}
             </li>
 
-            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+            <li
+              alt="Twitch"
+              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
+            >
               {/* <AiFillFacebook /> */}
-              <Link to="" target="_blank">
+              <Link to="https://www.twitch.tv/fabincci" target="_blank">
                 <FiTwitch />
               </Link>
             </li>
 
-            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+            <li
+              alt="Youtube"
+              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
+            >
               {/* <BsPinterest /> */}
               <Link
                 to="https://www.youtube.com/@fabinccibarber"
@@ -87,7 +96,10 @@ const Contact = (props, ref) => {
               </Link>
             </li>
 
-            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+            <li
+              alt="TikTok"
+              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
+            >
               {/* <AiFillLinkedin /> */}
               <Link
                 to="https://www.tiktok.com/@fabincci?is_from_webapp=1&sender_device=pc"
@@ -97,8 +109,11 @@ const Contact = (props, ref) => {
               </Link>
             </li>
 
-            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-              <Link to="" target="_blank">
+            <li
+              alt="Whatsapp"
+              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
+            >
+              <Link to="https://web.whatsapp.com/" target="_blank">
                 <AiOutlineWhatsApp />
               </Link>
             </li>

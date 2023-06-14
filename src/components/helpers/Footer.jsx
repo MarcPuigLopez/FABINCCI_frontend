@@ -33,7 +33,7 @@ const Footer = () => {
         className=" flex gap-5 
                     xl:text-sm text-xs"
       >
-        <Link className="" onClick={handleClick} to="/privacy-policy">
+        <Link alt="Política de privacidad de Fabincci Barbería" className="" onClick={handleClick} to="/privacy-policy">
           Politica de {isTabletOrSmaller ? <br /> : null}
           Privacidad
         </Link>
