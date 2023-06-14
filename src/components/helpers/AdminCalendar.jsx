@@ -22,9 +22,10 @@ const AdminCalendar = () => {
   const [editing, setEditing] = useState(false);
   const [alert, setAlert] = useState({});
 
-  const actualDate = moment().format("DD");
+  const actualDate = moment();
   const actualHour = moment().format("HH:mm");
   const actualWeek = startOfWeek(new Date());
+  const actualMonth = format(new Date(), "MM");
 
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedHour, setSelectedHour] = useState(null);
@@ -55,7 +56,8 @@ const AdminCalendar = () => {
   }, [currentWeek, reservations]);
 
   useEffect(() => {
-    const daysToAdd = actualDate - (currentWeek.getDate() + 1);
+    const daysToAdd = moment(actualDate).format("DD");
+    -(currentWeek.getDate() + 1);
     if (isTabletOrSmaller) {
       setCurrentWeek((prevWeek) => addDays(prevWeek, daysToAdd));
     }
@@ -256,6 +258,8 @@ const AdminCalendar = () => {
     if (isTabletOrSmaller)
       finalDay = parseInt(format(addDays(startDate, 0), "d"));
 
+    if (finalDay < startDay) finalDay = startDay + 6;
+
     for (let i = startDay; i <= finalDay; i++) {
       const formattedDate = format(startDate, "EEEE d", { locale: es });
       const dayReservations = reservations.filter((reservation) => {
@@ -274,7 +278,9 @@ const AdminCalendar = () => {
           </div>
           <div
             className={classNames("grid grid-rows-8 p-2", {
-              "opacity-50 ": i < parseInt(actualDate),
+              "opacity-50 ":
+                parseInt(moment(startDate).format("MMDD")) <
+                parseInt(moment(actualDate).format("MMDD")),
             })}
           >
             {allHours.map((hour) => {
@@ -293,7 +299,9 @@ const AdminCalendar = () => {
                     "my-1 text-center font-Roboto text-sm",
                     {
                       "opacity-50 ":
-                        i === parseInt(actualDate) && hour < actualHour,
+                        parseInt(moment(startDate).format("MMDD")) ===
+                          parseInt(moment(actualDate).format("MMDD")) &&
+                        hour < actualHour,
                     }
                   )}
                 >
