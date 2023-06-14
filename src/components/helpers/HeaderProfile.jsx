@@ -43,12 +43,16 @@ const HeaderProfile = (props) => {
       <Link
         to="/"
         className="flex gap-2 text-center lg:m-5 text-black uppercase lg:text-sm text-xs"
+        alt="Botón para volver al inicio"
       >
         <RiArrowLeftSFill className="my-auto text-xl" />
         {!isTabletOrSmaller ? "Volver al inicio" : "Inicio"}
       </Link>
 
-      <nav className="w-full h-full right-0 top-0 flex-1 flex items-center justify-center lg:ml-0 ml-8">
+      <nav
+        className="w-full h-full right-0 top-0 flex-1 flex items-center justify-center lg:ml-0 ml-8"
+        alt="Logo Fabincci para volver al inicio"
+      >
         <Link to="/" className="">
           <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
         </Link>
@@ -59,6 +63,7 @@ const HeaderProfile = (props) => {
           className="block text-center lg:m-5 mt-3 text-black uppercase lg:text-sm text-xs "
           to="/login"
           onClick={handleLogout}
+          alt="Botón para Cerrar sesión"
         >
           Cerrar Sesión
         </Link>

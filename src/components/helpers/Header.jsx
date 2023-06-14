@@ -58,31 +58,56 @@ const Header = (props) => {
           showMenu ? "visible opacity-100 bg-white" : "invisible opacity-0"
         }`}
         >
-          <button onClick={() => setShowMenu(!showMenu)} className="xl:hidden">
+          <button
+            onClick={() => setShowMenu(!showMenu)}
+            className="xl:hidden"
+            alt="Menú desplegable del header"
+          >
             <RiCloseLine />
           </button>
-          <button onClick={() => handleLoginMenuClick(props.handleHomeClick)} className="">
+          <button
+            onClick={() => handleLoginMenuClick(props.handleHomeClick)}
+            className=""
+            alt="Botón para ir a la página de inicio"
+          >
             HOME
           </button>
-          <button onClick={() => handleLoginMenuClick(props.handleAboutUsClick)} className="">
+          <button
+            onClick={() => handleLoginMenuClick(props.handleAboutUsClick)}
+            className=""
+            alt="Botón para ir a la página de sobre nosotros"
+          >
             SABER HACER
           </button>
           <button
             onClick={() => handleLoginMenuClick(props.handleFabincciClick)}
             className="xl:block hidden"
+            alt="Botón para ir a la página de Fabincci"
           >
-            <img src={logo} alt="Fabincci Logo" className="w-16 h-1/2 aspect-auto" />
+            <img
+              src={logo}
+              alt="Fabincci Logo"
+              className="w-16 h-1/2 aspect-auto"
+            />
           </button>
           <button
             onClick={() => handleLoginMenuClick(props.handleFabincciClick)}
             className="xl:hidden block"
+            alt="Botón para ir a la página de Fabincci"
           >
             FABINCCI
           </button>
-          <button onClick={() => handleLoginMenuClick(props.handleReservasClick)} className="">
+          <button
+            onClick={() => handleLoginMenuClick(props.handleReservasClick)}
+            className=""
+          >
             RESERVAS
           </button>
-          <button onClick={() => handleLoginMenuClick(props.handleContactClick)} className="">
+          <button
+            onClick={() => handleLoginMenuClick(props.handleContactClick)}
+            className=""
+            alt="Botón para ir a la página de contacto"
+          >
             CONTACTO
           </button>
 
@@ -92,6 +117,7 @@ const Header = (props) => {
                 className="mt-5 block text-center text-black uppercase text-sm "
                 to={`${isLoggedIn ? "/profile" : "/login"}`}
                 onClick={() => handleLoginMenuClick(handleLogin)}
+                alt="Botón para ir a la página de perfil"
               >
                 {isLoggedIn ? <ProfileIcon /> : "Iniciar Sesión"}
               </Link>
@@ -99,6 +125,7 @@ const Header = (props) => {
                 className="block text-center text-black uppercase text-sm"
                 to={`${isLoggedIn ? "/login" : "/register"}`}
                 onClick={() => handleLoginMenuClick(handleLogout)}
+                alt="Botón para ir a la página de registro"
               >
                 {isLoggedIn ? "Cerrar Sesión" : "Registro"}
               </Link>
