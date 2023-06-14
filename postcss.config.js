@@ -1,6 +1,5 @@
+import viteCompression from "vite-plugin-compression";
+
 export default {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
+  plugins: [viteCompression()],
+};

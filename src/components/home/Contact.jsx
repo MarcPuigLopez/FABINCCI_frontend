@@ -56,11 +56,12 @@ const Contact = (props, ref) => {
 
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"></li>
 
-            <li
-              alt="Instagram"
-              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
-            >
-              <Link to="https://www.instagram.com/fabincci_barber/">
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              <Link
+                to="https://www.instagram.com/fabincci_barber/"
+                target="_blank"
+                alt="Instagram"
+              >
                 <AiFillInstagram />
               </Link>
             </li>
@@ -73,47 +74,45 @@ const Contact = (props, ref) => {
               </Link> */}
             </li>
 
-            <li
-              alt="Twitch"
-              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
-            >
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
               {/* <AiFillFacebook /> */}
-              <Link to="https://www.twitch.tv/fabincci" target="_blank">
+              <Link
+                to="https://www.twitch.tv/fabincci"
+                target="_blank"
+                alt="Twitch"
+              >
                 <FiTwitch />
               </Link>
             </li>
 
-            <li
-              alt="Youtube"
-              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
-            >
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
               {/* <BsPinterest /> */}
               <Link
                 to="https://www.youtube.com/@fabinccibarber"
                 target="_blank"
+                alt="Youtube"
               >
                 <AiFillYoutube />
               </Link>
             </li>
 
-            <li
-              alt="TikTok"
-              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
-            >
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
               {/* <AiFillLinkedin /> */}
               <Link
                 to="https://www.tiktok.com/@fabincci?is_from_webapp=1&sender_device=pc"
                 target="_blank"
+                alt="TikTok"
               >
                 <FaTiktok />
               </Link>
             </li>
 
-            <li
-              alt="Whatsapp"
-              className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45"
-            >
-              <Link to="https://web.whatsapp.com/" target="_blank">
+            <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
+              <Link
+                to="https://web.whatsapp.com/"
+                target="_blank"
+                alt="Whatsapp"
+              >
                 <AiOutlineWhatsApp />
               </Link>
             </li>

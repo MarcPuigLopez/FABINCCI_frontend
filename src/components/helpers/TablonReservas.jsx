@@ -59,8 +59,8 @@ const TablonReservas = ({ handleReservation }) => {
                         sm:text-base text-xs"
           >
             <div className="flex-auto">
-              <h3>{servicio.cutName}</h3>
-              <h4 className="text-gray-800 text-xs sm:block hidden ">{servicio.description}</h4>
+              <h2>{servicio.cutName}</h2>
+              <h3 className="text-gray-800 text-xs sm:block hidden ">{servicio.description}</h3>
             </div>
             <div className="flex-none text-black my-auto sm:pl-8 
                             sm:pr-8 pr-3">

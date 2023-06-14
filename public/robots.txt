@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/profile/
+Disallow: /users/
+
+Sitemap: https://fabincci.netlify.app/sitemap-file.xml
