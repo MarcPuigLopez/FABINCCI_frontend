@@ -34,8 +34,8 @@ const Fabincci = (props, ref) => {
           }}
         >
           <img
-            className="lg:w-44 lg:h-44 md:w-40 md:h-40 w-32 h-32 border mx-auto"
-            src={Cut1}
+            className="lg:w-44 md:w-40 w-32 aspect-auto border mx-auto"
+            src={Cut2}
             alt="Corte de pelo degradado con pico"
           ></img>
         </motion.div>
@@ -69,12 +69,12 @@ const Fabincci = (props, ref) => {
             <br />
             <br />
             {!isTabletOrSmaller && (
-              <p>
+              <a>
                 Nos enorgullece poder ayudar a nuestros clientes a encontrar el
                 corte perfecto que se adapte a sus necesidades diarias. Nuestro
                 objetivo es elevar el estado de ánimo de cada persona que pase
                 por nuestra barbería.
-              </p>
+              </a>
             )}
           </p>
         </motion.div>
@@ -117,8 +117,8 @@ const Fabincci = (props, ref) => {
           </motion.h1>
         </div>
 
-         {/* IMAGEN 3*/}
-         <motion.div
+        {/* IMAGEN 3*/}
+        <motion.div
           className="lg:col-start-5 lg:row-start-4 md:col-start-3 md:row-start-3 col-start-2 row-start-3"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -131,8 +131,8 @@ const Fabincci = (props, ref) => {
           }}
         >
           <img
-            className="lg:w-44 lg:h-44 md:w-40 md:h-40 w-32 h-32 border mx-auto"
-            src={Cut2}
+            className="lg:w-44 md:w-40 w-32 aspect-auto border mx-auto"
+            src={Cut1}
             alt="Corte de pelo degradado con dibujo"
           ></img>
         </motion.div>
@@ -166,12 +166,12 @@ const Fabincci = (props, ref) => {
             <br />
             <br />
             {!isTabletOrSmaller && (
-              <p>
+              <a>
                 Gracias por visitar nuestra página principal y esperamos
                 recibirte pronto en nuestra barbería. ¡Déjanos ayudarte a
                 expresar tu estilo y alcanzar la confianza que te permitirá
                 brillar en todos los aspectos de tu vida!
-              </p>
+              </a>
             )}
           </p>
         </motion.div>

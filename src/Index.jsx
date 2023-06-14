@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, lazy } from "react";
 
 import { useMediaQuery } from "react-responsive";
 
@@ -6,10 +6,11 @@ import { useMediaQuery } from "react-responsive";
 import Footer from "./components/helpers/Footer";
 import Header from "./components/helpers/Header";
 import Home from "./components/home/Home";
-import AboutUs from "./components/home/AboutUs";
-import Fabincci from "./components/home/Fabincci";
-import Reservas from "./components/home/Reservations";
-import Contact from "./components/home/Contact";
+
+const LazyAboutUs = lazy(() => import("./components/home/AboutUs"));
+const LazyFabincci = lazy(() => import("./components/home/Fabincci"));
+const LazyReservas = lazy(() => import("./components/home/Reservations"));
+const LazyContact = lazy(() => import("./components/home/Contact"));
 
 function Index() {
   const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1024px)" });
@@ -161,25 +162,25 @@ function Index() {
           className="bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-cover bg-no-repeat bg-center"
           alt="Sección de Saber Hacer de Fabincci Barbería"
         >
-          <AboutUs ref={aboutUsRef} />
+          <LazyAboutUs ref={aboutUsRef} />
         </div>
         <div
           className="bg-[url('assets/images/HomeBg/bg-fabincci.webp')] bg-cover bg-center bg-no-repeat"
           alt="Sección de Fabincci de Fabincci Barbería"
         >
-          <Fabincci ref={fabincciRef} />
+          <LazyFabincci ref={fabincciRef} />
         </div>
         <div
           className="bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-cover bg-no-repeat bg-center"
           alt="Sección de Reservas de Fabincci Barbería"
         >
-          <Reservas ref={reservasRef} />
+          <LazyReservas ref={reservasRef} />
         </div>
         <div
           className="bg-[url('assets/images/HomeBg/bg-contacto.webp')] xl:bg-fixed md:bg-local bg-cover bg-center"
           alt="Sección de Contacto de Fabincci Barbería"
         >
-          <Contact ref={contactRef} />
+          <LazyContact ref={contactRef} />
         </div>
       </div>
       <footer>

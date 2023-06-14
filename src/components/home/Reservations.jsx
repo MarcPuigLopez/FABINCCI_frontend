@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, lazy, startTransition } from "react";
 
 import { motion } from "framer-motion";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 
-import Calendar from "../helpers/Calendar";
+const LazyCalendar = lazy(() => import("../helpers/Calendar"));
 import TablonReservas from "../helpers/TablonReservas";
 
 const Reservas = (props, ref) => {
@@ -13,10 +13,11 @@ const Reservas = (props, ref) => {
   const [cutType, setCutType] = useState("");
 
   const handleReservaClick = (cutType) => {
-    setCutType(cutType);
-
+    startTransition(() => {
+      setCutType(cutType);
       setShowTablon(false);
       setShowCalendar(true);
+    });
   };
 
   const handleCalendarOpen = () => {
@@ -29,22 +30,24 @@ const Reservas = (props, ref) => {
       <div className="grid lg:h-[84vh] relative lg:w-reservas-width w-screen">
         {showTablon && (
           <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-            duration: 3,
-          }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 3,
+            }}
             className={`transition-opacity duration-1000 p-5 mx-auto${
               showTablon ? "" : "hidden"
             }`}
           >
-            <h1 className=" font-press-start pt-6 
+            <h1
+              className=" font-press-start pt-6 
                             font-bold text-white text-center text-shadow-lg shadow-gray-700
-                            lg:text-7xl text-5xl">
+                            lg:text-7xl text-5xl"
+            >
               <span className="">NUESTRAS TARIFAS</span>
             </h1>
             <TablonReservas handleReservation={handleReservaClick} />
@@ -52,26 +55,28 @@ const Reservas = (props, ref) => {
         )}
         {showCalendar && (
           <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-            duration: 3,
-          }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              duration: 3,
+            }}
             className=""
           >
             <div
               className={`transition-opacity duration-1000 p-5 mx-auto 
                           lg:w-2/5 md:w-3/5 sm:w-4/5 w-full  ${
-                showCalendar ? "" : "hidden"
-              }`}
+                            showCalendar ? "" : "hidden"
+                          }`}
             >
-              <h1 className=" font-press-start p-10
+              <h1
+                className=" font-press-start p-10
                               font-bold text-white text-center text-shadow-lg shadow-gray-700
-                              lg:text-7xl text-5xl">
+                              lg:text-7xl text-5xl"
+              >
                 <span className="">RESERVAS</span>
               </h1>
               <div className="relative">
@@ -89,7 +94,10 @@ const Reservas = (props, ref) => {
                 </div>
               </div>
 
-              <Calendar cutType={cutType} handleCalendarOpen={handleCalendarOpen} />
+              <LazyCalendar
+                cutType={cutType}
+                handleCalendarOpen={handleCalendarOpen}
+              />
             </div>
           </motion.div>
         )}

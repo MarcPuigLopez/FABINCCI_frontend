@@ -61,6 +61,7 @@ const Contact = (props, ref) => {
                 to="https://www.instagram.com/fabincci_barber/"
                 target="_blank"
                 alt="Instagram"
+                aria-label="Instagram"
               >
                 <AiFillInstagram />
               </Link>
@@ -80,6 +81,7 @@ const Contact = (props, ref) => {
                 to="https://www.twitch.tv/fabincci"
                 target="_blank"
                 alt="Twitch"
+                aria-label="Twitch"
               >
                 <FiTwitch />
               </Link>
@@ -91,6 +93,7 @@ const Contact = (props, ref) => {
                 to="https://www.youtube.com/@fabinccibarber"
                 target="_blank"
                 alt="Youtube"
+                aria-label="Youtube"
               >
                 <AiFillYoutube />
               </Link>
@@ -102,6 +105,7 @@ const Contact = (props, ref) => {
                 to="https://www.tiktok.com/@fabincci?is_from_webapp=1&sender_device=pc"
                 target="_blank"
                 alt="TikTok"
+                aria-label="TikTok"
               >
                 <FaTiktok />
               </Link>
@@ -112,6 +116,7 @@ const Contact = (props, ref) => {
                 to="https://web.whatsapp.com/"
                 target="_blank"
                 alt="Whatsapp"
+                aria-label="Whatsapp"
               >
                 <AiOutlineWhatsApp />
               </Link>
