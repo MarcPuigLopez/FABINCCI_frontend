@@ -70,17 +70,15 @@ const Fabincci = (props, ref) => {
             compromiso hacia esta profesión.
             <br />
             <br />
-          </p>
-          <>
             {!isTabletOrSmaller && (
-              <p>
+              <>
                 Nos enorgullece poder ayudar a nuestros clientes a encontrar el
                 corte perfecto que se adapte a sus necesidades diarias. Nuestro
                 objetivo es elevar el estado de ánimo de cada persona que pase
                 por nuestra barbería.
-              </p>
+              </>
             )}
-          </>
+          </p>
         </motion.div>
 
         {/* IMAGEN 2
@@ -171,17 +169,16 @@ const Fabincci = (props, ref) => {
             cabello y el estilo.
             <br />
             <br />
-          </p>
-          <>
+
             {!isTabletOrSmaller && (
-              <a>
+              <>
                 Gracias por visitar nuestra página principal y esperamos
                 recibirte pronto en nuestra barbería. ¡Déjanos ayudarte a
                 expresar tu estilo y alcanzar la confianza que te permitirá
                 brillar en todos los aspectos de tu vida!
-              </a>
+              </>
             )}
-          </>
+          </p>
         </motion.div>
       </div>
     </div>
