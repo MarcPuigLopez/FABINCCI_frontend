@@ -126,14 +126,14 @@ const Home = (props, ref) => {
               duration: 2,
             }}
           >
-            <h4
+            <h3
               className=" md:pt-5 sm:pt-7 pt-10 text-center
                           lg:px-0 px-10
                           xl:mt-0 lg:mt-2"
             >
               Brindamos el mejor servicio adaptado a cada persona para una
               experiencia personalizada que superará todas tus expectativas.
-            </h4>
+            </h3>
           </motion.div>
         </div>
 

@@ -1,9 +1,16 @@
 //robots.txt
 
-# Block all crawlers for /accounts
+# Block all crawlers for /admin/profile
 User-agent: *
-Disallow: /accounts
+Disallow: /admin/profile
+
+# Block all crawlers for /users/*
+User-agent: *
+Disallow: users/
+
 
 # Allow all crawlers
 User-agent: *
 Allow: /
+
+sitemap: https://fabincci.netlify.app/sitemap.xml

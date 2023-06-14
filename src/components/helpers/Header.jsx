@@ -71,7 +71,7 @@ const Header = (props) => {
             onClick={() => handleLoginMenuClick(props.handleFabincciClick)}
             className="xl:block hidden"
           >
-            <img src={logo} alt="Fabincci Logo" className="w-16 h-8" />
+            <img src={logo} alt="Fabincci Logo" className="w-16 h-1/2 aspect-auto" />
           </button>
           <button
             onClick={() => handleLoginMenuClick(props.handleFabincciClick)}
