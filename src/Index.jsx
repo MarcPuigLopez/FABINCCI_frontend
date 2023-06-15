@@ -151,35 +151,35 @@ function Index() {
         }}
       >
         <div
-          className=" lg:bg-[url('assets/images/HomeBg/bg-home.webp')] bg-[url('assets/images/HomeBg/bg-contacto-mobil.jpg')]
+          className=" lg:bg-[url('assets/images/HomeBg/bg-home.webp')] bg-[url('assets/images/HomeBg/bg-contacto-mobil.webp')]
                       bg-cover bg-center"
           alt="Sección de home de Fabincci Barbería"
         >
           <Home ref={homeRef} />
         </div>
         <div
-          className=" lg:bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-[url('assets/images/HomeBg/bg-saberHacer-mobil.jpg')]
+          className=" lg:bg-[url('assets/images/HomeBg/bg-saberHacer.webp')] bg-[url('assets/images/HomeBg/bg-saberHacer-mobil.webp')]
                       bg-cover bg-no-repeat bg-center"
           alt="Sección de Saber Hacer de Fabincci Barbería"
         >
           <AboutUs ref={aboutUsRef} />
         </div>
         <div
-          className=" lg:bg-[url('assets/images/HomeBg/bg-fabincci.webp')] bg-[url('assets/images/HomeBg/bg-fabincci-mobil.jpg')]
+          className=" lg:bg-[url('assets/images/HomeBg/bg-fabincci.webp')] bg-[url('assets/images/HomeBg/bg-fabincci-mobil.webp')]
                       bg-cover bg-center bg-no-repeat"
           alt="Sección de Fabincci de Fabincci Barbería"
         >
           <Fabincci ref={fabincciRef} />
         </div>
         <div
-          className=" lg:bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-[url('assets/images/HomeBg/bg-reservas-mobil.jpg')]
+          className=" lg:bg-[url('assets/images/HomeBg/bg-reservas.webp')] bg-[url('assets/images/HomeBg/bg-reservas-mobil.webp')]
                       bg-cover bg-no-repeat bg-center"
           alt="Sección de Reservas de Fabincci Barbería"
         >
           <Reservas ref={reservasRef} />
         </div>
         <div
-          className=" lg:bg-[url('assets/images/HomeBg/bg-contacto.webp')] bg-[url('assets/images/HomeBg/bg-contacto-mobil.jpg')]
+          className=" lg:bg-[url('assets/images/HomeBg/bg-contacto.webp')] bg-[url('assets/images/HomeBg/bg-contacto-mobil.webp')]
                       xl:bg-fixed md:bg-local bg-cover bg-center"
           alt="Sección de Contacto de Fabincci Barbería"
         >
