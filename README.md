@@ -1,4 +1,4 @@
-FABINCCI BARBER WEBPAGE
+<b>FABINCCI BARBER WEBPAGE </b>
 
 Ordre d'instalació del projecto:<br>
 
