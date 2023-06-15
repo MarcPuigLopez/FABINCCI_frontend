@@ -1,6 +1,6 @@
-# FABINCCI
 FABINCCI BARBER WEBPAGE
 
-npm install
-npm i caniuse-lite
-npm run devs
+npm build <br>
+npm run dev <br>
+
+Created and designed by Marc Puig López 
