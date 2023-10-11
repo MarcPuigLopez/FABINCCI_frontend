@@ -48,7 +48,7 @@ const Header = (props) => {
 
   return (
     <header className="w-full fixed top-0 z-50 lg:sticky">
-      <div className="flex bg-white border-b-2 items-center xl:pl-56 pl-10 justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif">
+      <div className="flex bg-white border-b-2 items-center justify-between xl:justify-end w-full p-4 h-[9vh] font-sarif">
         <img src={logo} alt="Fabincci Logo" className="w-16 h-8 xl:hidden" />
 
         <nav
@@ -101,7 +101,7 @@ const Header = (props) => {
             onClick={() => handleLoginMenuClick(props.handleReservasClick)}
             className=""
           >
-            RESERVAS
+            PRECIOS
           </button>
           <button
             onClick={() => handleLoginMenuClick(props.handleContactClick)}
@@ -111,7 +111,7 @@ const Header = (props) => {
             CONTACTO
           </button>
 
-          {isTabletOrSmaller && (
+          {/* {isTabletOrSmaller && (
             <>
               <Link
                 className="mt-5 block text-center text-black uppercase text-sm "
@@ -130,10 +130,10 @@ const Header = (props) => {
                 {isLoggedIn ? "Cerrar Sesión" : "Registro"}
               </Link>
             </>
-          )}
+          )} */}
         </nav>
 
-        {!isTabletOrSmaller && (
+        {/* {!isTabletOrSmaller && (
           <nav
             className={`lg:flex lg:justify-center items-center h-full xl:visible xl:opacity-100 gap-2 z-50 ${
               showMenu ? "visible opacity-100" : "invisible opacity-0"
@@ -155,7 +155,7 @@ const Header = (props) => {
               {isLoggedIn ? <ProfileIcon /> : "Registro"}
             </Link>
           </nav>
-        )}
+        )} */}
 
         <button
           onClick={() => setShowMenu(!showMenu)}

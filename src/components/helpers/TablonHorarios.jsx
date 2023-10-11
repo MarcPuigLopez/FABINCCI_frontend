@@ -1,27 +1,24 @@
 import React from "react";
 
-const TablonReservas = ({ handleReservation }) => {
+const TablonHorarios = ({ handleReservation }) => {
   const servicios = [
     {
-      cutName: "Corte De pelo",
-      description: "Incluye Desgradado + Peinado",
-      price: "15€",
+      hourName: "Lunes a viernes",
+      description: "10:00 am - 13:00 pm / 16:00 pm - 20:00 pm",
     },
     {
-      cutName: "Corte + Afeitado",
-      description: "Incluye Degradado + Peinado + Afeitado",
-      price: "25€",
+      hourName: "Sabado",
+      description: "9:00 am - 15:00 pm",
     },
     {
-      cutName: "Afeitado Clásico",
-      description: "Incluye Afeitado ",
-      price: "15€",
+      hourName: "Domingo",
+      description: "CERRADO",
     },
   ];
 
-  const handleButtonClick = (cutName) => {
-    handleReservation(cutName);
-  };
+  // const handleButtonClick = (hourName) => {
+  //   handleReservation(hourName);
+  // };
 
   return (
     <div
@@ -29,7 +26,7 @@ const TablonReservas = ({ handleReservation }) => {
                     xl:p-10 p-3 items-center font-Roboto"
     >
       <ul
-        className="bg-white bg-opacity-70 xl:p-8 p-2 py-6
+        className="bg-white bg-opacity-70 xl:p-8 p-2 py-6 text-center
                         rounded-lg shadow-xl border-t border-r 
                         lg:grid grid
                         lg:grid-cols-1 
@@ -47,17 +44,14 @@ const TablonReservas = ({ handleReservation }) => {
                         sm:pr-3 
                         sm:text-base text-xs"
           >
-            <div className="flex-auto">
-              <h2>{servicio.cutName}</h2>
-              <h3 className="text-gray-800 text-xs sm:block hidden ">
+            <div
+              className="flex-auto text-center
+                         sm:px-0"
+            >
+              <h2>{servicio.hourName}</h2>
+              <h3 className="text-gray-800 text-xs sm:block hidden text-center px-10">
                 {servicio.description}
               </h3>
-            </div>
-            <div
-              className="flex-none text-black my-auto sm:pl-8 text-lg
-                            sm:pr-8 pr-3"
-            >
-              <p className="pl-2 pr-2">{servicio.price}</p>
             </div>
 
             {/* <button
@@ -66,8 +60,8 @@ const TablonReservas = ({ handleReservation }) => {
                           sm:px-4 px-2
                           sm:ml-5 
                           xl:text-base text-xs"
-              onClick={() => handleButtonClick(servicio.cutName)}
-              alt={`Botón para hacer una reserva para: ${servicio.cutName}`}
+              onClick={() => handleButtonClick(servicio.hourName)}
+              alt={`Botón para hacer una reserva para: ${servicio.hourName}`}
             >
               Reservar
             </button> */}
@@ -78,4 +72,4 @@ const TablonReservas = ({ handleReservation }) => {
   );
 };
 
-export default TablonReservas;
+export default TablonHorarios;

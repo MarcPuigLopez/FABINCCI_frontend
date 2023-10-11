@@ -60,7 +60,7 @@ const Fabincci = (props, ref) => {
           }}
         >
           <p
-            className=" lg:text-base text-xs p-5
+            className=" lg:text-base text-xs p-5 ml-10
                       bg-white bg-opacity-20 backdrop-filter backdrop-blur-md 
                         border border-white border-opacity-30 drop-shadow-2xl"
           >
@@ -160,7 +160,7 @@ const Fabincci = (props, ref) => {
           }}
         >
           <p
-            className=" lg:text-base text-xs p-5
+            className=" lg:text-base text-xs p-5 mr-10
                       bg-white bg-opacity-20 backdrop-filter backdrop-blur-md 
                         border border-white border-opacity-30 drop-shadow-2xl"
           >

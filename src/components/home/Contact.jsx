@@ -6,12 +6,17 @@ import {
   AiFillInstagram,
   AiFillYoutube,
   AiOutlineWhatsApp,
+  AiOutlineMail,
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import { FiTwitch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import { useMediaQuery } from "react-responsive";
+
 const Contact = (props, ref) => {
+  const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 1279px)" });
+
   return (
     <div ref={ref} className="lg:h-[84vh] h-screen w-screen font-Roboto">
       <div className="flex flex-col p-10 mx-auto justify-center items-center">
@@ -98,14 +103,26 @@ const Contact = (props, ref) => {
             </li>
 
             <li className="flex m-3 p-3 font-black text-5xl text-white transition hover:-translate-y-1 hover:scale-125 -rotate-45">
-              <Link
-                to="https://web.whatsapp.com/"
-                target="_blank"
-                alt="Whatsapp"
-                aria-label="Whatsapp"
-              >
-                <AiOutlineWhatsApp />
-              </Link>
+              {!isTabletOrSmaller && (
+                <Link
+                  to={`mailto:${''}?subject=${'Contacto desde la web de Fabincci'}`}
+                  target="_blank"
+                  alt="Mail"
+                  aria-label="Mail"
+                >
+                  <AiOutlineMail />
+                </Link>
+              )}
+              {isTabletOrSmaller && (
+                <Link
+                  to={`https://api.whatsapp.com/send?phone=${34623240401}&text= ¡Hola! Contacto contigo desde la web de Fabincci.`}
+                  target="_blank"
+                  alt="Whatsapp"
+                  aria-label="Whatsapp"
+                >
+                  <AiOutlineWhatsApp />
+                </Link>
+              )}
             </li>
           </ul>
         </motion.div>

@@ -5,6 +5,7 @@ import { BsArrowLeftCircleFill } from "react-icons/bs";
 
 const LazyCalendar = lazy(() => import("../helpers/Calendar"));
 import TablonReservas from "../helpers/TablonReservas";
+import TablonHorarios from "../helpers/TablonHorarios";
 
 const Reservas = (props, ref) => {
   const [showTablon, setShowTablon] = useState(true);
@@ -43,17 +44,35 @@ const Reservas = (props, ref) => {
               showTablon ? "" : "hidden"
             }`}
           >
-            <h1
-              className=" font-press-start pt-6 
+            <div
+              className="block gap-20
+                         md:flex"
+            >
+              <div>
+                <h1
+                  className=" font-press-start py-10 
                             font-bold text-white text-center text-shadow-lg shadow-gray-700
                             lg:text-7xl text-5xl"
-            >
-              <span className="">NUESTRAS TARIFAS</span>
-            </h1>
-            <TablonReservas handleReservation={handleReservaClick} />
+                >
+                  <span className="">HORARIOS</span>
+                </h1>
+                <TablonHorarios />
+              </div>
+
+              <div>
+                <h1
+                  className=" font-press-start py-10 
+                            font-bold text-white text-center text-shadow-lg shadow-gray-700
+                            lg:text-7xl text-5xl"
+                >
+                  <span className="">TARIFAS</span>
+                </h1>
+                <TablonReservas handleReservation={handleReservaClick} />
+              </div>
+            </div>
           </motion.div>
         )}
-        {showCalendar && (
+        {/* {showCalendar && (
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -100,7 +119,7 @@ const Reservas = (props, ref) => {
               />
             </div>
           </motion.div>
-        )}
+        )} */}
       </div>
     </div>
   );
